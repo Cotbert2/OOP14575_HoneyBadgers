@@ -20,9 +20,7 @@ public class Bill {
     public void deleteBill() {
     }
 
-    ;
     public void updateBill() {
     }
-;
 
 }
