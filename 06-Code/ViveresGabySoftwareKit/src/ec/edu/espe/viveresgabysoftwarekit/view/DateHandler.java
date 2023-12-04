@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.util;
+package ec.edu.espe.viveresgabysoftwarekit.view;
 
 /**
  *
