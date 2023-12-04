@@ -3,7 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 /**
  *
- * @author mateo
+ * @author mateo, Stefany Díaz
  */
 class ProductItem {
         private int product;
