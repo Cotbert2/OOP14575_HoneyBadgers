@@ -2,7 +2,7 @@ package ec.edu.espe.viveresgabysoftwarekit.util;
 
 /**
  *
- * @author mateo
+ * @author mateo, Stefany Díaz
  */
 public class DateHandler {
     

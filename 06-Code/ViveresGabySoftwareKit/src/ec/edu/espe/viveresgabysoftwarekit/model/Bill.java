@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  *
- * @author mateo
+ * @author mateo, Stefany Díaz
  */
 public class Bill {
 
