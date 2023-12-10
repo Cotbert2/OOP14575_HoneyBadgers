@@ -3,88 +3,93 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Alex Cuzco, HoneyBadgers, DCCO-ESPE
- */
 public class InventoryMenu {
-    
+
     private static Scanner scanner = new Scanner(System.in);
     int optionInventory;
-    
-    public void displayMenu(){
-    do {
-        
-        System.out.println("-----  Inventory Menu  -----");
-        System.out.println("1. Add product");
-        System.out.println("2. Delete Product");
-        System.out.println("3. Add category");
-        System.out.println("4. Delete category");
-        System.out.println("5. See stock");
-        System.out.println("6. Edit product");
-        System.out.println("7. Edit stock");
-        System.out.println("8. Edit category ");
-        System.out.println("9. Return to principal menu");
-        System.out.print("Choose a option: ");
-                           
-     optionInventory = obtainOptionInventory();
-                            
-    switch (optionInventory){
-        case 1:
-           System.out.println("You selected Add product");
-        
-           break;
-        case 2:
-           System.out.println("You selected Delete product");
-        
-           break;
-        case 3:
-           System.out.println("You selected Add category");
-        
-           break;
-        case 4:
-           System.out.println("You selected Delete category");
-        
-           break;
-        case 5:
-           System.out.println("You selected See stock");
-        
-           break;
-        case 6:
-           System.out.println("You selected Edit product");
-        
-           break;
-        case 7:
-           System.out.println("You selected Edit stock");
-        
-           break;
-        case 8:
-           System.out.println("You selected Edit category");
-        
-           break;
-        case 9:
-           System.out.println("thank you, we hope to see you soon");
-        
-           break;
+
+    public void displayMenu() {
+        do {
+            System.out.println("-----  Inventory Menu  -----");
+            System.out.println("1. Product");
+            System.out.println("2. Category");
+            System.out.println("3. Stock");
+            System.out.println("4. Back");
+            System.out.print("Choose an option: ");
+
+            optionInventory = obtainOptionInventory();
+
+            switch (optionInventory) {
+                case 1:
+                    displayProductMenu();
+                    break;
+                case 2:
+                    displayCategoryMenu();
+                    break;
+                case 3:
+                    System.out.println("You selected Stock");
+                    break;
+                case 4:
+                    System.out.println("Returning to the principal menu");
+                    break;
+                default:
+                    System.out.println("Invalid option, try again.");
+            }
+        } while (optionInventory != 4);
     }
-  } while (optionInventory!= 9);
-}
 
+    private void displayProductMenu() {
+        int optionProduct;
+        do {
+            System.out.println("-----  Product Menu  -----");
+            System.out.println("1. See all products");
+            System.out.println("2. Find product");
+            System.out.println("3. Add product");
+            System.out.println("4. Delete product");
+            System.out.println("5. Back");
+            System.out.print("Choose an option: ");
 
- private static int obtainOptionInventory(){
-        while(true){
+            optionProduct = obtainOptionInventory();
+
+            switch (optionProduct) {
+                case 1:
+                    System.out.println("You selected See all products");
+                    break;
+                case 2:
+                    System.out.println("You selected Find product");
+                    break;
+                case 3:
+                    System.out.println("You selected Add product");
+                    break;
+                case 4:
+                    System.out.println("You selected Delete product");
+                    break;
+                case 5:
+                    System.out.println("Returning to the inventory menu");
+                    break;
+                default:
+                    System.out.println("Invalid option, try again.");
+            }
+        } while (optionProduct != 5);
+    }
+
+    private void displayCategoryMenu() {
+        System.out.println("-----  Category Menu  -----");
+        // Implement the category menu options here
+    }
+
+    private static int obtainOptionInventory() {
+        while (true) {
             try {
-                 int input = Integer.parseInt(scanner.nextLine());
-                if (input >= 1 && input <= 9) {
+                int input = Integer.parseInt(scanner.nextLine());
+                if (input >= 1 && input <= 4) {
                     return input;
                 } else {
                     System.out.print("Invalid option, try again: ");
                 }
-            } catch (NumberFormatException e){
-                System.out.print("Invalid entry, try again: ");     
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid entry, try again: ");
             }
-        
         }
-    
     }
 }

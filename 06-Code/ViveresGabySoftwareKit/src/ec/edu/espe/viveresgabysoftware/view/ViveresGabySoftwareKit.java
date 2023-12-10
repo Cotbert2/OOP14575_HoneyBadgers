@@ -5,12 +5,12 @@ import ec.edu.espe.viveresgabysoftwarekit.model.MenuFinancer;
 import java.util.Scanner;
 
 /**
- * @autor Alex Cuzco, Stefany Díaz
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 
 public class ViveresGabySoftwareKit {
-    
-        private static Scanner scanner = new Scanner(System.in);
+
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         mostrarMenu();
@@ -18,7 +18,7 @@ public class ViveresGabySoftwareKit {
 
     public static int mostrarMenu() {
         int option;
-        
+
         do {
             System.out.println("----- Principal Menu -----");
             System.out.println("1. Market");
@@ -34,12 +34,11 @@ public class ViveresGabySoftwareKit {
                 case 1:
                     System.out.println("-------------------");
                     System.out.println("You Selected Market");
-                    
                     break;
                 case 2:
                     System.out.println("-----------------------");
                     System.out.println("You Selected Inventory");
-                    
+
                     InventoryMenu inventoryMenu = new InventoryMenu();
                     inventoryMenu.displayMenu();
                     break;
@@ -68,12 +67,9 @@ public class ViveresGabySoftwareKit {
             }
 
         } while (option != 5);
-        
-        //limpiar consola
-      
+
         return option;
     }
-
 
     private static int obtenerOpcion() {
         while (true) {
@@ -89,7 +85,4 @@ public class ViveresGabySoftwareKit {
             }
         }
     }
-
-
-
 }
