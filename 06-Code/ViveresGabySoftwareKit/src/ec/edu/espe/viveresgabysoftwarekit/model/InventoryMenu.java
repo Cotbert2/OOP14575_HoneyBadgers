@@ -15,7 +15,7 @@ public class InventoryMenu {
             System.out.println("2. Category");
             System.out.println("3. Stock");
             System.out.println("4. Back");
-            System.out.print("Choose an option: ");
+            System.out.print("Choose an option (1-4): ");
 
             optionInventory = obtainOptionInventory();
 
@@ -30,7 +30,7 @@ public class InventoryMenu {
                     System.out.println("You selected Stock");
                     break;
                 case 4:
-                    System.out.println("Returning to the principal menu");
+                    System.out.println("Returning to the previous menu");
                     break;
                 default:
                     System.out.println("Invalid option, try again.");
@@ -47,7 +47,7 @@ public class InventoryMenu {
             System.out.println("3. Add product");
             System.out.println("4. Delete product");
             System.out.println("5. Back");
-            System.out.print("Choose an option: ");
+            System.out.print("Choose an option (1-5): ");
 
             optionProduct = obtainOptionInventory();
 
@@ -65,7 +65,7 @@ public class InventoryMenu {
                     System.out.println("You selected Delete product");
                     break;
                 case 5:
-                    System.out.println("Returning to the inventory menu");
+                    System.out.println("Returning to the previous menu");
                     break;
                 default:
                     System.out.println("Invalid option, try again.");
@@ -82,10 +82,11 @@ public class InventoryMenu {
         while (true) {
             try {
                 int input = Integer.parseInt(scanner.nextLine());
-                if (input >= 1 && input <= 4) {
+                if (input >= 1 && input <= 5) {
                     return input;
                 } else {
                     System.out.print("Invalid option, try again: ");
+                    return 0; // O cualquier valor que no esté entre 1 y 5
                 }
             } catch (NumberFormatException e) {
                 System.out.print("Invalid entry, try again: ");
