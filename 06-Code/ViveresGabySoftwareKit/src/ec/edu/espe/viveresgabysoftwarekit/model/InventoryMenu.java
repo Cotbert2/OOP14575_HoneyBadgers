@@ -1,5 +1,4 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
-
 import java.util.Scanner;
 
 public class InventoryMenu {
