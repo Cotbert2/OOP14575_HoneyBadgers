@@ -1,4 +1,3 @@
-
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import java.util.Scanner;
@@ -27,7 +26,7 @@ public class InventoryMenu {
                     displayCategoryMenu();
                     break;
                 case 3:
-                    System.out.println("You selected Stock");
+                    displayStockMenu();
                     break;
                 case 4:
                     System.out.println("Returning to the previous menu");
@@ -74,22 +73,21 @@ public class InventoryMenu {
     }
 
     private void displayCategoryMenu() {
-        
         int optionCategory;
         do {
-            System.out.println("-----  Product Menu  -----");
-            System.out.println("1. See all category");
+            System.out.println("-----  Category Menu  -----");
+            System.out.println("1. See all categories");
             System.out.println("2. Find category");
             System.out.println("3. Add category");
             System.out.println("4. Delete category");
             System.out.println("5. Back");
-            System.out.print("Choose an option: ");
+            System.out.print("Choose an option (1-5): ");
 
             optionCategory = obtainOptionInventory();
 
             switch (optionCategory) {
                 case 1:
-                    System.out.println("You selected See all category");
+                    System.out.println("You selected See all categories");
                     break;
                 case 2:
                     System.out.println("You selected Find category");
@@ -101,13 +99,39 @@ public class InventoryMenu {
                     System.out.println("You selected Delete category");
                     break;
                 case 5:
-                    System.out.println("Returning to the Category menu");
+                    System.out.println("Returning to the Inventory menu");
                     break;
                 default:
                     System.out.println("Invalid option, try again.");
             }
         } while (optionCategory != 5);
-        // Implement the category menu options here
+    }
+
+    private void displayStockMenu() {
+        int optionStock;
+        do {
+            System.out.println("-----  Stock Menu  -----");
+            System.out.println("1. See stock");
+            System.out.println("2. Generate report");
+            System.out.println("3. Back");
+            System.out.print("Choose an option (1-3): ");
+
+            optionStock = obtainOptionInventory();
+
+            switch (optionStock) {
+                case 1:
+                    System.out.println("You selected See stock");
+                    break;
+                case 2:
+                    System.out.println("You selected Generate report");
+                    break;
+                case 3:
+                    System.out.println("Returning to the previous menu");
+                    break;
+                default:
+                    System.out.println("Invalid option, try again.");
+            }
+        } while (optionStock != 3);
     }
 
     private static int obtainOptionInventory() {
