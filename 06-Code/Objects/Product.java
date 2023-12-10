@@ -1,5 +1,6 @@
 
 public class Product {
+    //definition to add
     private int id;
     private String Description;
     private String name;
@@ -16,5 +17,4 @@ public class Product {
     public void Updateprice(){};
     public void UpdateDescription(){};
     public void getProductInfo(){};
-    
 }
