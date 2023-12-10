@@ -74,7 +74,39 @@ public class InventoryMenu {
     }
 
     private void displayCategoryMenu() {
-        System.out.println("-----  Category Menu  -----");
+        
+        int optionCategory;
+        do {
+            System.out.println("-----  Product Menu  -----");
+            System.out.println("1. See all category");
+            System.out.println("2. Find category");
+            System.out.println("3. Add category");
+            System.out.println("4. Delete category");
+            System.out.println("5. Back");
+            System.out.print("Choose an option: ");
+
+            optionCategory = obtainOptionInventory();
+
+            switch (optionCategory) {
+                case 1:
+                    System.out.println("You selected See all category");
+                    break;
+                case 2:
+                    System.out.println("You selected Find category");
+                    break;
+                case 3:
+                    System.out.println("You selected Add category");
+                    break;
+                case 4:
+                    System.out.println("You selected Delete category");
+                    break;
+                case 5:
+                    System.out.println("Returning to the Category menu");
+                    break;
+                default:
+                    System.out.println("Invalid option, try again.");
+            }
+        } while (optionCategory != 5);
         // Implement the category menu options here
     }
 
