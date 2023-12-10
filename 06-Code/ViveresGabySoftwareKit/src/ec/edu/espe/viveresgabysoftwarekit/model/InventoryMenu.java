@@ -133,6 +133,7 @@ public class InventoryMenu {
             }
         } while (optionStock != 3);
     }
+    
 
     private static int obtainOptionInventory() {
         while (true) {
