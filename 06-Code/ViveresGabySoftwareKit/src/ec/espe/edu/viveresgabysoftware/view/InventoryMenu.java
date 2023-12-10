@@ -1,5 +1,6 @@
 
-package ec.edu.espe.viveresgabysoftwarekit.view;
+package ec.espe.edu.viveresgabysoftware.view;
+
 import java.util.Scanner;
 
 /**
