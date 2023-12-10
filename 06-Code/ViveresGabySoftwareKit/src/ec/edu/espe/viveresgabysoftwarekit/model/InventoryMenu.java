@@ -1,6 +1,5 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
-
 import java.util.Scanner;
 
 public class InventoryMenu {
@@ -106,8 +105,7 @@ public class InventoryMenu {
                 default:
                     System.out.println("Invalid option, try again.");
             }
-        } while (optionCategory != 5);
-        // Implement the category menu options here
+        } while (optionCategory != 5);   
     }
 
     private static int obtainOptionInventory() {
