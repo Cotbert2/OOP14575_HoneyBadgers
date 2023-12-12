@@ -1,5 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,19 +15,21 @@ public class Bill {
     private int numProducts;
     private float totalCost;
     private Date purchaseDay;
+    private ArrayList<Product> products;
 
     @Override
     public String toString() {
-        return "Bill{" + "id=" + id + ", clientName=" + clientName + ", clientId=" + clientId + ", numProducts=" + numProducts + ", totalCost=" + totalCost + ", purchaseDay=" + purchaseDay + '}';
+        return "Bill{" + "id=" + id + ", clientName=" + clientName + ", clientId=" + clientId + ", numProducts=" + numProducts + ", totalCost=" + totalCost + ", purchaseDay=" + purchaseDay + ", products=" + products + '}';
     }
 
-    public Bill(int id, String clientName, String clientId, int numProducts, float totalCost, Date purchaseDay) {
+    public Bill(int id, String clientName, String clientId, int numProducts, float totalCost, Date purchaseDay, ArrayList<Product> products) {
         this.id = id;
         this.clientName = clientName;
         this.clientId = clientId;
         this.numProducts = numProducts;
         this.totalCost = totalCost;
         this.purchaseDay = purchaseDay;
+        this.products = products;
     }
 
     /**
@@ -113,4 +116,19 @@ public class Bill {
         this.purchaseDay = purchaseDay;
     }
 
+    /**
+     * @return the products
+     */
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    
  }
