@@ -218,7 +218,7 @@ public class InventoryMenu {
                     displayFindCategoryMenu();
                     break;
                 case 3:
-                    System.out.println("You selected Add category");
+                    displayAddCategoryMenu();
                     break;
                 case 4:
                     displayDeleteCategoryMenu();
@@ -239,14 +239,17 @@ public class InventoryMenu {
             System.out.println("No categories added yet.");
         } else {
             List<String> displayedCategories = new ArrayList<>();
-            for (Product product : productList) {
-                String categoryName = product.getName();
+            for (Category category : categoryList) {
+                int categoryId = category.getId();
+                String categoryName = category.getName();
+                String categoryDescription = category.getDescription();
                 if (!displayedCategories.contains(categoryName)) {
                     displayedCategories.add(categoryName);
-                    int currentStock = productStock.getOrDefault(categoryName, 0);
-
-                    System.out.println("Category: " + categoryName);
-                    System.out.println("Current Stock: " + currentStock);
+                   
+                    System.out.println("Category id: " + categoryId);
+                    System.out.println("Category name: "+ categoryName);
+                    System.out.println("Category description: "+ categoryDescription);
+                    
                     System.out.println("-------------------------");
                 }
             }
@@ -288,44 +291,40 @@ public class InventoryMenu {
     }
 
     private void displayCategoryInfo(String categoryName) {
-        for (Product product : productList) {
-            if (product.getName().equalsIgnoreCase(categoryName)) {
-                System.out.println(product);
+        for (Category category : categoryList) {
+            if (category.getName().equalsIgnoreCase(categoryName)) {
+                System.out.println(category);
                 return;
             }
         }
         System.out.println("Category not found with the name: " + categoryName);
     }
 
-    private void displayAddCategoryMenu() {
-        do {
-            System.out.println("----- Add category -----");
-            
-            String productName = validateStringInput("Enter the name of the product: ");
-            double cost = validateDoubleInput("Enter the cost of the product: ");
-            double pvp = validateDoubleInput("Enter the PVP of the product: ");
-            String description = validateStringInput("Enter the description of the product: ");
-            String provider = validateStringInput("Enter the provider of the product: ");
-            String category = validateStringInput("Enter the category of the product: ");
+   private void displayAddCategoryMenu() {
+    do {
+        System.out.println("----- Add category -----");
 
-            Product newProduct = new Product(productName, cost, pvp, description, provider, category);
-            productList.add(newProduct);
+        int categoryId = validateIntInput("Enter the category ID: ");
+        String categoryName = validateStringInput("Enter the name of the category: ");
+        String categoryDescription = validateStringInput("Enter the description of the category: ");
 
-            int currentStock = productStock.getOrDefault(productName, 0);
-            productStock.put(productName, currentStock + 1);
+        Product[] categoryProducts = new Product[5];
 
-            System.out.print("Do you want to add more products? (yes/no): ");
-            String addMore = scanner.nextLine();
+        Category newCategory = new Category(categoryId, categoryName, categoryDescription, categoryProducts);
+        categoryList.add(newCategory);
 
-            if (addMore.equalsIgnoreCase("no")) {
-                System.out.println("Returning to the previous menu");
-                break;
-            } else if (!addMore.equalsIgnoreCase("yes")) {
-                System.out.println("Invalid option, returning to the previous menu");
-                break;
-            }
-        } while (true);
-    }
+        System.out.print("Do you want to add more categories? (yes/no): ");
+        String addMore = scanner.nextLine();
+
+        if (addMore.equalsIgnoreCase("no")) {
+            System.out.println("Returning to the previous menu");
+            break;
+        } else if (!addMore.equalsIgnoreCase("yes")) {
+            System.out.println("Invalid option, returning to the previous menu");
+            break;
+        }
+    } while (true);
+}
 
     private void displayDeleteCategoryMenu() {
         System.out.println("----- Delete Category -----");
@@ -343,10 +342,10 @@ public class InventoryMenu {
         }
 
         if (categoryFound) {
-            System.out.println("Product '" + categoryName + "' deleted successfully.");
+            System.out.println("Category '" + categoryName + "' deleted successfully.");
             productStock.remove(categoryName);
         } else {
-            System.out.println("Product not found with the name: " + categoryName);
+            System.out.println("Category not found with the name: " + categoryName);
         }
     }
 
@@ -482,6 +481,24 @@ public class InventoryMenu {
             }
         }
     }
+    
+    private int validateIntInput(String prompt) {
+    int input = 0;
+    boolean validInput = false;
+
+    do {
+        try {
+            System.out.print(prompt);
+            String inputStr = scanner.nextLine();
+            input = Integer.parseInt(inputStr);
+            validInput = true;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+    } while (!validInput);
+
+    return input;
+}
 
     private static double validateDoubleInput(String message) {
         while (true) {
