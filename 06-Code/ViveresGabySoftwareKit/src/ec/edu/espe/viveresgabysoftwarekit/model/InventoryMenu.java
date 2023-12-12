@@ -11,6 +11,7 @@ public class InventoryMenu {
     private static Scanner scanner = new Scanner(System.in);
     private List<Product> productList = new ArrayList<>();
     private Map<String, Integer> productStock = new HashMap<>();
+    private List<Category> categoryList = new ArrayList<>();
     int optionInventory;
 
     public void displayMenu() {
@@ -211,16 +212,16 @@ public class InventoryMenu {
 
             switch (optionCategory) {
                 case 1:
-                    System.out.println("You selected See all categories");
+                    displaySeeAllCategoriesMenu();
                     break;
                 case 2:
-                    System.out.println("You selected Find category");
+                    displayFindCategoryMenu();
                     break;
                 case 3:
                     System.out.println("You selected Add category");
                     break;
                 case 4:
-                    System.out.println("You selected Delete category");
+                    displayDeleteCategoryMenu();
                     break;
                 case 5:
                     System.out.println("Returning to the Inventory menu");
@@ -230,7 +231,126 @@ public class InventoryMenu {
             }
         } while (optionCategory != 5);
     }
+    
+    private void displaySeeAllCategoriesMenu() {
+        System.out.println("----- See All categories -----");
 
+        if (categoryList.isEmpty()) {
+            System.out.println("No categories added yet.");
+        } else {
+            List<String> displayedCategories = new ArrayList<>();
+            for (Product product : productList) {
+                String categoryName = product.getName();
+                if (!displayedCategories.contains(categoryName)) {
+                    displayedCategories.add(categoryName);
+                    int currentStock = productStock.getOrDefault(categoryName, 0);
+
+                    System.out.println("Category: " + categoryName);
+                    System.out.println("Current Stock: " + currentStock);
+                    System.out.println("-------------------------");
+                }
+            }
+        }
+
+        System.out.println("Press 'B' to go back to the previous menu.");
+        String userInput = scanner.nextLine();
+
+        if (userInput.equalsIgnoreCase("B")) {
+            System.out.println("Returning to the previous menu");
+        } else {
+            System.out.println("Invalid option, returning to the previous menu");
+        }
+    }
+
+    private void displayFindCategoryMenu() {
+        int optionFindCategory;
+        do {
+            System.out.println("----- Find category -----");
+            System.out.println("1. Category");
+            System.out.println("2. Back");
+            System.out.print("Choose an option (1-2): ");
+
+            optionFindCategory = obtainOptionInventory();
+
+            switch (optionFindCategory) {
+                case 1:
+                    System.out.print("Enter the name of the category: ");
+                    String categoryName = scanner.nextLine();
+                    displayCategoryInfo(categoryName);
+                    break;
+                case 2:
+                    System.out.println("Returning to the previous menu");
+                    break;
+                default:
+                    System.out.println("Invalid option, try again.");
+            }
+        } while (optionFindCategory != 2);
+    }
+
+    private void displayCategoryInfo(String categoryName) {
+        for (Product product : productList) {
+            if (product.getName().equalsIgnoreCase(categoryName)) {
+                System.out.println(product);
+                return;
+            }
+        }
+        System.out.println("Category not found with the name: " + categoryName);
+    }
+
+    private void displayAddCategoryMenu() {
+        do {
+            System.out.println("----- Add category -----");
+            
+            String productName = validateStringInput("Enter the name of the product: ");
+            double cost = validateDoubleInput("Enter the cost of the product: ");
+            double pvp = validateDoubleInput("Enter the PVP of the product: ");
+            String description = validateStringInput("Enter the description of the product: ");
+            String provider = validateStringInput("Enter the provider of the product: ");
+            String category = validateStringInput("Enter the category of the product: ");
+
+            Product newProduct = new Product(productName, cost, pvp, description, provider, category);
+            productList.add(newProduct);
+
+            int currentStock = productStock.getOrDefault(productName, 0);
+            productStock.put(productName, currentStock + 1);
+
+            System.out.print("Do you want to add more products? (yes/no): ");
+            String addMore = scanner.nextLine();
+
+            if (addMore.equalsIgnoreCase("no")) {
+                System.out.println("Returning to the previous menu");
+                break;
+            } else if (!addMore.equalsIgnoreCase("yes")) {
+                System.out.println("Invalid option, returning to the previous menu");
+                break;
+            }
+        } while (true);
+    }
+
+    private void displayDeleteCategoryMenu() {
+        System.out.println("----- Delete Category -----");
+        System.out.print("Enter the name of the category to delete: ");
+        String categoryName = scanner.nextLine();
+
+        boolean categoryFound = false;
+
+        for (Category category : categoryList) {
+            if (category.getName().equalsIgnoreCase(categoryName)) {
+                categoryList.remove(category);
+                categoryFound = true;
+                break;
+            }
+        }
+
+        if (categoryFound) {
+            System.out.println("Product '" + categoryName + "' deleted successfully.");
+            productStock.remove(categoryName);
+        } else {
+            System.out.println("Product not found with the name: " + categoryName);
+        }
+    }
+
+   
     private void displayStockMenu() {
         int optionStock;
         do {
