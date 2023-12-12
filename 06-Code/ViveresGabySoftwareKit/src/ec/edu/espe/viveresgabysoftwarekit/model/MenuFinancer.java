@@ -69,6 +69,7 @@ public class MenuFinancer{
         int subOption;
         do{
             System.out.println("---Financer - Bill Menu---");
+            System.out.println("1. Create Bill");
             System.out.println("1. History Bills");
             System.out.println("2. Delete Bill ");
             System.out.println("3. Back");
@@ -77,7 +78,7 @@ public class MenuFinancer{
         
         switch(subOption){
             case 1:
-                System.out.println("You selected History Bills");
+                System.out.println("You selected Create Bill");
                 break;
             case 2:
                 System.out.println("You selected Delete Bill");
@@ -85,11 +86,14 @@ public class MenuFinancer{
             case 3:
                 System.out.println("Back to Menu Financer");
                 break;
+            case 4:
+                System.out.println("Back to Menu Financer");
+                break;
             default:
                 System.out.println("Try again, invalid option");
         
         }
-      } while(subOption !=3);
+      } while(subOption !=4);
 }
 
     private void doClientAction(){
