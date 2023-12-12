@@ -12,6 +12,20 @@ public class Category {
     private String description;
     private Product[] products;
 
+    @Override
+    public String toString() {
+        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", products=" + products + '}';
+    }
+   
+
+    public Category(int id, String name, String description, Product[] products) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.products = products;
+    }
+    
+
     public int getId() {
         return id;
     }
