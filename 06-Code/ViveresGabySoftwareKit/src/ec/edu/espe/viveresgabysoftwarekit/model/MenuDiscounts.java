@@ -1,6 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,9 +11,13 @@ public class MenuDiscounts {
 
     private static Scanner scanner = new Scanner(System.in);
     private int option;
-    private List<SeasonalDiscount> discounts = new ArrayList<>();
+    private List<SeasonalDiscount> discounts;
 
-    public void handMenuDiscounts() {
+    public MenuDiscounts() {
+        this.discounts = new ArrayList<>();
+    }
+
+    public void handleMenuDiscounts() {
         do {
             System.out.println("---- Discounts Menu ----");
             System.out.println("1. History");
@@ -81,8 +86,8 @@ public class MenuDiscounts {
 
         if (manualOption == 1) {
             if (discounts.size() < 10) {
-                System.out.print("Enter the date (Father's Day, Mother's Day, Christmas, New Year, Carnival): ");
-                String englishDate = Validations.validateStringInputWithSpaces("Enter the date: ");
+                System.out.print("Enter new discount (Father's Day, Mother's Day, Christmas, New Year, Carnival): ");
+                String englishDate = Validations.validateStringInputWithSpaces("Enter the discount: ");
 
                 System.out.print("Enter the discount value (between 2.00 and 8.00): ");
                 double discountValue = Validations.validateDoubleDiscountInput("Enter the discount value: ");
