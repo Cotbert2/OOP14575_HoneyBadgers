@@ -122,9 +122,8 @@ public class MenuFinancer{
         
         System.out.print("Enter product name: ");
         String productName = scanner.nextLine();
-        
         System.out.print("Enter product cost: ");
-        float productCost = scanner.nextFloat();
+        float cost = scanner.nextFloat();
         scanner.nextLine();
         
         Product newProduct = new Product(clientName, i, i, clientId, productName, clientId);
@@ -145,35 +144,35 @@ public class MenuFinancer{
     private void showBills() {
     System.out.println("---- History Bills ----");
     System.out.println("ID\tClient\t\tProducts\tTotal Cost");
-        Iterable<Bill> bills = null;
 
-    for (Bill bill : bills) {
+    for (Bill bill : this.bills) {
         System.out.print(
             bill.getId() + "\t" +
             bill.getClientName() + "\t\t"
         );
 
         for (Product product : bill.getProducts()) {
-            System.out.print(product.getCost() + "), ");
+            System.out.print(product.getName() + "(" + product.getCost() + "), ");
         }
 
         System.out.println("\t\t" + bill.getTotalCost());
     }
 }
 
+
     private void deleteBill() {
-        System.out.print("Enter the ID of the bill to delete: ");
-        int billIdToDelete = scanner.nextInt();
-        scanner.nextLine(); 
+    System.out.print("Enter the ID of the bill to delete: ");
+    int billIdToDelete = scanner.nextInt();
+    scanner.nextLine();
 
-        Iterator<Bill> iterator = bills.iterator();
-        boolean found = false;
+    Iterator<Bill> iterator = this.bills.iterator();
+    boolean found = false;
 
-        while (iterator.hasNext()) {
-            Bill bill = iterator.next();
-            if (bill.getId() == billIdToDelete) {
-                iterator.remove();
-                found = true;
+    while (iterator.hasNext()) {
+        Bill bill = iterator.next();
+        if (bill.getId() == billIdToDelete) {
+            iterator.remove();
+            found = true;
             System.out.println("Bill deleted successfully!");
             break;
         }
@@ -183,6 +182,7 @@ public class MenuFinancer{
         System.out.println("Bill with ID " + billIdToDelete + " not found.");
     }
 }
+
 
     private void doClientAction(){
         int subOption;
@@ -197,7 +197,6 @@ public class MenuFinancer{
         switch(subOption){
             case 1:
                 System.out.println("You selected Create Client");
-                
                 break;
             case 2:
                 System.out.println("You selected See all Clients");
@@ -226,7 +225,6 @@ public class MenuFinancer{
         }   
     }
       
-
 
 
     private void doUpdateTaxesAction(){

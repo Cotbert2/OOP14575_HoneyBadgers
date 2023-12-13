@@ -13,6 +13,15 @@ class Customer {
     private String adress;
     private String phone;
 
+    public Customer(int id, String fullname, String email, String adress, String phone) {
+        this.id = id;
+        this.fullname = fullname;
+        this.email = email;
+        this.adress = adress;
+        this.phone = phone;
+    }
+    
+
     private void registerClient() {
     }
 
@@ -28,4 +37,75 @@ class Customer {
     private void getHistory() {
     }
 ;
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the fullname
+     */
+    public String getFullname() {
+        return fullname;
+    }
+
+    /**
+     * @param fullname the fullname to set
+     */
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the adress
+     */
+    public String getAdress() {
+        return adress;
+    }
+
+    /**
+     * @param adress the adress to set
+     */
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }
