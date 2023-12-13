@@ -3,6 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.utils.*;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,7 +37,6 @@ public class LogInSystem {
         String username = in.nextLine();
         System.out.print("Password: ");
         String passwd = in.nextLine();
-        fileHandler.readJSONFile("./db/users.json");
         return authenticate(username, cypher.cypherMessage(passwd));
 
     }

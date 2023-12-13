@@ -12,8 +12,9 @@ public class ViveresGabySoftwareKit {
 
     public static void main(String[] args) {
         LogInSystem logInSystem = new LogInSystem();
-        System.out.println(logInSystem.showLogin());
+        logInSystem.showLogin();
         mostrarMenu();
+
     }
 
     public static int mostrarMenu() {
