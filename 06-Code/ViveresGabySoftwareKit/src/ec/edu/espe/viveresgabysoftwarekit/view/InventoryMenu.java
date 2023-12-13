@@ -1,3 +1,5 @@
+package ec.edu.espe.viveresgabysoftwarekit.view;
+
 import ec.edu.espe.viveresgabysoftwarekit.model.Category;
 import ec.edu.espe.viveresgabysoftwarekit.model.Product;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;

@@ -58,7 +58,7 @@ public class ViveresGabySoftwareKit {
                     System.out.println("You Selected Discounts");
                     
                     MenuDiscounts menuDiscounts = new MenuDiscounts();
-                    menuDiscounts.handMenuDiscounts();
+                    menuDiscounts.handleMenuDiscounts();
                     
                     break;
                 case 5:
