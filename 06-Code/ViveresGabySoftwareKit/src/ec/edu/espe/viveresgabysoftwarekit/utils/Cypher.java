@@ -14,7 +14,6 @@ public class Cypher {
                 letter += cypherLevel;
                 cypherMessage += letter;
             }
-            System.out.println("cypherMessage -> " + cypherMessage);
             return cypherMessage;
         }
 

@@ -24,4 +24,11 @@ public class Financer {
         return this.customers;
     }
 
+    public Financer(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
 }
