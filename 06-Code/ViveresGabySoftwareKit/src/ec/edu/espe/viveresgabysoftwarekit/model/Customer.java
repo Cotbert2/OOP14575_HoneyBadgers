@@ -1,4 +1,3 @@
-
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 /**
@@ -10,14 +9,19 @@ class Customer {
     private int id;
     private String fullname;
     private String email;
-    private String adress;
+    private String address;
     private String phone;
 
-    public Customer(int id, String fullname, String email, String adress, String phone) {
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", fullname=" + fullname + ", email=" + email + ", address=" + address + ", phone=" + phone + '}';
+    }
+
+    public Customer(int id, String fullname, String email, String address, String phone) {
         this.id = id;
         this.fullname = fullname;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
         this.phone = phone;
     }
     
@@ -81,17 +85,17 @@ class Customer {
     }
 
     /**
-     * @return the adress
+     * @return the address
      */
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
     /**
-     * @param adress the adress to set
+     * @param address the address to set
      */
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
