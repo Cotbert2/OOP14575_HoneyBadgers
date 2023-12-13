@@ -1,6 +1,8 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,6 +10,7 @@ public class MenuDiscounts {
 
     private static Scanner scanner = new Scanner(System.in);
     private int option;
+    private List<Discount> discounts = new ArrayList<>();
 
     public void handMenuDiscounts() {
         do {
@@ -23,17 +26,17 @@ public class MenuDiscounts {
             switch (option) {
                 case 1:
                     System.out.println("You selected History");
-                    doHistoryAction();
+                    showDiscountHistory();
                     break;
 
                 case 2:
                     System.out.println("You selected Create Discount");
-                    doCreateDiscountAction();
+                    createDiscount();
                     break;
 
                 case 3:
                     System.out.println("You selected Delete Discount");
-                    doDeleteDiscountAction();
+                    deleteDiscount();
                     break;
 
                 case 4:
@@ -61,37 +64,36 @@ public class MenuDiscounts {
         }
     }
 
-    private void doHistoryAction() {
-        System.out.println("Discounts History");
-        System.out.println("---- Discounts History Menu ----");
-        System.out.println("1. View History");
-        System.out.println("2. Add Discount");
-        System.out.println("0. Go Back");
-
-        int subOption = getOption();
-
-        if (subOption == 0) {
-            System.out.println("Going back to Financer Menu...");
+    private void showDiscountHistory() {
+        if (discounts.isEmpty()) {
+            System.out.println("No discounts available.");
         } else {
-            System.out.println("Invalid option, try again");
+            System.out.println("Discounts History:");
+            for (Discount discount : discounts) {
+                System.out.println(discount);
+            }
         }
     }
 
-    private void doCreateDiscountAction() {
-        System.out.println("Discount - Create");
-
+    private void createDiscount() {
         System.out.print("Do you want to add a discount manually? (1 for Yes, 2 for No): ");
         int manualOption = getOption();
 
         if (manualOption == 1) {
-            System.out.print("Enter the date (Father's Day, Mother's Day, Christmas, New Year, Carnival): ");
-            String englishDate = Validations.validateStringInputWithSpaces("Enter the date: ");
+            if (discounts.size() < 10) {
+                System.out.print("Enter the date (Father's Day, Mother's Day, Christmas, New Year, Carnival): ");
+                String englishDate = Validations.validateStringInputWithSpaces("Enter the date: ");
 
-            System.out.print("Enter the discount value (between 2.00 and 8.00): ");
-            double discountValue = Validations.validateDoubleDiscountInput("Enter the discount value: ");
+                System.out.print("Enter the discount value (between 2.00 and 8.00): ");
+                double discountValue = Validations.validateDoubleDiscountInput("Enter the discount value: ");
 
-            System.out.println("Creating discount for " + englishDate + ": " + String.format("%.2f", discountValue) + "%");
-            // Puedes almacenar esta información en una estructura de datos o base de datos según tus necesidades
+                Discount newDiscount = new Discount(englishDate, discountValue);
+                discounts.add(newDiscount);
+
+                System.out.println("Creating discount for " + englishDate + ": " + String.format("%.2f", discountValue) + "%");
+            } else {
+                System.out.println("You have reached the maximum limit of discounts (10 per season).");
+            }
         } else if (manualOption == 2) {
             generateAutomaticDiscounts();
         } else {
@@ -105,22 +107,30 @@ public class MenuDiscounts {
 
         for (String date : dates) {
             double randomDiscount = 2.00 + (random.nextDouble() * (8.00 - 2.00)); // Generar descuento aleatorio entre 2% y 8%
+            Discount newDiscount = new Discount(date, randomDiscount);
+            discounts.add(newDiscount);
+
             System.out.println("Creating discount for " + date + ": " + String.format("%.2f", randomDiscount) + "%");
-            // Puedes almacenar esta información en una estructura de datos o base de datos según tus necesidades
         }
     }
 
-    private void doDeleteDiscountAction() {
-        System.out.println("Discount Delete");
-        System.out.println("---- Delete Discount Menu ----");
-        System.out.println("0. Go Back");
-
-        int subOption = getOption();
-
-        if (subOption == 0) {
-            System.out.println("Going back to Financer Menu...");
+    private void deleteDiscount() {
+        if (discounts.isEmpty()) {
+            System.out.println("No discounts available to delete.");
         } else {
-            System.out.println("Invalid option, try again");
+            System.out.println("Select a discount to delete:");
+            showDiscountHistory();
+
+            System.out.print("Enter the index of the discount to delete (0 to cancel): ");
+            int index = Validations.validateIntInput("Enter the index: ");
+
+            if (index >= 1 && index <= discounts.size()) {
+                Discount deletedDiscount = discounts.remove(index - 1);
+                System.out.println("Deleted discount: " + deletedDiscount);
+            } else if (index != 0) {
+                System.out.println("Invalid index, no discount deleted.");
+            }
         }
     }
 }
+
