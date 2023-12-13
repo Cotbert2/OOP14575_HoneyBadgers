@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Stefany Díaz
+ * @author Stefany Díaz,Eduardo Garcia, Mateo García, Alex Cuzco, honeyBADGERS, DCCO-ESPE
  */
 public class MenuFinancer{
     private static Scanner scanner = new Scanner(System.in);
