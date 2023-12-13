@@ -8,5 +8,5 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 class ProductItem {
     private int product;
     private int units;
-    public void applyDiscount(Discount discount){};
+    public void applyDiscount(SeasonalDiscount discount){};
 }
