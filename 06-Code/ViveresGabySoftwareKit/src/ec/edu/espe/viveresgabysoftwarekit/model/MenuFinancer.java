@@ -1,7 +1,12 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
+import com.google.gson.Gson;
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -10,8 +15,16 @@ import java.util.Scanner;
  */
 public class MenuFinancer{
     private static Scanner scanner = new Scanner(System.in);
-    int option;
-     private ArrayList<Bill> bills = new ArrayList<>();
+    private int option;
+    private ArrayList<Bill> bills = new ArrayList<>();
+    private Financer financer;
+    private List<Bill> existingBills;
+    FileHandler<Bill> fileHandler = new FileHandler<>();
+    
+    
+    public MenuFinancer(){
+        
+    }
     
     public void handMenuFinancer(){
         do{
@@ -74,9 +87,9 @@ public class MenuFinancer{
         do{
             System.out.println("---Financer - Bill Menu---");
             System.out.println("1. Create Bill");
-            System.out.println("1. History Bills");
-            System.out.println("2. Delete Bill ");
-            System.out.println("3. Back");
+            System.out.println("2. History Bills");
+            System.out.println("3. Delete Bill ");
+            System.out.println("4. Back");
             
         subOption = getOption();
         
@@ -103,9 +116,9 @@ public class MenuFinancer{
       } while(subOption !=4);
 }
     
-    private void createBill() {
-        ArrayList<Bill> bills = new ArrayList<>();
+    // En la clase MenuFinancer
 
+    private void createBill() {
         System.out.print("Enter client name: ");
         String clientName = scanner.nextLine();
 
@@ -115,65 +128,107 @@ public class MenuFinancer{
         System.out.print("Enter number of products: ");
         int numProducts = scanner.nextInt();
         scanner.nextLine();
-        
-         ArrayList<Product> products = new ArrayList<>();
-            for (int i = 0; i < numProducts; i++) {
-        System.out.println("Product " + (i + 1) + ":");
-        
-        System.out.print("Enter product name: ");
-        String productName = scanner.nextLine();
-        
-        System.out.print("Enter product cost: ");
-        float productCost = scanner.nextFloat();
-        scanner.nextLine();
-        
-        Product newProduct = new Product(clientName, i, i, clientId, productName, clientId);
-        products.add(newProduct);
-    }
+
+        ArrayList<Product> products = new ArrayList<>();
+        for (int i = 0; i < numProducts; i++) {
+            System.out.println("Product " + (i + 1) + ":");
+            System.out.print("Enter product name: ");
+            String productName = scanner.nextLine();
+
+            float productCost;
+            while (true) {
+                System.out.print("Enter product cost: ");
+                if (scanner.hasNextFloat()) {
+                    productCost = scanner.nextFloat();
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please enter a valid floating-point number.");
+                    scanner.nextLine();
+                }
+            }
+            scanner.nextLine();
+
+            Product newProduct = new Product(clientName, i, i, clientId, productName, clientId);
+            products.add(newProduct);
+        }
 
         System.out.print("Enter total cost: ");
         float totalCost = scanner.nextFloat();
-        scanner.nextLine(); 
+        scanner.nextLine();
         Date purchaseDay = null;
 
         Bill newBill = new Bill(option, clientName, clientId, numProducts, totalCost, purchaseDay, products);
         bills.add(newBill);
-
+        
+        saveBill(newBill);
         System.out.println("Bill created successfully!");
+}
+
+    private void saveBill(Bill bill) {
+    List<Bill> existingBills = fileHandler.readJSONList("C:\\Users\\YALEDAPC\\Stefy Díaz\\POO Stefy Díaz\\PROYECTO\\OOP14575_HoneyBadgers\\06-Code\\ViveresGabySoftwareKit\\bills.json");
+
+    existingBills.add(bill);
+
+    try (FileWriter writer = new FileWriter("C:\\Users\\YALEDAPC\\Stefy Díaz\\POO Stefy Díaz\\PROYECTO\\OOP14575_HoneyBadgers\\06-Code\\ViveresGabySoftwareKit\\bills.json")) {
+        Gson gson = new Gson();
+        writer.write(gson.toJson(existingBills));
+        System.out.println("Bill saved successfully!");
+    } catch (IOException e) {
+        System.err.println("[-] Something went wrong: " + e.getMessage());
     }
-    
+}
+
+
+
     private void showBills() {
     System.out.println("---- History Bills ----");
     System.out.println("ID\tClient\t\tProducts\tTotal Cost");
-        Iterable<Bill> bills = null;
 
-    for (Bill bill : bills) {
+    // Mostrar las facturas en memoria
+    for (Bill bill : this.bills) {
         System.out.print(
-            bill.getId() + "\t" +
-            bill.getClientName() + "\t\t"
+                bill.getId() + "\t" +
+                        bill.getClientName() + "\t\t"
         );
 
         for (Product product : bill.getProducts()) {
-            System.out.print(product.getCost() + "), ");
+            System.out.print(product.getName() + "(" + product.getCost() + "), ");
+        }
+
+        System.out.println("\t\t" + bill.getTotalCost());
+    }
+
+    this.existingBills = fileHandler.readJSONList("path_to_bills_file.json");
+    for (Bill bill : this.existingBills) {
+        System.out.print(
+                bill.getId() + "\t" +
+                        bill.getClientName() + "\t\t"
+        );
+
+        for (Product product : bill.getProducts()) {
+            System.out.print(product.getName() + "(" + product.getCost() + "), ");
         }
 
         System.out.println("\t\t" + bill.getTotalCost());
     }
 }
 
+
+
+
     private void deleteBill() {
-        System.out.print("Enter the ID of the bill to delete: ");
-        int billIdToDelete = scanner.nextInt();
-        scanner.nextLine(); 
+    System.out.print("Enter the ID of the bill to delete: ");
+    int billIdToDelete = scanner.nextInt();
+    scanner.nextLine();
 
-        Iterator<Bill> iterator = bills.iterator();
-        boolean found = false;
+    Iterator<Bill> iterator = this.bills.iterator();
+    boolean found = false;
 
-        while (iterator.hasNext()) {
-            Bill bill = iterator.next();
-            if (bill.getId() == billIdToDelete) {
-                iterator.remove();
-                found = true;
+    while (iterator.hasNext()) {
+        Bill bill = iterator.next();
+        if (bill.getId() == billIdToDelete) {
+            iterator.remove();
+            found = true;
             System.out.println("Bill deleted successfully!");
             break;
         }
@@ -183,6 +238,7 @@ public class MenuFinancer{
         System.out.println("Bill with ID " + billIdToDelete + " not found.");
     }
 }
+
 
     private void doClientAction(){
         int subOption;
@@ -197,10 +253,11 @@ public class MenuFinancer{
         switch(subOption){
             case 1:
                 System.out.println("You selected Create Client");
-                
+                createCustomer();
                 break;
             case 2:
                 System.out.println("You selected See all Clients");
+                showCustomers();
                 break;
             case 3:
                 System.out.println("Back to Menu Financer");
@@ -211,6 +268,47 @@ public class MenuFinancer{
         }
       } while(subOption !=3);
 }
+    
+    private void createCustomer() {
+        System.out.print("Enter customer name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter customer ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        System.out.print("Enter customer email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Enter customer address: ");
+        String address = scanner.nextLine();
+
+        System.out.print("Enter customer phone: ");
+        String phone = scanner.nextLine();
+
+        Customer newCustomer = new Customer(id, name, email, address, phone);
+
+    
+        financer.addCustomer(newCustomer);
+
+        System.out.println("Customer created successfully!");
+}
+
+    private void showCustomers() {
+        System.out.println("---- All Customers ----");
+        System.out.println("ID\tName\tEmail\tAddress\tPhone");
+
+        for (Customer customer : financer.getCustomers()) {
+            System.out.println(
+                customer.getId() + "\t" +
+                customer.getFullname() + "\t" +
+                customer.getEmail() + "\t" +
+                customer.getAddress() + "\t" +
+                customer.getPhone()
+        );
+    }
+}
+
 
 
     private void doFinancerStatusAction(){
@@ -226,7 +324,6 @@ public class MenuFinancer{
         }   
     }
       
-
 
 
     private void doUpdateTaxesAction(){
