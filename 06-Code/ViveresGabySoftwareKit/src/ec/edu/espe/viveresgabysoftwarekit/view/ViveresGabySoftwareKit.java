@@ -87,4 +87,3 @@ public class ViveresGabySoftwareKit {
         }
     }
 }
-//clean code
