@@ -203,6 +203,33 @@ public class Validations {
         }
     }
   }
+    public static int validateQuantityInput(String prompt, int maxQuantity) {
+    int input = 0;
+    boolean validInput = false;
+
+    do {
+        try {
+            System.out.print(prompt);
+            String inputStr = scanner.nextLine();
+            input = Integer.parseInt(inputStr);
+
+            if (input >= 1 && input <= maxQuantity) {
+                validInput = true;
+            } else {
+                System.out.println("Invalid input. Please enter a valid quantity (1-" + maxQuantity + ").");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+    } while (!validInput);
+
+    return input;
 }
+
+    public static int validateProductQuantity() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
+
 
 

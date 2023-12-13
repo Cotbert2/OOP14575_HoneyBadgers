@@ -10,7 +10,7 @@ public class MenuDiscounts {
 
     private static Scanner scanner = new Scanner(System.in);
     private int option;
-    private List<Discount> discounts = new ArrayList<>();
+    private List<SeasonalDiscount> discounts = new ArrayList<>();
 
     public void handMenuDiscounts() {
         do {
@@ -69,7 +69,7 @@ public class MenuDiscounts {
             System.out.println("No discounts available.");
         } else {
             System.out.println("Discounts History:");
-            for (Discount discount : discounts) {
+            for (SeasonalDiscount discount : discounts) {
                 System.out.println(discount);
             }
         }
@@ -87,7 +87,7 @@ public class MenuDiscounts {
                 System.out.print("Enter the discount value (between 2.00 and 8.00): ");
                 double discountValue = Validations.validateDoubleDiscountInput("Enter the discount value: ");
 
-                Discount newDiscount = new Discount(englishDate, discountValue);
+                SeasonalDiscount newDiscount = new SeasonalDiscount(englishDate, discountValue);
                 discounts.add(newDiscount);
 
                 System.out.println("Creating discount for " + englishDate + ": " + String.format("%.2f", discountValue) + "%");
@@ -107,7 +107,7 @@ public class MenuDiscounts {
 
         for (String date : dates) {
             double randomDiscount = 2.00 + (random.nextDouble() * (8.00 - 2.00)); // Generar descuento aleatorio entre 2% y 8%
-            Discount newDiscount = new Discount(date, randomDiscount);
+            SeasonalDiscount newDiscount = new SeasonalDiscount(date, randomDiscount);
             discounts.add(newDiscount);
 
             System.out.println("Creating discount for " + date + ": " + String.format("%.2f", randomDiscount) + "%");
@@ -125,7 +125,7 @@ public class MenuDiscounts {
             int index = Validations.validateIntInput("Enter the index: ");
 
             if (index >= 1 && index <= discounts.size()) {
-                Discount deletedDiscount = discounts.remove(index - 1);
+                SeasonalDiscount deletedDiscount = discounts.remove(index - 1);
                 System.out.println("Deleted discount: " + deletedDiscount);
             } else if (index != 0) {
                 System.out.println("Invalid index, no discount deleted.");
