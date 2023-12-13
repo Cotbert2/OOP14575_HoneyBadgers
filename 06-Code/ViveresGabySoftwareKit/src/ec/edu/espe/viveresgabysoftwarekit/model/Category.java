@@ -18,7 +18,7 @@ public class Category {
     }
    
 
-    public Category(int id, String name, String description, Product[] products) {
+    public Category(String name) {
         this.id = id;
         this.name = name;
         this.description = description;

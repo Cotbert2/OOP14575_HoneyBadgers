@@ -1,11 +1,14 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mateo, Stefany Díaz, Eduardo García
  */
-class Product {
+
+public class Product implements Serializable {
     private String name;
     private double cost;
     private double pvp;
@@ -112,10 +115,9 @@ class Product {
     public String toString() {
         return "Product{" + "name=" + name + ", cost=" + cost + ", pvp=" + pvp + ", description=" + description + ", provider=" + provider + ", category=" + category + '}';
     }
-
-    String getProductName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
     
     
 }
+   
+    
