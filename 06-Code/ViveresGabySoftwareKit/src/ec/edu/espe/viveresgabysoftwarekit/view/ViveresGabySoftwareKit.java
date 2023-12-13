@@ -1,7 +1,5 @@
-package ec.edu.espe.viveresgabysoftware.view;
-import ec.edu.espe.viveresgabysoftwarekit.model.InventoryMenu;
-import ec.edu.espe.viveresgabysoftwarekit.model.MenuDiscounts;
-import ec.edu.espe.viveresgabysoftwarekit.model.MenuFinancer;
+package ec.edu.espe.viveresgabysoftwarekit.view;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
 import java.util.Scanner;
 
 /**
@@ -13,7 +11,10 @@ public class ViveresGabySoftwareKit {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        LogInSystem logInSystem = new LogInSystem();
+        logInSystem.showLogin();
         mostrarMenu();
+
     }
 
     public static int mostrarMenu() {

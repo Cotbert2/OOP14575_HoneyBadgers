@@ -1,5 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 public class InventoryMenu {
 
     private static Scanner scanner = new Scanner(System.in);
+
     private List<Product> productList = new ArrayList<>();
     private Map<String, Integer> productStock = new HashMap<>();
     private List<Category> categoryList = new ArrayList<>();
@@ -23,7 +26,7 @@ public class InventoryMenu {
             System.out.println("4. Back");
             System.out.print("Choose an option (1-4): ");
 
-            optionInventory = obtainOptionInventory();
+            optionInventory = Validations.obtainOptionInventory();
 
             switch (optionInventory) {
                 case 1:
@@ -55,7 +58,7 @@ public class InventoryMenu {
             System.out.println("5. Back");
             System.out.print("Choose an option (1-5): ");
 
-            optionProduct = obtainOptionInventory();
+            optionProduct = Validations.obtainOptionInventory();
 
             switch (optionProduct) {
                 case 1:
@@ -117,7 +120,7 @@ public class InventoryMenu {
             System.out.println("2. Back");
             System.out.print("Choose an option (1-2): ");
 
-            optionFindProduct = obtainOptionInventory();
+            optionFindProduct = Validations.obtainOptionInventory();
 
             switch (optionFindProduct) {
                 case 1:
@@ -148,12 +151,12 @@ public class InventoryMenu {
         do {
             System.out.println("----- Add Product -----");
 
-            String productName = validateStringInput("Enter the name of the product: ");
-            double cost = validateDoubleInput("Enter the cost of the product: ");
-            double pvp = validateDoubleInput("Enter the PVP of the product: ");
-            String description = validateStringInput("Enter the description of the product: ");
-            String provider = validateStringInput("Enter the provider of the product: ");
-            String category = validateStringInput("Enter the category of the product: ");
+            String productName = Validations.validateStringInput("Enter the name of the product: ");
+            double cost = Validations.validateDoubleInput("Enter the cost of the product: ");
+            double pvp = Validations.validateDoubleInput("Enter the PVP of the product: ");
+            String description = Validations.validateStringInput("Enter the description of the product: ");
+            String provider = Validations.validateStringInput("Enter the provider of the product: ");
+            String category = Validations.validateStringInput("Enter the category of the product: ");
 
             Product newProduct = new Product(productName, cost, pvp, description, provider, category);
             productList.add(newProduct);
@@ -208,7 +211,7 @@ public class InventoryMenu {
             System.out.println("5. Back");
             System.out.print("Choose an option (1-5): ");
 
-            optionCategory = obtainOptionInventory();
+            optionCategory = Validations.obtainOptionInventory();
 
             switch (optionCategory) {
                 case 1:
@@ -231,7 +234,7 @@ public class InventoryMenu {
             }
         } while (optionCategory != 5);
     }
-    
+
     private void displaySeeAllCategoriesMenu() {
         System.out.println("----- See All categories -----");
 
@@ -245,11 +248,11 @@ public class InventoryMenu {
                 String categoryDescription = category.getDescription();
                 if (!displayedCategories.contains(categoryName)) {
                     displayedCategories.add(categoryName);
-                   
+
                     System.out.println("Category id: " + categoryId);
                     System.out.println("Category name: "+ categoryName);
                     System.out.println("Category description: "+ categoryDescription);
-                    
+
                     System.out.println("-------------------------");
                 }
             }
@@ -273,7 +276,7 @@ public class InventoryMenu {
             System.out.println("2. Back");
             System.out.print("Choose an option (1-2): ");
 
-            optionFindCategory = obtainOptionInventory();
+            optionFindCategory = Validations.obtainOptionInventory();
 
             switch (optionFindCategory) {
                 case 1:
@@ -300,31 +303,31 @@ public class InventoryMenu {
         System.out.println("Category not found with the name: " + categoryName);
     }
 
-   private void displayAddCategoryMenu() {
-    do {
-        System.out.println("----- Add category -----");
+    private void displayAddCategoryMenu() {
+        do {
+            System.out.println("----- Add category -----");
 
-        int categoryId = validateIntInput("Enter the category ID: ");
-        String categoryName = validateStringInput("Enter the name of the category: ");
-        String categoryDescription = validateStringInput("Enter the description of the category: ");
+            int categoryId = Validations.validateIntInput("Enter the category ID: ");
+            String categoryName = Validations.validateStringInput("Enter the name of the category: ");
+            String categoryDescription = Validations.validateStringInput("Enter the description of the category: ");
 
-        Product[] categoryProducts = new Product[5];
+            Product[] categoryProducts = new Product[5];
 
-        Category newCategory = new Category(categoryId, categoryName, categoryDescription, categoryProducts);
-        categoryList.add(newCategory);
+            Category newCategory = new Category(categoryId, categoryName, categoryDescription, categoryProducts);
+            categoryList.add(newCategory);
 
-        System.out.print("Do you want to add more categories? (yes/no): ");
-        String addMore = scanner.nextLine();
+            System.out.print("Do you want to add more categories? (yes/no): ");
+            String addMore = scanner.nextLine();
 
-        if (addMore.equalsIgnoreCase("no")) {
-            System.out.println("Returning to the previous menu");
-            break;
-        } else if (!addMore.equalsIgnoreCase("yes")) {
-            System.out.println("Invalid option, returning to the previous menu");
-            break;
-        }
-    } while (true);
-}
+            if (addMore.equalsIgnoreCase("no")) {
+                System.out.println("Returning to the previous menu");
+                break;
+            } else if (!addMore.equalsIgnoreCase("yes")) {
+                System.out.println("Invalid option, returning to the previous menu");
+                break;
+            }
+        } while (true);
+    }
 
     private void displayDeleteCategoryMenu() {
         System.out.println("----- Delete Category -----");
@@ -349,7 +352,6 @@ public class InventoryMenu {
         }
     }
 
-   
     private void displayStockMenu() {
         int optionStock;
         do {
@@ -359,7 +361,7 @@ public class InventoryMenu {
             System.out.println("3. Back");
             System.out.print("Choose an option (1-3): ");
 
-            optionStock = obtainOptionInventory();
+            optionStock = Validations.obtainOptionInventory();
 
             switch (optionStock) {
                 case 1:
@@ -424,7 +426,7 @@ public class InventoryMenu {
                 int currentStock = productStock.getOrDefault(productName, 0);
                 System.out.println("Current Stock: " + currentStock);
 
-                int soldQuantity = validateSoldQuantity(productName, currentStock);
+                int soldQuantity = Validations.validateSoldQuantity(productName, currentStock);
                 productStock.put(productName, currentStock - soldQuantity);
 
                 System.out.println("Sold Quantity: " + soldQuantity);
@@ -449,89 +451,5 @@ public class InventoryMenu {
             System.out.println("Invalid option, returning to the previous menu");
         }
     }
-
-    private int validateSoldQuantity(String productName, int currentStock) {
-        while (true) {
-            System.out.print("Enter the quantity sold for product '" + productName + "': ");
-            String input = scanner.nextLine();
-
-            try {
-                int soldQuantity = Integer.parseInt(input);
-
-                if (soldQuantity >= 0 && soldQuantity <= currentStock) {
-                    return soldQuantity;
-                } else {
-                    System.out.println("Invalid input, please enter a valid quantity (between 0 and " + currentStock + ").");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input, please enter a valid number.");
-            }
-        }
-    }
-
-    private static String validateStringInput(String message) {
-        while (true) {
-            System.out.print(message);
-            String input = scanner.nextLine();
-
-            if (input.matches("[a-zA-Z\\s]+")) {
-                return input;
-            } else {
-                System.out.println("Invalid input, please enter letters only.");
-            }
-        }
-    }
-    
-    private int validateIntInput(String prompt) {
-    int input = 0;
-    boolean validInput = false;
-
-    do {
-        try {
-            System.out.print(prompt);
-            String inputStr = scanner.nextLine();
-            input = Integer.parseInt(inputStr);
-            validInput = true;
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a valid integer.");
-        }
-    } while (!validInput);
-
-    return input;
 }
 
-    private static double validateDoubleInput(String message) {
-        while (true) {
-            System.out.print(message);
-            String input = scanner.nextLine();
-
-            try {
-                double value = Double.parseDouble(input);
-
-                if (value >= 0) {
-                    return value;
-                } else {
-                    System.out.println("Invalid input, please enter a non-negative number.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input, please enter a valid number.");
-            }
-        }
-    }
-
-    private static int obtainOptionInventory() {
-        while (true) {
-            try {
-                int input = Integer.parseInt(scanner.nextLine());
-                if (input >= 1 && input <= 5) {
-                    return input;
-                } else {
-                    System.out.print("Invalid option, try again: ");
-                    return 0; // Or any value that is not between 1 and 5
-                }
-            } catch (NumberFormatException e) {
-                System.out.print("Invalid entry, try again: ");
-            }
-        }
-    }
-}
