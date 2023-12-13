@@ -40,4 +40,9 @@ public class Validator {
         }
         return option;
     }
+
+    public String getStr(){
+        String str = in.nextLine();
+        return str;
+    }
 }

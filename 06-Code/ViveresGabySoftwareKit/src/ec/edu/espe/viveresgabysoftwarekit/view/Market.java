@@ -10,41 +10,73 @@ public class Market {
 
     public static int marketMainMenu() {
         int option = 0;
+        int sellOption = 0;
         System.out.println("----- Market Menu -----");
-        System.out.println("1) Sell");
-        System.out.println("2) Delete Sell");
+        System.out.println("1) New Sell");
         System.out.println("3) Back");
         do {
             option = validator.getIntOption();
-            if (option < 1 || option > 3)
-                System.out.print("Invalid option, try again: ");
+            switch (option) {
+                case 1:
+                    System.out.println("You selected Sell");
+                    sellOption = newSellMenu();
+                    break;
+                case 2:
+                    System.out.println("Leaving to the principal menu...");
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+            }
 
-        } while (option < 1 || option > 3);
+        } while (option < 1 || option > 2);
         return option;
 
     }
 
-    public int newSellMenu() {
+    public static int newSellMenu() {
         System.out.println("----- New Sell Menu -----");
         System.out.println("1) Add Product");
         System.out.println("2) Delete Product");
         System.out.println("3) Next");
         System.out.println("4) Back");
-        return validator.getIntOption();
+
+        int option = 0;
+        do {
+            option = validator.getIntOption();
+            switch (option) {
+                case 1:
+                    System.out.println("You selected Add Product");
+                    newSellProductAdd();
+                    break;
+                case 2:
+                    System.out.println("You selected Delete Product");
+                    break;
+                case 3:
+                    System.out.println("You selected Next");
+                    newSellCustomer();
+                    break;
+                case 4:
+                    System.out.println("You selected Back");
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+            }
+        } while (option < 1 || option > 4);
+        return option;
     }
 
-    public int verificationMenu() {
+    public static int verificationMenu() {
         System.out.println("Are you sure you want to cancel (y/n): ");
         return validator.getYNOption();
     }
 
-    //TODO: Refactor function
-    public int newSellProductAdd() {
-        System.out.println("name: ");
-        String name = in.nextLine();
-        //TODO: Find Product
-        System.out.println("Add: ");
+    public static int newSellProductAdd() {
+        System.out.print("name: ");
+        validator.getStr();
+        System.out.println("add: ");
+        validator.getIntOption();
         System.out.println("quantity: ");
+        validator.getIntOption();
         return 0;
     }
 
@@ -58,5 +90,34 @@ public class Market {
         return validator.getIntOption();
     }
 
+    public static int newSellCustomer(){
+        System.out.println("----- New Sell-Customer -----");
+        System.out.println("1) Data");
+        System.out.println("2) Final Customer");
+        System.out.println("3) Back");
+
+        int option = 0;
+        do {
+            option = validator.getIntOption();
+            switch (option) {
+                case 1:
+                    System.out.println("You selected Data");
+                    break;
+                case 2:
+                    System.out.println("You selected Final Customer");
+                    break;
+                case 3:
+                    System.out.println("You selected Back");
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+            }
+        } while (option < 1 || option > 4);
+        return option;
+    }
+
+    public String getSring(){
+        return in.nextLine();
+    }
 
 }
