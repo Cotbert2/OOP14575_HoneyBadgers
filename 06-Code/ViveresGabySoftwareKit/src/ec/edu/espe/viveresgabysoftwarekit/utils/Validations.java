@@ -116,7 +116,26 @@ public class Validations {
     }
 
     public static int validateSoldQuantity(String productName, int currentStock) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int input = 0;
+        boolean validInput = false;
+
+        do {
+            try {
+                System.out.print("Enter the quantity sold for product " + productName + " (1-" + currentStock + "): ");
+                String inputStr = scanner.nextLine();
+                input = Integer.parseInt(inputStr);
+
+                if (input >= 1 && input <= currentStock) {
+                    validInput = true;
+                } else {
+                    System.out.println("Invalid input. Please enter a valid quantity (1-" + currentStock + ").");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+            }
+        } while (!validInput);
+
+        return input;
     }
 
     public static String validateProductName(String prompt) {
@@ -186,50 +205,57 @@ public class Validations {
             }
         }
     }
-    public static double validateDoubleDiscountInput(String prompt) {
-    while (true) {
-        try {
-            System.out.print(prompt);
-            String inputStr = scanner.nextLine();
-            double input = Double.parseDouble(inputStr);
 
-            if (input >= 2.00 && input <= 8.00) {
-                return input;
-            } else {
-                System.out.print("Invalid discount value, try again (between 2.00 and 8.00): ");
+    public static double validateDoubleDiscountInput(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String inputStr = scanner.nextLine();
+                double input = Double.parseDouble(inputStr);
+
+                if (input >= 2.00 && input <= 8.00) {
+                    return input;
+                } else {
+                    System.out.print("Invalid discount value, try again (between 2.00 and 8.00): ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid entry, try again: ");
             }
-        } catch (NumberFormatException e) {
-            System.out.print("Invalid entry, try again: ");
         }
     }
-  }
+
     public static int validateQuantityInput(String prompt, int maxQuantity) {
-    int input = 0;
-    boolean validInput = false;
+        int input = 0;
+        boolean validInput = false;
 
-    do {
-        try {
-            System.out.print(prompt);
-            String inputStr = scanner.nextLine();
-            input = Integer.parseInt(inputStr);
+        do {
+            try {
+                System.out.print(prompt);
+                String inputStr = scanner.nextLine();
+                input = Integer.parseInt(inputStr);
 
-            if (input >= 1 && input <= maxQuantity) {
-                validInput = true;
-            } else {
-                System.out.println("Invalid input. Please enter a valid quantity (1-" + maxQuantity + ").");
+                if (input >= 1 && input <= maxQuantity) {
+                    validInput = true;
+                } else {
+                    System.out.println("Invalid input. Please enter a valid quantity (1-" + maxQuantity + ").");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
             }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a valid integer.");
-        }
-    } while (!validInput);
+        } while (!validInput);
 
-    return input;
-}
+        return input;
+    }
 
     public static int validateProductQuantity() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        while (true) {
+            try {
+                System.out.print("Enter the quantity: ");
+                int input = Integer.parseInt(scanner.nextLine());
+                return input;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+            }
+        }
     }
 }
-
-
-
