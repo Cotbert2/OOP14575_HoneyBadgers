@@ -1,11 +1,14 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import ec.edu.espe.viveresgabysoftwarekit.model.Product;
+import ec.edu.espe.viveresgabysoftwarekit.model.Stock;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validator;
 
 public class Market {
-    Scanner in = new Scanner(System.in);
+    static Scanner in = new Scanner(System.in);
     static Validator validator = new Validator();
 
     public static int marketMainMenu() {
@@ -39,7 +42,6 @@ public class Market {
         System.out.println("2) Delete Product");
         System.out.println("3) Next");
         System.out.println("4) Back");
-
         int option = 0;
         do {
             option = validator.getIntOption();
@@ -72,10 +74,9 @@ public class Market {
 
     public static int newSellProductAdd() {
         System.out.print("name: ");
-        validator.getStr();
-        System.out.println("add: ");
-        validator.getIntOption();
-        System.out.println("quantity: ");
+        String productNameToFind = in.nextLine();
+        System.out.println(findProduct(productNameToFind));
+        System.out.print("quantity: ");
         validator.getIntOption();
         return 0;
     }
@@ -119,5 +120,8 @@ public class Market {
     public String getSring(){
         return in.nextLine();
     }
-
+    public static String  findProduct(String productNameToFind) {
+        Stock stock = new Stock();
+        return stock.findProduct(productNameToFind);
+    }
 }

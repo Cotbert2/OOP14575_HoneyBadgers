@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "fullname": "Pepito Gonzalez",
+    "email": "pepitogonzales@espe.edu.ec",
+    "address": "Quito",
+    "phone": "0987654321"
+  },
+  {
+    "id": 2,
+    "fullname": "Juan Perez",
+    "email": "juanperez@espe.edu.ec",
+    "address": "Quito",
+    "phone": "0987654321"
+  },
+  {
+    "id": 3,
+    "fullname": "Maria Perez",
+    "email": "mariaperez@espe.edu.ec",
+    "address": "Ibarra",
+    "phone": "0987654321"
+  },
+  {
+    "id": 4,
+    "fullname": "Pedro Perez",
+    "email": "pedroperez@espe.edu.ec",
+    "address": "Quito",
+    "phone": "0987654321"
+  }
+]

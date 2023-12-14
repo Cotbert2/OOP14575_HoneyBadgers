@@ -2,4 +2,20 @@
   "id": 1,
   "userName": "gaby_diaz",
   "cypherPasswd": "BCDE"
+},{
+  "id": 2,
+  "userName": "eduardo",
+  "cypherPasswd": "eduardo"
+},{
+  "id": 3,
+  "userName": "alex",
+  "cypherPasswd": "alex"
+},{
+  "id": 4,
+  "userName": "stefy",
+  "cypherPasswd": "stefy"
+},{
+  "id": 5,
+  "userName": "mateo",
+  "cypherPasswd": "mateo"
 }]
