@@ -63,7 +63,7 @@ public class EmailHandler {
             email.setText(message);
 
             Transport.send(email);
-            System.out.println("¡El mensaje fue enviado correctamente!");
+            System.out.println("The email was successfully send!");
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
