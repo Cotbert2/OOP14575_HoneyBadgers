@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="javax-inject">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/javax-inject.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/javax.activation-1.1.0.v201105071233.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/javax.ejb.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/javax.faces-api-2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/mail.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

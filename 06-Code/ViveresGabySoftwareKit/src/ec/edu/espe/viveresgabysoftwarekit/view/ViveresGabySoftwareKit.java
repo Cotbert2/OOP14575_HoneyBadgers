@@ -3,19 +3,23 @@ import ec.edu.espe.viveresgabysoftwarekit.model.*;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 
 import java.util.Scanner;
+import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
+
+import javax.mail.MessagingException;
+
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 
 public class ViveresGabySoftwareKit {
 
+    private static EmailHandler emailHandler;
+
     private static Scanner scanner = new Scanner(System.in);
 
     private static Market market = new Market();
 
-    public static void main(String[] args) {
-        Search finder = new Search();
-        System.out.println(finder.findItem(Constans.PRODUCTS_FILE_NAME, "ep"));
+    public static void main(String[] args) throws MessagingException {
         LogInSystem logInSystem = new LogInSystem();
         logInSystem.showLogin();
         mostrarMenu();
