@@ -4,7 +4,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
  *
  * @author mateo, Stefany Díaz
  */
-class Customer {
+public class Customer {
 
     private int id;
     private String fullname;
@@ -17,6 +17,10 @@ class Customer {
         return "Customer{" + "id=" + id + ", fullname=" + fullname + ", email=" + email + ", address=" + address + ", phone=" + phone + '}';
     }
 
+    public void UIObjectInfo(){
+
+
+    }
     public Customer(int id, String fullname, String email, String address, String phone) {
         this.id = id;
         this.fullname = fullname;

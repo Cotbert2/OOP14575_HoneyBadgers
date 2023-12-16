@@ -45,10 +45,10 @@ public class Stock {
     }
 
     public String findProduct(String name){
-        String productMessage = "Sorry, there is no product with that name";
+        String productMessage = "Sorry, there is no product with that namek\n 1) Search Again\n2) Back\nOption:";
         for (Product product : products) {
             if(product.getName().equals(name)){
-                productMessage = product.toString();
+                productMessage = product.UIPrint();
             }
         }
         return productMessage;

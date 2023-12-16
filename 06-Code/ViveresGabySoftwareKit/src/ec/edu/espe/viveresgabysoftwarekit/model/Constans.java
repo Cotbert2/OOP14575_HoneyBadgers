@@ -6,6 +6,7 @@ public class Constans {
     public static final String CUSTOMERS_FILE_NAME= "./db/customers.json";
     public static final String WELCOME_HEADER = "********** WELCOME TO VIVERES GABY SOFTWARE KIT **********";
     public static final String HEADER = "**************Viveres Gaby Software Kit**************";
+    public static final String BILLS_FILE_NAME = "./db/bills.json";
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");

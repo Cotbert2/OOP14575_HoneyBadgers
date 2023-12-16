@@ -5,21 +5,21 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
  *
  * @author mateo, Stefany Díaz
  */
-class ProductItem {
-    private int product;
+public class ProductItem {
+    private Product product;
     private int units;
     public void applyDiscount(SeasonalDiscount discount){};
 
-    public ProductItem(int product, int units) {
+    public ProductItem(Product product, int units) {
         this.product = product;
         this.units = units;
     }
 
-    public int getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(int product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

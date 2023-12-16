@@ -40,6 +40,19 @@ public class FileHandler<T> {
         return objectList;
     }
 
+    public List<T> readJSONListProduct(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<Product>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return objectList;
+    }
+
     public List<T> readJSONListProducts(String path) {
         List<T> objectList = new ArrayList<>();
 
@@ -53,7 +66,7 @@ public class FileHandler<T> {
         return objectList;
     }
 
-    public void saveJSONFile(ArrayList<T> templateList, String path) {
+    public void saveJSONFile(List<T> templateList, String path) {
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(path)) {
             writer.write(gson.toJson(templateList));

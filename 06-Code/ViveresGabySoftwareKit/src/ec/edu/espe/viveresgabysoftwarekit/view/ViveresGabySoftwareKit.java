@@ -1,5 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
+
 import java.util.Scanner;
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
@@ -12,6 +14,8 @@ public class ViveresGabySoftwareKit {
     private static Market market = new Market();
 
     public static void main(String[] args) {
+        Search finder = new Search();
+        System.out.println(finder.findItem(Constans.PRODUCTS_FILE_NAME, "ep"));
         LogInSystem logInSystem = new LogInSystem();
         logInSystem.showLogin();
         mostrarMenu();
@@ -50,8 +54,7 @@ public class ViveresGabySoftwareKit {
                     System.out.println("---------------------");
                     System.out.println("You Selected Financer");
                     MenuFinancer menuFinancer = new MenuFinancer();
-                    menuFinancer.handMenuFinancer();
-                    
+
                     break;
                 case 4:
                     System.out.println("----------------------");

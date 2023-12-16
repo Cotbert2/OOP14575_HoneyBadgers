@@ -115,7 +115,10 @@ public class Product implements Serializable {
     public String toString() {
         return "Product{" + "name=" + name + ", cost=" + cost + ", pvp=" + pvp + ", description=" + description + ", provider=" + provider + ", category=" + category + '}';
     }
- 
+
+    public String UIPrint(){
+        return "-----------------------------------\n" + name + "-----------------------------------\n";
+    }
     
     
 }

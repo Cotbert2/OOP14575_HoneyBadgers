@@ -1,8 +1,11 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 
 import ec.edu.espe.viveresgabysoftwarekit.model.Category;
+import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.model.Product;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
+
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +21,12 @@ public class InventoryMenu {
     private Map<String, Integer> productStock = new HashMap<>();
     private List<Category> categoryList = new ArrayList<>();
     int optionInventory;
+
+
+    FileHandler<Product> fileHandler = new FileHandler<>();
+
+
+
 
     public void displayMenu() {
         do {
@@ -85,6 +94,7 @@ public class InventoryMenu {
     }
 
     private void displaySeeAllProductsMenu() {
+        updateProduct();
         System.out.println("----- See All Products -----");
 
         if (productList.isEmpty()) {
@@ -159,6 +169,8 @@ public class InventoryMenu {
 
             productList.add(newProduct);
 
+            //TODO: Save 
+            fileHandler.saveJSONFile(productList, Constans.PRODUCTS_FILE_NAME);
             int currentStock = productStock.getOrDefault(productName, 0);
             productStock.put(productName, currentStock + quantity);
 
@@ -420,6 +432,10 @@ public class InventoryMenu {
         } else {
             System.out.println("Invalid option, returning to the previous menu");
         }
+    }
+
+    private void updateProduct(){
+        productList =  fileHandler.readJSONListProducts(Constans.PRODUCTS_FILE_NAME);
     }
 }
 
