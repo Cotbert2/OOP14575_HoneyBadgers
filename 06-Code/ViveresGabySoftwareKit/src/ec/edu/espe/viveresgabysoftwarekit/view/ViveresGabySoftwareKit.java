@@ -17,7 +17,15 @@ public class ViveresGabySoftwareKit {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private static Market market = new Market();
+    private static Market market;
+
+    static {
+        try {
+            market = new Market();
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void main(String[] args) throws MessagingException {
         LogInSystem logInSystem = new LogInSystem();
@@ -26,7 +34,7 @@ public class ViveresGabySoftwareKit {
 
     }
 
-    public static int mostrarMenu() {
+    public static int mostrarMenu() throws MessagingException {
         int option;
 
         do {

@@ -2,6 +2,7 @@ package ec.edu.espe.viveresgabysoftwarekit.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.viveresgabysoftwarekit.model.Customer;
 import ec.edu.espe.viveresgabysoftwarekit.model.Product;
 import ec.edu.espe.viveresgabysoftwarekit.model.User;
 
@@ -66,6 +67,19 @@ public class FileHandler<T> {
         return objectList;
     }
 
+
+    public List<T> readJSONListCustomers(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<Customer>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return objectList;
+    }
     public void saveJSONFile(List<T> templateList, String path) {
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(path)) {

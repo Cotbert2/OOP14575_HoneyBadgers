@@ -4,14 +4,19 @@ import ec.edu.espe.viveresgabysoftwarekit.utils.*;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+
+import java.io.Console;
 
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 
 public class LogInSystem {
+    Console console = System.console();
 
     Scanner in = new Scanner(System.in);
     Cypher cypher = new Cypher(17);
@@ -39,8 +44,17 @@ public class LogInSystem {
             System.out.println("Please enter your user and password");
             System.out.print("User: ");
             username = in.nextLine();
-            System.out.print("Password: ");
-            passwd = in.nextLine();
+            if(console != null){
+                char[] passwordArray = console.readPassword("Password: ");
+                passwd = new String(passwordArray);
+                Arrays.fill(passwordArray, ' ');
+            }else {
+                System.out.print("Password: ");
+                passwd = in.nextLine();
+            }
+
+
+
         } while (!authenticate(username, cypher.cypherMessage(passwd)));
 
     }

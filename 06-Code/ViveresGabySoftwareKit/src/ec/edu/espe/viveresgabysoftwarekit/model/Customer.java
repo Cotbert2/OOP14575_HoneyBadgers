@@ -116,4 +116,15 @@ public class Customer {
         this.phone = phone;
     }
 
+
+    public String printUIInfor(){
+        return "-----------------------------\n " +
+                "\tId: " + id + "\n" +
+                "-----------------------------\n " +
+                "Customer: " + fullname + "\n" +
+                "Email: " + email + "\n" +
+                "Address: " + address + "\n" +
+                "Phone: " + phone + "\n" +
+                "-----------------------------\n";
+    }
 }

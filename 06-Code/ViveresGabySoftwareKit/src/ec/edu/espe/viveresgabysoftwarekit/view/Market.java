@@ -4,9 +4,12 @@ import java.util.*;
 
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 import ec.edu.espe.viveresgabysoftwarekit.model.Stock;
+import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validator;
+
+import javax.mail.MessagingException;
 
 public class Market {
     static Scanner in = new Scanner(System.in);
@@ -16,7 +19,22 @@ public class Market {
 
     static ArrayList<ProductItem> kart = new ArrayList<>();
 
-    public static int marketMainMenu() {
+    static EmailHandler emailHandler;
+
+    static {
+        try {
+            emailHandler = new EmailHandler();
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static Customer customer;
+
+    public Market() throws MessagingException {
+    }
+
+    public static int marketMainMenu() throws MessagingException {
         int option = 0;
         int sellOption = 0;
         System.out.println("----- Market Menu -----");
@@ -41,7 +59,7 @@ public class Market {
 
     }
 
-    public static int newSellMenu() {
+    public static int newSellMenu() throws MessagingException {
         int option = 0;
         do {
             System.out.println("----- New Sell Menu -----");
@@ -83,7 +101,7 @@ public class Market {
         do{
             System.out.print("name: ");
             String productNameToFind = in.nextLine();
-            items = finder.findItem(Constans.PRODUCTS_FILE_NAME, productNameToFind);
+            items = finder.findItem(Constans.PRODUCTS_FILE_NAME, productNameToFind.toLowerCase());
             if(items.isEmpty()) {
                 System.out.println("Sorry, there is no product with that name");
                 System.out.println("1) Search Again");
@@ -92,9 +110,15 @@ public class Market {
             }else{
                 int index = 0;
                 for (Product item : items) {
-                    System.out.println((index + 1) + ") "+ item);
+                    System.out.println((index + 1) + ") \n"+ item.UIPrint());
+                    index++;
                 }
-                opt = validator.getIntOption();
+                do{
+                    opt = validator.getIntOption();
+                    if(opt < 1 || opt > items.size())
+                        System.out.println("Try again, invalid option");
+
+                }while(opt < 1 || opt > items.size());
 
                 break;
             }
@@ -105,7 +129,7 @@ public class Market {
 
         //get position 2 of the array items
 
-        kart.add(new ProductItem(items.get(1), quantity));
+        kart.add(new ProductItem(items.get(opt -1), quantity));
         return 0;
     }
 
@@ -119,7 +143,7 @@ public class Market {
         return validator.getIntOption();
     }
 
-    public static int newSellCustomer(){
+    public static int newSellCustomer() throws MessagingException {
         System.out.println("----- New Sell-Customer -----");
         System.out.println("1) Data");
         System.out.println("2) Final Customer");
@@ -131,6 +155,37 @@ public class Market {
             switch (option) {
                 case 1:
                     System.out.println("You selected Data");
+                    int opt = 0;
+                    List<Customer> items= new ArrayList<>();
+                    do{
+                        System.out.print("id(Cédula/ruc): ");
+                        int id = validator.getIntOption();
+                        String productNameToFind = Integer.toString(id);
+
+                        items = finder.findCustomer(Constans.CUSTOMERS_FILE_NAME, productNameToFind.toLowerCase());
+                        if(items.isEmpty()) {
+                            System.out.println("Sorry, there is no user with that credentials");
+                            System.out.println("1) Search Again");
+                            System.out.println("2) Back");
+                            opt = validator.getIntOption();
+                        }else{
+                            int index = 0;
+                            for (Customer item : items) {
+                                System.out.println((index + 1) + ") \n"+ item.printUIInfor());
+                                index++;
+                            }
+                            do{
+                                opt = validator.getIntOption();
+                                if(opt < 1 || opt > items.size())
+                                    System.out.println("Try again, invalid option");
+
+                            }while(opt < 1 || opt > items.size());
+
+                            break;
+                        }
+                    }while(opt != 2);
+                    customer = items.get(opt -1);
+                    printSummary();
                     break;
                 case 2:
                     System.out.println("You selected Final Customer");
@@ -146,27 +201,40 @@ public class Market {
         return option;
     }
 
-    public static void printSummary(){
-        System.out.println("----- Summary -----");
-        System.out.println("Product\t\t\tQuantity\t\t\tPrice");
+    public static void printSummary() throws MessagingException {
+        String dataToGeneratebill = "";
+        dataToGeneratebill += "-----------Summary-----------\n";
+        dataToGeneratebill += "[Customer Information]: \n";
+        if(customer != null)
+            dataToGeneratebill += customer.printUIInfor();
+        else
+            dataToGeneratebill += "Final Customer\n";
+        dataToGeneratebill += "[Product Information]: \n";
+        dataToGeneratebill += "Product\t\t\tQuantity\t\t\tPrice\n";
         int index = 1;
         float subfinalPrice = 0f;
         for (ProductItem item : kart) {
             float price = (float) (item.getProduct().getPvp() * item.getUnits());
-            System.out.println(index+") " + item.getProduct().getName() + "\t\t\t" + item.getUnits() + "\t\t\t" + (price));
+            dataToGeneratebill += index+") " + item.getProduct().getName() + "\t\t\t" + item.getUnits() + "\t\t\t" + (price) + "\n";
             subfinalPrice += price;
             index++;
-            //print final price
-            System.out.println("Final Price: " + subfinalPrice);
-            Date date = new Date();
-            Customer customer = null;
-            Bill bill = new Bill(0,customer, kart,date );
-
-            FileHandler<Bill> fileHandler = new FileHandler<>();
-            List <Bill> bills = new ArrayList<>();
-            bills.add(bill);
-            fileHandler.saveJSONFile(bills, Constans.BILLS_FILE_NAME);
         }
+        dataToGeneratebill  += "\n-------------------------------------------------------\n";
+        dataToGeneratebill += "Subtotal: " + subfinalPrice;
+        dataToGeneratebill += "\n[Taxes] IVA 12%: " + (subfinalPrice * 0.12) + "\n";
+        dataToGeneratebill += "Final Price: " + (subfinalPrice*1.12) + "\n";
+        Date date = new Date();
+        Bill bill = new Bill(0,customer, kart,date );
+
+        FileHandler<Bill> fileHandler = new FileHandler<>();
+        List <Bill> bills = new ArrayList<>();
+        bills.add(bill);
+        fileHandler.saveJSONFile(bills, Constans.BILLS_FILE_NAME);
+        dataToGeneratebill  += "\n-------------------------------------------------------";
+        System.out.println(dataToGeneratebill);
+        System.out.println("Sending the bill to the customer email...");
+        System.out.println("Please wait a sec...");
+        emailHandler.sendNewEmail(customer.getEmail(),"Viveres Gaby Bill", dataToGeneratebill);
     }
 
     public String getSring(){

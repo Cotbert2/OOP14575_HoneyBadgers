@@ -117,7 +117,7 @@ public class Product implements Serializable {
     }
 
     public String UIPrint(){
-        return "-----------------------------------\n" + name + "-----------------------------------\n";
+        return "-----------------------------------\n" + "Name: " + name + "\n-----------------------------------\n"+ "Cost: " + cost + "\n" + "PVP: " + pvp + "\n" + "Description: " + description + "\n" + "Provider: " + provider + "\n" + "Category: " + category + "\n" + "-----------------------------------\n";
     }
     
     
