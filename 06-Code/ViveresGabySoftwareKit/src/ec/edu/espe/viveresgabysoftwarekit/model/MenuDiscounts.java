@@ -1,17 +1,28 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.io.File;
+import java.util.*;
 
 public class MenuDiscounts {
 
     private static Scanner scanner = new Scanner(System.in);
     private int option;
+
+    private List<Discount> SDiascounts;
+
+
+
+
+
+    //TODO:Delete
     private List<SeasonalDiscount> discounts;
+
+
+
+    FileHandler<Discount> fileHandlerDiscounts = new FileHandler<>();
 
     public MenuDiscounts() {
         this.discounts = new ArrayList<>();
@@ -70,40 +81,36 @@ public class MenuDiscounts {
     }
 
     private void showDiscountHistory() {
-        if (discounts.isEmpty()) {
+        updateSeasonalDiscounts();
+        if (SDiascounts.isEmpty()) {
             System.out.println("No discounts available.");
         } else {
             System.out.println("Discounts History:");
-            for (SeasonalDiscount discount : discounts) {
-                System.out.println(discount);
+            for (Discount discount : SDiascounts) {
+                discount.UIPrint();
             }
         }
     }
 
     private void createDiscount() {
-        System.out.print("Do you want to add a discount manually? (1 for Yes, 2 for No): ");
-        int manualOption = getOption();
+        String discountName = Validations.validateStringInput("Enter the name of the discount: ");
+        float discountValue = Validations.validateFloatInput("Enter the value of the discount: ");
 
-        if (manualOption == 1) {
-            if (discounts.size() < 10) {
-                System.out.print("Enter new discount (Father's Day, Mother's Day, Christmas, New Year, Carnival): ");
-                String englishDate = Validations.validateStringInputWithSpaces("Enter the discount: ");
+        System.out.println("Enter the start date of the discount: ");
+        String startDate = scanner.nextLine();
+        System.out.println("Enter the end date of the discount: ");
+        String endDate = scanner.nextLine();
 
-                System.out.print("Enter the discount value (between 2.00 and 8.00): ");
-                double discountValue = Validations.validateDoubleDiscountInput("Enter the discount value: ");
+        startDate = "2023-02-01";
+        endDate = "2024-02-01";
+        int discountId = getLastIdDiscount() + 1;
 
-                SeasonalDiscount newDiscount = new SeasonalDiscount(englishDate, discountValue);
-                discounts.add(newDiscount);
 
-                System.out.println("Creating discount for " + englishDate + ": " + String.format("%.2f", discountValue) + "%");
-            } else {
-                System.out.println("You have reached the maximum limit of discounts (10 per season).");
-            }
-        } else if (manualOption == 2) {
-            generateAutomaticDiscounts();
-        } else {
-            System.out.println("Invalid option, returning to the main menu.");
-        }
+        //TODO: Validations, date and porcentage
+
+        Date startDateFormat = new Date(startDate);
+        Date endDateFormat = new Date(endDate);
+        Discount newDiscount = new Discount(discountId,discountName, discountValue, startDateFormat, endDateFormat);
     }
 
     private void generateAutomaticDiscounts() {
@@ -136,6 +143,19 @@ public class MenuDiscounts {
                 System.out.println("Invalid index, no discount deleted.");
             }
         }
+    }
+
+
+
+
+
+
+    public void updateSeasonalDiscounts(){
+        SDiascounts = fileHandlerDiscounts.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
+    }
+
+    public int getLastIdDiscount(){
+        return fileHandlerDiscounts.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME).getLast().getId();
     }
 }
 

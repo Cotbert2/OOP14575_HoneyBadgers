@@ -58,6 +58,24 @@ public class Validations {
         return input;
     }
 
+    public static float validateFloatInput(String prompt) {
+        float input = 0;
+        boolean validInput = false;
+
+        do {
+            try {
+                System.out.print(prompt);
+                String inputStr = scanner.nextLine();
+                input = Float.parseFloat(inputStr);
+                validInput = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        } while (!validInput);
+
+        return input;
+    }
+
     public static String validateStringInput(String prompt) {
         while (true) {
             try {

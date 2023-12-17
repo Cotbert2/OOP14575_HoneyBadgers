@@ -30,4 +30,37 @@ public class Bill {
     public void generateBill(){
 
     }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<ProductItem> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductItem> products) {
+        this.products = products;
+    }
+
+    public Date getPurchaseDay() {
+        return purchaseDay;
+    }
+
+    public void setPurchaseDay(Date purchaseDay) {
+        this.purchaseDay = purchaseDay;
+    }
 }

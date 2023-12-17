@@ -66,7 +66,7 @@ public class ViveresGabySoftwareKit {
                     System.out.println("---------------------");
                     System.out.println("You Selected Financer");
                     MenuFinancer menuFinancer = new MenuFinancer();
-
+                    menuFinancer.handMenuFinancer();
                     break;
                 case 4:
                     System.out.println("----------------------");

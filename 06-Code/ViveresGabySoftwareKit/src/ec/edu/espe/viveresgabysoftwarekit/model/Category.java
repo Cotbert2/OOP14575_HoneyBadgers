@@ -1,6 +1,8 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mateo, Stefany Díaz
@@ -10,7 +12,7 @@ public class Category {
     private int id;
     private String name;
     private String description;
-    private Product[] products;
+    private ArrayList<Product> products;
 
     @Override
     public String toString() {
@@ -18,11 +20,20 @@ public class Category {
     }
    
 
-    public Category(String name) {
+    public Category(String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.products = products;
+    }
+
+    public void UICategoryinfo(){
+        System.out.println(
+                "*********************************" + "\n" +
+                        "\t\t" + name + "\n" +
+                "*********************************" + "\n" +
+                "Description: " + description + "\n" +
+                "Products in this category: " +  products.size() + "\n"
+        );
     }
     
 
@@ -50,11 +61,11 @@ public class Category {
         this.description = description;
     }
 
-    public Product[] getProducts() {
+    public ArrayList<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Product[] products) {
+    public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
     

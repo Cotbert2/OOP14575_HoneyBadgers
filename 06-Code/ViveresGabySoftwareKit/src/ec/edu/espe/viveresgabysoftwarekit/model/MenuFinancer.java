@@ -1,6 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
-import com.google.gson.Gson;
+
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,11 +10,255 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import ec.edu.espe.viveresgabysoftwarekit.utils.*;
+
 /**
- *
  * @author Stefany Díaz,Eduardo Garcia, Mateo García, Alex Cuzco, honeyBADGERS, DCCO-ESPE
  */
-public class MenuFinancer{
+public class MenuFinancer {
+    private static Scanner scanner = new Scanner(System.in);
+    private int option;
+    private ArrayList<Bill> bills = new ArrayList<>();
+    private Financer financer;
+    private List<Bill> existingBills;
+    FileHandler<Bill> fileHandlerBills = new FileHandler<>();
+    FileHandler<Customer> fileHandlerCustomers = new FileHandler<>();
+
+
+    Validations validations = new Validations();
+    List<Bill> allBills;
+    List<Customer> customers;
+
+    public MenuFinancer() {
+
+    }
+
+    public void handMenuFinancer() {
+        do {
+            System.out.println("----Menu Financer----");
+            System.out.println("1. Bills");
+            System.out.println("2. Clients");
+            System.out.println("3. Financer Status");
+            System.out.println("4. Update Taxes");
+            System.out.println("5. Back");
+            System.out.print("Choose an option: ");
+
+            option = getOption();
+
+            switch (option) {
+                case 1:
+                    System.out.println("You selected Bills");
+                    doBillsAction();
+                    break;
+                case 2:
+                    System.out.println("You selected Client");
+                    doClientAction();
+                    break;
+                case 3:
+                    System.out.println("You selected Financer Status");
+                    doFinancerStatusAction();
+                    break;
+                case 4:
+                    System.out.println("You selected Update Taxes");
+                    doUpdateTaxesAction();
+                    break;
+                case 5:
+                    System.out.println("Leaving to the principal menu...");
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+            }
+        } while (option != 5);
+
+    }
+
+    private int getOption() {
+        while (true) {
+            try {
+                int input = Integer.parseInt(scanner.nextLine());
+                if (input >= 1 && input <= 9) {
+                    return input;
+                } else {
+                    System.out.print("Invalid option, try again: ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid entry, try again: ");
+            }
+
+        }
+
+    }
+
+    private void doBillsAction() {
+        int subOption;
+        do {
+            System.out.println("---Financer - Bill Menu---");
+            System.out.println("1. History Bills");
+            System.out.println("2. Back");
+
+            subOption = getOption();
+
+            switch (subOption) {
+                case 1:
+                    System.out.println("You selected History Bills");
+                    showBills();
+                    break;
+                case 2:
+                    System.out.println("Back to Menu Financer");
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+
+            }
+        } while (subOption != 2);
     }
 
 
+    private void showBills() {
+        updateBillsInfo();
+        String singularBillInformation = "";
+        if (allBills.isEmpty()) {
+            System.out.println("No bills available.");
+        } else {
+            System.out.println("---- All Bills ----");
+            System.out.println("ID\tClient Id\tClient Name\tNum Products\tTotal Cost\tPurchase Day");
+
+            for (Bill bill : allBills) {
+
+                singularBillInformation = bill.getId() + "\t";
+
+                if (bill.getCustomer() == null) {
+                    singularBillInformation += "xxxxxxxxxxxxxxx" + "\t" + "xxxxxxxxxxxxxxx" + "\t";
+                } else {
+                    singularBillInformation += bill.getCustomer().getId() + "\t" + bill.getCustomer().getFullname() + "\t";
+                }
+
+                singularBillInformation +=
+
+                        bill.getProducts().size() + "\t" +
+                                "" + "\t" +
+                                bill.getPurchaseDay();
+                System.out.println(singularBillInformation);
+            }
+        }
+    }
+
+
+    private void doClientAction() {
+        int subOption;
+        do {
+            System.out.println("---Financer - Client Menu---");
+            System.out.println("1. Create Client");
+            System.out.println("2. See all Clients ");
+            System.out.println("3. Back");
+
+            subOption = getOption();
+
+            switch (subOption) {
+                case 1:
+                    System.out.println("You selected Create Client");
+                    createCustomer();
+                    break;
+                case 2:
+                    System.out.println("You selected See all Clients");
+                    showCustomers();
+                    break;
+                case 3:
+                    System.out.println("Back to Menu Financer");
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+
+            }
+        } while (subOption != 3);
+
+    }
+
+
+    private void createCustomer() {
+        updateCustomersInfor();
+
+        //TODO: validations
+        int id = 0;
+        do{
+            id = validations.validateIntInput("Enter customer ID: ");
+            if(!verifyUnicCustomerId(id))
+                System.out.println("Customer ID already exists, try again");
+        }while(!verifyUnicCustomerId(id));
+        String name = validations.validateStringInputWithSpaces("Enter customer name: ");
+        String email = validations.validateStringInput("Enter customer email: ");
+        String address = validations.validateStringInputWithSpaces("Enter customer address: ");
+        String phone = validations.validateStringInput("Enter customer phone: ");
+
+        Customer newCustomer = new Customer(id, name, email, address, phone);
+
+        customers.add(newCustomer);
+        fileHandlerCustomers.saveJSONFile(customers, Constans.CUSTOMERS_FILE_NAME);
+
+        System.out.println("Customer created successfully!");
+    }
+
+    private void showCustomers() {
+        updateCustomersInfor();
+
+        System.out.println("---- All Customers ----");
+
+        System.out.println("ID\tName\tEmail\tAddress\tPhone");
+
+        for (Customer customer : customers) {
+            System.out.println(
+                    customer.getId() + "\t" +
+                            customer.getFullname() + "\t" +
+                            customer.getEmail() + "\t" +
+                            customer.getAddress() + "\t" +
+                            customer.getPhone()
+            );
+        }
+    }
+
+
+    private void doFinancerStatusAction() {
+        System.out.println("---Financer Status Menu---");
+        System.out.println("0. Go Back");
+
+        int subOption = getOption();
+
+        if (subOption == 0) {
+            System.out.println("Going back to Financer Menu...");
+        } else {
+            System.out.println("Invalid option, try again");
+        }
+    }
+
+
+    private void doUpdateTaxesAction() {
+        System.out.println("---Financer - Update Taxes Menu---");
+        System.out.println("0. Go Back");
+
+        int subOption = getOption();
+
+        if (subOption == 0) {
+            System.out.println("Going back to Financer Menu...");
+        } else {
+            System.out.println("Invalid option, try again");
+        }
+    }
+
+    public boolean verifyUnicCustomerId(int idToVerify) {
+        updateCustomersInfor();
+        for (Customer customer : customers) {
+            if (customer.getId() == idToVerify) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void updateBillsInfo() {
+        allBills = fileHandlerBills.readJSONListBills(Constans.BILLS_FILE_NAME);
+    }
+
+    public void updateCustomersInfor() {
+        customers = fileHandlerCustomers.readJSONListCustomers(Constans.CUSTOMERS_FILE_NAME);
+    }
+}

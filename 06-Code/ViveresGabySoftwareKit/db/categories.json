@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "frutas",
+    "description": "frutas frescas",
+    "products": []
+  },
+  {
+    "id": 2,
+    "name": "verduras",
+    "description": "verduras frescas",
+    "products": []
+  },
+  {
+    "id": 3,
+    "name": "carnes",
+    "description": "frutas frescas",
+    "products": []
+  },
+  {
+    "id": 4,
+    "name": "snacks",
+    "description": "snacks pepsico",
+    "products": []
+  },
+  {
+    "id": 0,
+    "name": "ok",
+    "description": "ok"
+  },
+  {
+    "id": 0,
+    "name": "ok",
+    "description": "ok"
+  },
+  {
+    "id": 0,
+    "name": "ok",
+    "description": "ok"
+  }
+]

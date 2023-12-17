@@ -1,1 +1,22 @@
-[{"id":0,"customer":{"id":1728912070,"fullname":"Mateo García","email":"mateojgarciag@gmail.com","address":"Quito","phone":"0987654321"},"products":[{"product":{"name":"chocolate","cost":1.5,"pvp":2.0,"description":"500g chocolate bar","provider":"Sweets Inc.","category":"Sweets"},"units":20}],"purchaseDay":"Dec 16, 2023, 6:43:49 AM","fileHandler":{"chickens":[]}}]
+[
+  {
+    "id": 0,
+    "products": [
+      {
+        "product": {
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc.",
+          "category": "Sweets"
+        },
+        "units": 20
+      }
+    ],
+    "purchaseDay": "Dec 17, 2023, 6:48:30 AM",
+    "fileHandler": {
+      "chickens": []
+    }
+  }
+]

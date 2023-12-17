@@ -2,9 +2,7 @@ package ec.edu.espe.viveresgabysoftwarekit.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import ec.edu.espe.viveresgabysoftwarekit.model.Customer;
-import ec.edu.espe.viveresgabysoftwarekit.model.Product;
-import ec.edu.espe.viveresgabysoftwarekit.model.User;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -80,6 +78,44 @@ public class FileHandler<T> {
 
         return objectList;
     }
+
+    public List<T> readJSONListCategorys(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<Category>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return objectList;
+    }
+    public List<T> readJSONListBills(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<Bill>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return objectList;
+    }
+
+
+    public List<T> readJSONListDiscounts(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<Discount>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return objectList;
+    }
+
+
     public void saveJSONFile(List<T> templateList, String path) {
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(path)) {
@@ -89,6 +125,8 @@ public class FileHandler<T> {
             System.err.println("[-] Something went wrong: " + e.getMessage());
         }
     }
+
+
 }
 
 

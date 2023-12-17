@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 
 public class Product implements Serializable {
+    private int id;
     private String name;
     private double cost;
     private double pvp;
@@ -16,13 +17,12 @@ public class Product implements Serializable {
     private String provider;
     private String category;
 
-    public Product(String name, double cost, double pvp, String description, String provider, String category) {
+    public Product(String name, double cost, double pvp, String description, String provider) {
         this.name = name;
         this.cost = cost;
         this.pvp = pvp;
         this.description = description;
         this.provider = provider;
-        this.category = category;
     }
 
     
@@ -119,8 +119,14 @@ public class Product implements Serializable {
     public String UIPrint(){
         return "-----------------------------------\n" + "Name: " + name + "\n-----------------------------------\n"+ "Cost: " + cost + "\n" + "PVP: " + pvp + "\n" + "Description: " + description + "\n" + "Provider: " + provider + "\n" + "Category: " + category + "\n" + "-----------------------------------\n";
     }
-    
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
    
     

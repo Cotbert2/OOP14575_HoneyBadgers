@@ -10,14 +10,14 @@ import java.util.Date;
 public class Transaction {
 
     private int id;
-    private String type;
+    private boolean isCashPayment;
     private Date date;
     private float Ammount;
     private Customer Customer;
 
-    public Transaction(int id, String type, Date date, float ammount, ec.edu.espe.viveresgabysoftwarekit.model.Customer customer) {
+    public Transaction(int id, boolean isCashPayment, Date date, float ammount, Customer customer) {
         this.id = id;
-        this.type = type;
+        this.isCashPayment = isCashPayment;
         this.date = date;
         Ammount = ammount;
         Customer = customer;
@@ -31,12 +31,12 @@ public class Transaction {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public boolean getType() {
+        return isCashPayment;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(boolean isCashPayment) {
+        this.isCashPayment = isCashPayment;
     }
 
     public Date getDate() {
@@ -63,8 +63,11 @@ public class Transaction {
         Customer = customer;
     }
 
-    public float computerChanyel() {
-        return 1;
+    public float computerChanyel(float ammount, float price) {
+        if(isCashPayment)
+            return (ammount - price);
+        else
+            return 1;
     }
     public void seeTransactionDetails() {
     }

@@ -4,7 +4,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
  *
  * @author mateo, Stefany Díaz, eduardo garcia
  */
-class SeasonalDiscount {
+public class SeasonalDiscount {
     private String date;
     private double value;
 
