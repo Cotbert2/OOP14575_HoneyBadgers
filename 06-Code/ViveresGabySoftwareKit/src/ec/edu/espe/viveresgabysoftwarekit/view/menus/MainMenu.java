@@ -1,5 +1,8 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
+import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Opener;
+
 import javax.mail.MessagingException;
 import java.util.Scanner;
 
@@ -24,7 +27,8 @@ public class MainMenu {
             System.out.println("2. Inventory");
             System.out.println("3. Financer");
             System.out.println("4. Discounts");
-            System.out.println("5. Leave the program");
+            System.out.println("5. About us");
+            System.out.println("6. Leave the program");
             System.out.print("Choose an option (1-5): ");
 
             option = getOption();
@@ -58,6 +62,11 @@ public class MainMenu {
 
                     break;
                 case 5:
+                    System.out.printf("Opening the landing page...");
+                    Opener opener = new Opener();
+                    opener.openWebpage(Constans.VIVERES_GABY_LANDING_PAGE);
+                    break;
+                case 6:
                     System.out.println("-------------------------------------");
                     System.out.println("Thank you, we hope to see you soon...");
                     break;
@@ -66,7 +75,7 @@ public class MainMenu {
                     System.out.println("Invalid option, try again.");
             }
 
-        } while (option != 5);
+        } while (option != 6);
 
         return option;
     }

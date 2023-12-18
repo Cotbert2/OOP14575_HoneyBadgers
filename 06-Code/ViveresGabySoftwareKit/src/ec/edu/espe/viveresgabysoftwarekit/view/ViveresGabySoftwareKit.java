@@ -1,5 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Opener;
 import ec.edu.espe.viveresgabysoftwarekit.view.login.LogInSystem;
 import ec.edu.espe.viveresgabysoftwarekit.view.menus.InventoryMenu;
 import ec.edu.espe.viveresgabysoftwarekit.view.menus.MainMenu;
@@ -19,7 +20,7 @@ public class ViveresGabySoftwareKit {
     private static MainMenu mainMenu = new MainMenu();
 
     public static void main(String[] args) throws MessagingException {
-        LogInSystem logInSystem = new LogInSystem();
+        Opener opener = new Opener();
         //logInSystem.showLogin();
         mainMenu.showMenu();
     }

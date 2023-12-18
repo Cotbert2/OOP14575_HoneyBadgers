@@ -5,7 +5,6 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
  */
 
 public class Constans {
-
     public static final String OUTPUT_ROOT_FILE = "./output";
     public static final String USERS_FILE_NAME= "./db/users.json";
     public static final String PRODUCTS_FILE_NAME= "./db/products.json";
@@ -20,6 +19,8 @@ public class Constans {
     public static final String TAXES_FILE_NAME = "./db/taxes.json";
     public static final String STOCK_FILE_NAME = "./db/stock.json";
     public static final String IVA_URL = "https://www.sri.gob.ec/impuesto-al-valor-agregado-iva";
+
+    public static final String VIVERES_GABY_LANDING_PAGE = "https://658031b74f9e7f3203fb2d25--cheery-eclair-b46b9a.netlify.app/";
 
 
     public static void clearScreen() {

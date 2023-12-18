@@ -1,9 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
-import ec.edu.espe.viveresgabysoftwarekit.model.Bill;
-import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.model.Customer;
-import ec.edu.espe.viveresgabysoftwarekit.model.Financer;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 import java.util.ArrayList;
@@ -23,6 +20,7 @@ public class FinancerMenu {
     private List<Bill> existingBills;
     FileHandler<Bill> fileHandlerBills = new FileHandler<>();
     FileHandler<Customer> fileHandlerCustomers = new FileHandler<>();
+    FileHandler<Tax> fileHandlerTaxes = new FileHandler<>();
 
 
     Validations validations = new Validations();
@@ -38,7 +36,7 @@ public class FinancerMenu {
             System.out.println("----Menu Financer----");
             System.out.println("1. Bills");
             System.out.println("2. Customers");
-            System.out.println("3. Financer Status");
+            System.out.println("3. Financer Report");
             System.out.println("4. Update Taxes");
             System.out.println("5. Back");
             System.out.print("Choose an option: ");
@@ -55,7 +53,7 @@ public class FinancerMenu {
                     doCustomerAction();
                     break;
                 case 3:
-                    System.out.println("You selected Financer Status");
+                    System.out.println("You selected Financer Report");
                     doFinancerStatusAction();
                     break;
                 case 4:
@@ -151,7 +149,7 @@ public class FinancerMenu {
             System.out.println("1. Create Customer");
             System.out.println("2. See all Customer ");
             System.out.println("3. Back");
-
+            System.out.print("option: ");
             subOption = getOption();
 
             switch (subOption) {
@@ -177,18 +175,16 @@ public class FinancerMenu {
 
     private void createCustomer() {
         updateCustomersInfor();
-
-        //TODO: validations
         int id = 0;
-        do{
+        do {
             id = validations.validateIntInput("Enter customer ID: ");
-            if(!verifyUnicCustomerId(id))
+            if (!verifyUnicCustomerId(id))
                 System.out.println("Customer ID already exists, try again");
-        }while(!verifyUnicCustomerId(id));
-        String name = validations.validateStringInputWithSpaces("Enter customer name: ");
-        String email = validations.validateStringInput("Enter customer email: ");
-        String address = validations.validateStringInputWithSpaces("Enter customer address: ");
-        String phone = validations.validateStringInput("Enter customer phone: ");
+        } while (!verifyUnicCustomerId(id));
+        String name = validations.noValidation("Enter customer name: ");
+        String email = validations.validateEmail("Enter customer email: ");
+        String address = validations.noValidation("Enter customer address: ");
+        String phone = validations.validatePhone("Enter customer phone: ");
 
         Customer newCustomer = new Customer(id, name, email, address, phone);
 
@@ -218,7 +214,10 @@ public class FinancerMenu {
 
 
     private void doFinancerStatusAction() {
-        System.out.println("---Financer Status Menu---");
+        System.out.println("---Financer  Menu---");
+        FinancerReport financerReport = new FinancerReport();
+        financerReport.generateFinancerReport();
+        System.out.println("[+] Financer Report Saved at ./output");
         System.out.println("0. Go Back");
 
         int subOption = getOption();
@@ -232,7 +231,16 @@ public class FinancerMenu {
 
 
     private void doUpdateTaxesAction() {
-        System.out.println("---Financer - Update Taxes Menu---");
+        System.out.println("---Financer - Update Iva Menu---");
+        Scrapper scrapper = new Scrapper();
+        float ivaUpdate = scrapper.updateIva();
+        List<Tax> taxes =  fileHandlerTaxes.readJSONListTax(Constans.TAXES_FILE_NAME);
+
+        for(Tax tax: taxes){
+            if(tax.getId() == 1)
+                tax.setPorcent((int) ivaUpdate);
+        }
+
         System.out.println("0. Go Back");
 
         int subOption = getOption();

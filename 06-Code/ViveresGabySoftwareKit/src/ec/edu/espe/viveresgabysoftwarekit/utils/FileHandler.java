@@ -60,6 +60,19 @@ public class FileHandler<T> {
         return objectList;
     }
 
+    public List<T> readJSONListTax(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<Tax>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return objectList;
+    }
+
     public List<T> readJSONListProduct(String path) {
         List<T> objectList = new ArrayList<>();
 

@@ -304,4 +304,37 @@ public class Validations {
             }
         }
     }
+
+    public String validateEmail(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = scanner.nextLine();
+
+                if (!input.isEmpty() && input.matches("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+")) {
+                    return input;
+                } else {
+                    System.out.println("Invalid input, please enter a valid email.");
+                }
+            } catch (Exception e) {
+                System.out.print("Invalid entry, try again: ");
+            }
+        }
+    }
+    public String validatePhone(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = scanner.nextLine();
+
+                if (!input.isEmpty() && input.matches("^(09)[0-9]{8}")) {
+                    return input;
+                } else {
+                    System.out.println("Invalid input, please enter a valid phone number.");
+                }
+            } catch (Exception e) {
+                System.out.print("Invalid entry, try again: ");
+            }
+        }
+    }
 }

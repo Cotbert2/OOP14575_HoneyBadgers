@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
-class Tax {
+public class Tax {
 
     private int id;
     private String name;
@@ -16,7 +16,15 @@ class Tax {
 
     FileHandler<Tax> fileHandlerTax= new FileHandler();
     List<Tax> taxes = new ArrayList<>();
-    private void updateTax() {
+    private void updateTax(int id) {
+        updateTaxesInfo();
+        if(taxes.isEmpty()) {
+            System.out.println("There are no taxes");
+        }else {
+            for(Tax tax: taxes){
+                System.out.println(tax);
+            }
+        }
     }
 
     public Tax(int id, String name, int porcent) {
@@ -57,5 +65,14 @@ class Tax {
 
     public void updateTaxesInfo(){
         taxes = fileHandlerTax.readJSONList(Constans.TAXES_FILE_NAME);
+    }
 
-    }}
+    public void getAllTaxes(){
+        updateTaxesInfo();
+        for (Tax tax: taxes){
+            System.out.println(tax);
+        }
+
+    }
+
+}
