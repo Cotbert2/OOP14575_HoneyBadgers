@@ -29,21 +29,6 @@ public class Customer {
     }
     
 
-    private void registerClient() {
-    }
-
-    ;
-    private void updateInfall() {
-    }
-
-    ;
-    private void buy() {
-    }
-
-    ;
-    private void getHistory() {
-    }
-;
 
     /**
      * @return the id

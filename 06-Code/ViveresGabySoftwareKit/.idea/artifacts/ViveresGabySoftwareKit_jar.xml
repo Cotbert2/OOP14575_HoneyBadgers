@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ViveresGabySoftwareKit:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ViveresGabySoftwareKit_jar</output-path>
+    <root id="archive" name="ViveresGabySoftwareKit.jar">
+      <element id="module-output" name="ViveresGabySoftwareKit" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/javax-inject.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/javax.activation-1.1.0.v201105071233.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/javax.ejb.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/javax.faces-api-2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/mail.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/pdfbox-3.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jsoup-1.17.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
