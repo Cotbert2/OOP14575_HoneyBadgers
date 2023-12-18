@@ -74,15 +74,14 @@ public class Category {
     public void addProductToCategory(Product product) {
     }
 
-    ;
     public void deleteProductToCategory(Product product) {
     }
 
-    ;
+
     public void getCategoryProducts() {
     }
 
-    ;
+
     public void deleteCategory() {
     }
 ;

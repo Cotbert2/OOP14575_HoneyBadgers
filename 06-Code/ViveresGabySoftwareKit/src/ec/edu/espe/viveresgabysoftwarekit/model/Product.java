@@ -15,7 +15,6 @@ public class Product implements Serializable {
     private double pvp;
     private String description;
     private String provider;
-    private String category;
 
     public Product(String name, double cost, double pvp, String description, String provider) {
         this.name = name;
@@ -97,33 +96,18 @@ public class Product implements Serializable {
         this.provider = provider;
     }
 
-    /**
-     * @return the category
-     */
-    public String getCategory() {
-        return category;
-    }
-
-    /**
-     * @param category the category to set
-     */
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     @Override
     public String toString() {
-        return "Product{" + "name=" + name + ", cost=" + cost + ", pvp=" + pvp + ", description=" + description + ", provider=" + provider + ", category=" + category + '}';
+        return "Product{" + "name=" + name + ", cost=" + cost + ", pvp=" + pvp + ", description=" + description + ", provider=" + provider  + '}';
     }
 
     public String UIPrint(){
-        return "-----------------------------------\n" + "Name: " + name + "\n-----------------------------------\n"+ "Cost: " + cost + "\n" + "PVP: " + pvp + "\n" + "Description: " + description + "\n" + "Provider: " + provider + "\n" + "Category: " + category + "\n" + "-----------------------------------\n";
+        return "-----------------------------------\n" + "Name: " + name + "\n-----------------------------------\n"+ "Cost: " + cost + "\n" + "PVP: " + pvp + "\n" + "Description: " + description + "\n" + "Provider: " + provider  + "\n" + "-----------------------------------\n";
     }
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }

@@ -1,5 +1,10 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author mateo, Stefany Dìaz
@@ -10,10 +15,10 @@ class Tax {
     private String name;
     private int porcent;
 
+    FileHandler<Tax> fileHandlerTax= new FileHandler();
+    List<Tax> taxes = new ArrayList<>();
     private void updateTax() {
     }
-
-    ;
 
     public Tax(int id, String name, int porcent) {
         this.id = id;
@@ -47,9 +52,11 @@ class Tax {
 
     private void deleteTax() {
     }
-
-    ;
     private void createTax() {
+
     }
-;
-}
+
+    public void updateTaxesInfo(){
+        taxes = fileHandlerTax.readJSONList(Constans.TAXES_FILE_NAME);
+
+    }}

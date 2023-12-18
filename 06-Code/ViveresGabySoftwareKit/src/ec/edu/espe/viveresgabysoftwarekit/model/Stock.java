@@ -12,37 +12,15 @@ import java.util.List;
 public class Stock {
     List<Product> products;
     FileHandler<Product> fileHandler = new FileHandler<>();
-    private ProductItem fullStorage[];
-    private ProductItem OnCellar[];
-    private ProductItem Onstore[];
 
+    private ArrayList<ProductItem> fullStorage;
+    private ArrayList<ProductItem> onGrocery;
+    private ArrayList<ProductItem> onStore;
     public Stock() {
         products = fileHandler.readJSONListProducts(Constans.PRODUCTS_FILE_NAME);
     }
 
-    public ProductItem[] getFullStorage() {
-        return fullStorage;
-    }
 
-    public void setFullStorage(ProductItem[] fullStorage) {
-        this.fullStorage = fullStorage;
-    }
-
-    public ProductItem[] getOnCellar() {
-        return OnCellar;
-    }
-
-    public void setOnCellar(ProductItem[] onCellar) {
-        OnCellar = onCellar;
-    }
-
-    public ProductItem[] getOnstore() {
-        return Onstore;
-    }
-
-    public void setOnstore(ProductItem[] onstore) {
-        Onstore = onstore;
-    }
 
     public String findProduct(String name){
         String productMessage = "Sorry, there is no product with that namek\n 1) Search Again\n2) Back\nOption:";

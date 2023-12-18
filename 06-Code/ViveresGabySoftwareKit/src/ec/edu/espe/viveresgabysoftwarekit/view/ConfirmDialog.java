@@ -2,7 +2,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validator;
 public class ConfirmDialog {
     Validator validator = new Validator();
-    public int confirmDialog(String message){
+    public boolean confirmDialog(String message){
         System.out.println("-----------------------\n"
                 + message + "\n"
                 + "-----------------------\n");

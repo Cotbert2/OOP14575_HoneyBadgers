@@ -9,10 +9,10 @@ public class Validator {
 
     public int getIntOption() {
         boolean validNum = false;
-        int option = 0 ;
+        int option = 0;
         while (!validNum) {
             try {
-                option =in.nextInt();
+                option = in.nextInt();
                 validNum = true;
             } catch (InputMismatchException e) {
                 System.out.print("Invalid option, try again: ");
@@ -22,26 +22,21 @@ public class Validator {
         return option;
     }
 
-    public int getYNOption(){
-        boolean validYN = false;
-        int option = 0;
-        while(!validYN){
-            try{
-                option = in.next().charAt(0);
-                if(option == 'y' || option == 'Y' || option == 'n' || option == 'N'){
-                    validYN = true;
-                }else{
-                    System.out.print("Invalid option, try again: ");
-                }
-            }catch(InputMismatchException e){
+    public boolean getYNOption() {
+        String option = "";
+        while (true) {
+            option = in.nextLine();
+            if (option.equalsIgnoreCase("y")) {
+                return true;
+            } else if (option.equalsIgnoreCase("n")) {
+                return false;
+            } else {
                 System.out.print("Invalid option, try again: ");
-                in.nextLine();
             }
         }
-        return option;
     }
 
-    public String getStr(){
+    public String getStr() {
         String str = in.nextLine();
         return str;
     }

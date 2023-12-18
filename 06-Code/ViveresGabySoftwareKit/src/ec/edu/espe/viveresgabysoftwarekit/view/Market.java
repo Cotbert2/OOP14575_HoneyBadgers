@@ -3,11 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view;
 import java.util.*;
 
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
-import ec.edu.espe.viveresgabysoftwarekit.model.Stock;
-import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
-import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
-import ec.edu.espe.viveresgabysoftwarekit.utils.Validator;
+import ec.edu.espe.viveresgabysoftwarekit.utils.*;
 
 import javax.mail.MessagingException;
 
@@ -22,6 +18,9 @@ public class Market {
     static EmailHandler emailHandler;
 
     static ConfirmDialog confirmDialog = new ConfirmDialog();
+
+    static Validations validations = new Validations();
+    static Transaction transaction;
 
     static {
         try {
@@ -43,6 +42,7 @@ public class Market {
         System.out.println("1) New Sell");
         System.out.println("2) Back");
         do {
+            System.out.print("option: ");
             option = validator.getIntOption();
             switch (option) {
                 case 1:
@@ -55,7 +55,6 @@ public class Market {
                 default:
                     System.out.println("Try again, invalid option");
             }
-
         } while (option < 1 || option > 2);
         return option;
 
@@ -107,11 +106,6 @@ public class Market {
         return option;
     }
 
-    public static int verificationMenu() {
-        System.out.println("Are you sure you want to cancel (y/n): ");
-        return validator.getYNOption();
-    }
-
     public static void newSellProductAdd() {
         int opt = 0;
         List<Product> items = new ArrayList<>();
@@ -123,8 +117,9 @@ public class Market {
                 System.out.println("Sorry, there is no product with that name");
                 System.out.println("1) Search Again");
                 System.out.println("2) Back");
+                System.out.print("option: ");
                 opt = validator.getIntOption();
-                if(opt == 2)
+                if (opt == 2)
                     return;
             } else {
                 int index = 0;
@@ -151,18 +146,6 @@ public class Market {
         kart.add(new ProductItem(items.get(opt - 1), quantity));
     }
 
-    public void newSellProductDeleteMenu() {
-        int index = 0;
-        for (ProductItem item : kart) {
-            System.out.println((index + 1) + ") " + item.getProduct().getName() + "\t\t\t" + item.getUnits());
-            System.out.println(item.getProduct().UIPrint());
-            index++;
-        }
-
-        System.out.print("option: ");
-        kart.remove(validator.getIntOption() - 1);
-    }
-
     public static int newSellCustomer() throws MessagingException {
         System.out.println("----- New Sell-Customer -----");
         System.out.println("1) Data");
@@ -177,7 +160,7 @@ public class Market {
                 case 1:
                     System.out.println("You selected Data");
                     int opt = 0;
-                    List<Customer> items = new ArrayList<>();
+                    List<Customer> items;
                     do {
                         System.out.print("id(Cédula/ruc): ");
                         int id = validator.getIntOption();
@@ -206,10 +189,12 @@ public class Market {
                         }
                     } while (opt != 2);
                     customer = items.get(opt - 1);
+                    transactionDefinition();
                     printSummary();
                     break;
                 case 2:
                     System.out.println("You selected Final Customer");
+                    transactionDefinition();
                     printSummary();
                     break;
                 case 3:
@@ -222,6 +207,37 @@ public class Market {
         return option;
     }
 
+    public static void transactionDefinition() throws MessagingException {
+        int transactionOpt = 0;
+        do{
+            System.out.println("----- Transaction Definition -----");
+            System.out.println("1) Cash");
+            System.out.println("2) Transaction");
+            System.out.print("option: ");
+            transactionOpt = validator.getIntOption();
+            switch (transactionOpt) {
+                case 1:
+                    System.out.println("You selected Cash");
+                    float ammount = validations.validateFloatInput("Enter the ammount: ");
+                    transaction = new Transaction(true, ammount, customer);
+                    //transaction.saveTransaction();
+                    //TODO: change price
+                    System.out.println("YOUR CHANGE: " + transaction.computerChange(100));
+                    break;
+                case 2:
+                    System.out.println("You selected Transaction");
+                    //TODO: change the price
+                    transaction = new Transaction(false, 100, customer);
+                    transaction.saveTransaction();
+
+                    break;
+                default:
+                    System.out.println("Try again, invalid option");
+            }
+        } while (transactionOpt < 1 || transactionOpt > 3);
+    }
+
+
     public static void printSummary() throws MessagingException {
         String dataToGeneratebill = "";
         dataToGeneratebill += "-----------Summary-----------\n";
@@ -230,6 +246,8 @@ public class Market {
             dataToGeneratebill += customer.printUIInfor();
         else
             dataToGeneratebill += "Final Customer\n";
+
+        dataToGeneratebill +=  transaction.seeTransactionDetails();
         dataToGeneratebill += "[Product Information]: \n";
         dataToGeneratebill += "Product\t\t\tQuantity\t\t\tPrice\n";
         int index = 1;
@@ -245,29 +263,23 @@ public class Market {
         dataToGeneratebill += "\n[Taxes] IVA 12%: " + (subfinalPrice * 0.12) + "\n";
         dataToGeneratebill += "Final Price: " + (subfinalPrice * 1.12) + "\n";
         Date date = new Date();
-        Bill bill = new Bill(0, customer, kart, date);
+        Bill bill = new Bill(customer, kart, date);
 
         FileHandler<Bill> fileHandler = new FileHandler<>();
-        List<Bill> bills = new ArrayList<>();
+        List<Bill> bills = fileHandler.readJSONListBills(Constans.BILLS_FILE_NAME);
         bills.add(bill);
         fileHandler.saveJSONFile(bills, Constans.BILLS_FILE_NAME);
         dataToGeneratebill += "\n-------------------------------------------------------";
         System.out.println(dataToGeneratebill);
-        if(customer != null){
-            System.out.println("Sending the bill to the customer email...");
-            System.out.println("Please wait a sec...");
-            emailHandler.sendNewEmail(customer.getEmail(), "Viveres Gaby Bill", dataToGeneratebill);
+        if (customer != null) {
+            System.out.println("Do you want to send the bill to the customer email? (y/n)");
+            if (validator.getYNOption()) {
+                System.out.println("Sending the bill to the customer email...");
+                System.out.println("Please wait a sec...");
+                emailHandler.sendNewEmail(customer.getEmail(), "Viveres Gaby Bill", dataToGeneratebill);
+            }
         }
         kart.clear();
-    }
-
-    public String getSring() {
-        return in.nextLine();
-    }
-
-    public static String findProduct(String productNameToFind) {
-        Stock stock = new Stock();
-        return stock.findProduct(productNameToFind);
     }
 
     public static void deleteKartItem() {
@@ -285,4 +297,5 @@ public class Market {
         else
             kart.remove(option - 1);
     }
+
 }

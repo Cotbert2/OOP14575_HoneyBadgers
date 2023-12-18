@@ -1,9 +1,8 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
-import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
+
 
 import java.util.Scanner;
-import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
 
 import javax.mail.MessagingException;
 
@@ -12,8 +11,6 @@ import javax.mail.MessagingException;
  */
 
 public class ViveresGabySoftwareKit {
-
-    private static EmailHandler emailHandler;
 
     private static Scanner scanner = new Scanner(System.in);
 
@@ -29,14 +26,16 @@ public class ViveresGabySoftwareKit {
 
     public static void main(String[] args) throws MessagingException {
         LogInSystem logInSystem = new LogInSystem();
-        logInSystem.showLogin();
-        mostrarMenu();
+        //logInSystem.showLogin();
+
+        FinancerReport financerReport = new FinancerReport();
+   financerReport.generateFinancerReport();
+        showMenu();
 
     }
 
-    public static int mostrarMenu() throws MessagingException {
+    public static int showMenu() throws MessagingException {
         int option;
-
         do {
             System.out.println("----- Principal Menu -----");
             System.out.println("1. Market");

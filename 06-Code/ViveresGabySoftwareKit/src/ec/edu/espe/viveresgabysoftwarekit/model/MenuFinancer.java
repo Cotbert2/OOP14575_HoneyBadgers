@@ -37,7 +37,7 @@ public class MenuFinancer {
         do {
             System.out.println("----Menu Financer----");
             System.out.println("1. Bills");
-            System.out.println("2. Clients");
+            System.out.println("2. Customers");
             System.out.println("3. Financer Status");
             System.out.println("4. Update Taxes");
             System.out.println("5. Back");
@@ -51,8 +51,8 @@ public class MenuFinancer {
                     doBillsAction();
                     break;
                 case 2:
-                    System.out.println("You selected Client");
-                    doClientAction();
+                    System.out.println("You selected Customer");
+                    doCustomerAction();
                     break;
                 case 3:
                     System.out.println("You selected Financer Status");
@@ -121,7 +121,7 @@ public class MenuFinancer {
             System.out.println("No bills available.");
         } else {
             System.out.println("---- All Bills ----");
-            System.out.println("ID\tClient Id\tClient Name\tNum Products\tTotal Cost\tPurchase Day");
+            System.out.println("ID\tCustomer Id\tCustomer Name\tNum Products\tTotal Cost\tPurchase Day");
 
             for (Bill bill : allBills) {
 
@@ -144,23 +144,23 @@ public class MenuFinancer {
     }
 
 
-    private void doClientAction() {
+    private void doCustomerAction() {
         int subOption;
         do {
-            System.out.println("---Financer - Client Menu---");
-            System.out.println("1. Create Client");
-            System.out.println("2. See all Clients ");
+            System.out.println("---Financer/ Customer Menu---");
+            System.out.println("1. Create Customer");
+            System.out.println("2. See all Customer ");
             System.out.println("3. Back");
 
             subOption = getOption();
 
             switch (subOption) {
                 case 1:
-                    System.out.println("You selected Create Client");
+                    System.out.println("You selected Create Customer");
                     createCustomer();
                     break;
                 case 2:
-                    System.out.println("You selected See all Clients");
+                    System.out.println("You selected See all Customer");
                     showCustomers();
                     break;
                 case 3:

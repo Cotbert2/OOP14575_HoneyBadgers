@@ -1,10 +1,13 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 /**
- *
  * @author mateo, Stefany Díaz
  */
 public class Transaction {
@@ -12,15 +15,20 @@ public class Transaction {
     private int id;
     private boolean isCashPayment;
     private Date date;
-    private float Ammount;
-    private Customer Customer;
+    private float ammount;
+    private Customer customer;
 
-    public Transaction(int id, boolean isCashPayment, Date date, float ammount, Customer customer) {
-        this.id = id;
+    List<Transaction> transaction = new ArrayList<>();
+    public Transaction( boolean isCashPayment, float ammount, Customer customer) {
+        updateTransaction();
+        if(transaction.isEmpty())
+            this.id = 1;
+        else
+            this.id = transaction.getLast().id+ 1;
         this.isCashPayment = isCashPayment;
-        this.date = date;
-        Ammount = ammount;
-        Customer = customer;
+        this.date = new Date();
+        this.ammount = ammount;
+        this.customer = customer;
     }
 
     public int getId() {
@@ -48,28 +56,56 @@ public class Transaction {
     }
 
     public float getAmmount() {
-        return Ammount;
+        return ammount;
     }
 
     public void setAmmount(float ammount) {
-        Ammount = ammount;
+        this.ammount = ammount;
     }
 
-    public ec.edu.espe.viveresgabysoftwarekit.model.Customer getCustomer() {
-        return Customer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer(ec.edu.espe.viveresgabysoftwarekit.model.Customer customer) {
-        Customer = customer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public float computerChanyel(float ammount, float price) {
-        if(isCashPayment)
+    public float computerChange(float price) {
+        if (isCashPayment)
             return (ammount - price);
         else
             return 1;
     }
-    public void seeTransactionDetails() {
+
+    public String seeTransactionDetails() {
+        String transactionSummary = "";
+        transactionSummary += "-------------------------------------------------------" +
+                "\n[Transaction Details]" +
+                "\nId: " + id +
+                "\nDate: " + date;
+
+        if (isCashPayment)
+            transactionSummary += "\nType: Cash";
+        else
+            transactionSummary += "\nType: Transfer";
+
+        transactionSummary += "\nAmmount: " + ammount +
+                "\nCustomer: " + customer.getFullname() + "\n";
+
+        return transactionSummary;
     }
-;
+
+    public void saveTransaction(){
+        FileHandler<Transaction> fileHandler = new FileHandler();
+        List<Transaction> transacation= new ArrayList<>();
+        updateTransaction();
+        transacation.add(this);
+        fileHandler.saveJSONFile(transacation, Constans.TRANSACTION_FILE);
+    }
+
+    public void updateTransaction(){
+        FileHandler<Transaction> fileHandler = new FileHandler();
+        transaction = fileHandler.readJSONListTransaction(Constans.TRANSACTION_FILE);
+    }
 }
