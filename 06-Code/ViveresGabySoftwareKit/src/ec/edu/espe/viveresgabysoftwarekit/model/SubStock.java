@@ -1,5 +1,9 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
+
 public class SubStock {
     private Product product;
     private int OnGroceryUnits;

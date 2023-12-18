@@ -7,9 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author mateo, Stefany Díaz
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
+
 public class Bill {
 
     private int id;
@@ -105,7 +105,7 @@ public class Bill {
             earnings = (float) ((productItem.getProduct().getPvp()*productItem.getUnits()) - (productItem.getProduct().getCost()*productItem.getUnits()));
             totalEarnings += earnings;
             totalTaxes += (earnings * 0.12);
-            
+
             earnings = 0;
         }
 

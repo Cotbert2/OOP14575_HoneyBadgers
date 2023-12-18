@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.view;
+package ec.edu.espe.viveresgabysoftwarekit.view.login;
 
 import ec.edu.espe.viveresgabysoftwarekit.utils.*;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;

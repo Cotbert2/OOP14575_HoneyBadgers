@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.view;
+package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
 import java.util.*;
 

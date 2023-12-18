@@ -1,8 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 /**
- *
- * @author mateo, Stefany Díaz
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 public class Customer {
 

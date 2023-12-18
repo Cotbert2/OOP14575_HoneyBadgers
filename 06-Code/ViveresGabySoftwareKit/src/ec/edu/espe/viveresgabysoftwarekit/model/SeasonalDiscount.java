@@ -1,9 +1,9 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 /**
- *
- * @author mateo, Stefany Díaz, eduardo garcia
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
+
 public class SeasonalDiscount {
     private String date;
     private double value;

@@ -8,7 +8,7 @@ import java.util.List;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 /**
- * @author mateo, Stefany Díaz
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 public class Transaction {
 

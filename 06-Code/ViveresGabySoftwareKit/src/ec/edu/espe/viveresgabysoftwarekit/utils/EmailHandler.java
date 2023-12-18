@@ -8,6 +8,10 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
+
 public class EmailHandler {
     private static String emailFrom = "viveresgabystore@gmail.com";
     private static String passwd = "xigm jusa pszn jika";

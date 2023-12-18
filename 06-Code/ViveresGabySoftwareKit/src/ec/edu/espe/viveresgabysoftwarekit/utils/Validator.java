@@ -4,6 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Optional;
 import java.util.Scanner;
 
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
+
 public class Validator {
     Scanner in = new Scanner(System.in);
 

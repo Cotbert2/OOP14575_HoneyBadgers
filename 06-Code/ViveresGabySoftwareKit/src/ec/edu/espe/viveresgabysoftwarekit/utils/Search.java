@@ -9,6 +9,11 @@ import ec.edu.espe.viveresgabysoftwarekit.model.Category;
 import ec.edu.espe.viveresgabysoftwarekit.model.Customer;
 import ec.edu.espe.viveresgabysoftwarekit.model.Product;
 
+
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
+
 public class Search {
 
     FileHandler<Product> fileHandler = new FileHandler<>();

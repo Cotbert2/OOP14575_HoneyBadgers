@@ -1,12 +1,14 @@
 package ec.edu.espe.viveresgabysoftwarekit.utils;
 
-
 import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
 import java.io.IOException;
+
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
 
 public class Scrapper {
     float IVA = 12f;

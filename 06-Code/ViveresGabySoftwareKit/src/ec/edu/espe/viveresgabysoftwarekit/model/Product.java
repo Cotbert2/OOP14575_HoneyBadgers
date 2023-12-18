@@ -4,8 +4,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 import java.io.Serializable;
 
 /**
- *
- * @author mateo, Stefany Díaz, Eduardo García
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 
 public class Product implements Serializable {

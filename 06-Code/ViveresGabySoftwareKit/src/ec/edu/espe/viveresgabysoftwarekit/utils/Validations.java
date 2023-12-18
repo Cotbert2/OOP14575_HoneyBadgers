@@ -3,6 +3,11 @@ package ec.edu.espe.viveresgabysoftwarekit.utils;
 
 import java.util.Scanner;
 
+
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
+
 public class Validations {
 
     private static Scanner scanner = new Scanner(System.in);

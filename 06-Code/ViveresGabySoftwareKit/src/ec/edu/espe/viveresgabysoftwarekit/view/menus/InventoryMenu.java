@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.view;
+package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
 import ec.edu.espe.viveresgabysoftwarekit.model.Category;
 import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
@@ -9,15 +9,22 @@ import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import static ec.edu.espe.viveresgabysoftwarekit.view.Market.validator;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Validator;
+
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
 
 public class InventoryMenu {
+
+    Validator validator = new Validator();
 
     private static Scanner scanner = new Scanner(System.in);
 
@@ -285,7 +292,7 @@ public class InventoryMenu {
             int index = 0;
             for (Category category : categoryList) {
                 System.out.println((index +1 )  +")");
-                category.UICategoryinfo();
+                System.out.println(category.UICategoryinfo());
                 index++;
             }
         }
@@ -313,7 +320,7 @@ public class InventoryMenu {
 
         for (Category category : categoryList) {
             if (category.getName().toLowerCase().contains(searchKeyword.toLowerCase())) {
-                category.UICategoryinfo();
+                System.out.println(category.UICategoryinfo());
                 found = true;
             }
         }
@@ -355,7 +362,7 @@ public class InventoryMenu {
         for(Category items : categoryList){
             if(items.getName().toLowerCase().contains(categoryName.toLowerCase())){
                 System.out.println((index + 1) + ") ");
-                items.UICategoryinfo();
+                System.out.println(items.UICategoryinfo());
                 index++;
             }
         }

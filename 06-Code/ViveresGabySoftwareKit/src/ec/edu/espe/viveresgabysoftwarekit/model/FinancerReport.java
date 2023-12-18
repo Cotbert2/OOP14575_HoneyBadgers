@@ -1,10 +1,13 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
 
 public class FinancerReport {
     private List<Bill> bills;

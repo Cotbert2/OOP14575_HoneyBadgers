@@ -1,12 +1,12 @@
-package ec.edu.espe.viveresgabysoftwarekit.model;
+package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
+import ec.edu.espe.viveresgabysoftwarekit.model.Bill;
+import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.model.Customer;
+import ec.edu.espe.viveresgabysoftwarekit.model.Financer;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ import ec.edu.espe.viveresgabysoftwarekit.utils.*;
 /**
  * @author Stefany Díaz,Eduardo Garcia, Mateo García, Alex Cuzco, honeyBADGERS, DCCO-ESPE
  */
-public class MenuFinancer {
+public class FinancerMenu {
     private static Scanner scanner = new Scanner(System.in);
     private int option;
     private ArrayList<Bill> bills = new ArrayList<>();
@@ -29,7 +29,7 @@ public class MenuFinancer {
     List<Bill> allBills;
     List<Customer> customers;
 
-    public MenuFinancer() {
+    public FinancerMenu() {
 
     }
 

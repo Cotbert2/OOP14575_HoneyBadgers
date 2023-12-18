@@ -1,12 +1,19 @@
-package ec.edu.espe.viveresgabysoftwarekit.model;
+package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
+import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.model.Discount;
+import ec.edu.espe.viveresgabysoftwarekit.model.SeasonalDiscount;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
-import java.io.File;
 import java.util.*;
 
-public class MenuDiscounts {
+
+/**
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ */
+
+public class DiscountsMenu {
 
     private static Scanner scanner = new Scanner(System.in);
     private int option;
@@ -24,7 +31,7 @@ public class MenuDiscounts {
 
     FileHandler<Discount> fileHandlerDiscounts = new FileHandler<>();
 
-    public MenuDiscounts() {
+    public DiscountsMenu() {
         this.discounts = new ArrayList<>();
     }
 

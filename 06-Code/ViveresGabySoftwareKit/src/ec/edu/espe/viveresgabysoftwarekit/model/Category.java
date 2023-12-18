@@ -4,8 +4,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 import java.util.ArrayList;
 
 /**
- *
- * @author mateo, Stefany Díaz
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 public class Category {
 
@@ -18,7 +17,7 @@ public class Category {
     public String toString() {
         return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", products=" + products + '}';
     }
-   
+
 
     public Category(String name, String description) {
         this.id = id;
@@ -26,16 +25,16 @@ public class Category {
         this.description = description;
     }
 
-    public void UICategoryinfo(){
-        System.out.println(
+    public String UICategoryinfo() {
+        String info =
                 "*********************************" + "\n" +
                         "\t\t" + name + "\n" +
-                "*********************************" + "\n" +
-                "Description: " + description + "\n" +
-                "Products in this category: " +  products.size() + "\n"
-        );
+                        "*********************************" + "\n" +
+                        "Description: " + description + "\n";
+        info += (products.isEmpty()) ? "No products in this category" : "Products in this category: " + products.size() + "\n";
+        return info;
     }
-    
+
 
     public int getId() {
         return id;
@@ -68,8 +67,7 @@ public class Category {
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
-    
-    
+
 
     public void addProductToCategory(Product product) {
     }
@@ -84,5 +82,6 @@ public class Category {
 
     public void deleteCategory() {
     }
-;
+
+    ;
 }
