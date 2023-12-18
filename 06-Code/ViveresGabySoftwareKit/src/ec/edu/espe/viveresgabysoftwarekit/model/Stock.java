@@ -3,37 +3,48 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author mateo, Stefany Díaz
  */
 public class Stock {
-    List<Product> products;
-    FileHandler<Product> fileHandler = new FileHandler<>();
+    List<SubStock> fullStorages;
+    FileHandler<SubStock> fileHandler = new FileHandler<>();
 
-    private ArrayList<ProductItem> fullStorage;
-    private ArrayList<ProductItem> onGrocery;
-    private ArrayList<ProductItem> onStore;
     public Stock() {
-        products = fileHandler.readJSONListProducts(Constans.PRODUCTS_FILE_NAME);
+        fullStorages = fileHandler.readJSONListStock(Constans.STOCK_FILE_NAME);
     }
 
-
-
-    public String findProduct(String name){
-        String productMessage = "Sorry, there is no product with that namek\n 1) Search Again\n2) Back\nOption:";
-        for (Product product : products) {
-            if(product.getName().equals(name)){
-                productMessage = product.UIPrint();
+    public void addStockToGrocery(int id, int units) {
+        for (SubStock subStock : fullStorages) {
+            if (subStock.getProduct().getId() == id) {
+                subStock.setOnGroceryUnits(subStock.getOnGroceryUnits() + units);
             }
         }
-        return productMessage;
     }
 
-    public void viewStock() {
+    public void addStockToWarehouse(int id) {
+        for (SubStock subStock : fullStorages) {
+            if (subStock.getProduct().getId() == id) {
+                subStock.setOnStorageUnits(subStock.getOnStorageUnits() + subStock.getOnGroceryUnits());
+                subStock.setOnGroceryUnits(0);
+            }
+        }
     }
-    public void generateStocReport() {
+
+    public void generateStockReport() {
+        String report = "-------------------------------\n";
+        report += "|        Stock Report           |\n";
+        report += "-------------------------------\n";
+        report += "Id" + "\tName" + "\tGrocery Units"  + "\tStorage Units" + "\tFull storage\n";
+        for (SubStock subStock : fullStorages) {
+            System.out.println(subStock.getOnGroceryUnits());
+            System.out.println(subStock.getOnGroceryUnits());
+            report += subStock.getProduct().getId() + " \t\t"  +subStock.getProduct().getName() + " " + " \t\t" + subStock.getOnGroceryUnits() + " \t\t" + subStock.getOnStorageUnits() + " \t\t" + (subStock.getOnStorageUnits() + subStock.getOnGroceryUnits()) +"\n";
+        }
+        Date date = new Date();
+        fileHandler.saveTXTFile(report, Constans.OUTPUT_ROOT_FILE + "/StockReport_"+date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt" );
     }
 }

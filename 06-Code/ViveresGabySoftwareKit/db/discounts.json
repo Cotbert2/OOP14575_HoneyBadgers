@@ -2,11 +2,8 @@
   {
     "id": 1,
     "name": "Mothers Day Discount",
-    "porcent": 50,
+    "percentage": 50,
     "startDate": "2017-01-01",
-    "endDate": "2017-01-31",
-    "product": [
-
-    ]
+    "endDate": "2017-01-31"
   }
 ]

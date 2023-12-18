@@ -110,17 +110,17 @@ public class Validations {
         }
     }
 
-    public static double validateDiscountInput(String prompt) {
-        double input = 0;
+    public static float validateDiscountInput(String prompt) {
+        float input = 0;
         boolean validInput = false;
 
         do {
             try {
                 System.out.print(prompt);
                 String inputStr = scanner.nextLine();
-                input = Double.parseDouble(inputStr);
+                input = Float.parseFloat(inputStr);
 
-                if (input >= 0 && input <= 100) {
+                if (input > 0 && input < 100) {
                     validInput = true;
                 } else {
                     System.out.println("Invalid input. Please enter a valid discount percentage (0-100).");

@@ -3,6 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.model.Category;
 import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.model.Product;
+import ec.edu.espe.viveresgabysoftwarekit.model.Stock;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
@@ -416,50 +417,9 @@ public class InventoryMenu {
     }
 
     private void generateReport() {
-        System.out.println("----- Generate Report -----");
-
-        if (productList.isEmpty()) {
-            System.out.println("No products to generate a report.");
-        } else {
-            System.out.print("Enter the name of the product to generate a report: ");
-            String productName = scanner.nextLine();
-
-            Product selectedProduct = null;
-            for (Product product : productList) {
-                if (product.getName().equalsIgnoreCase(productName)) {
-                    selectedProduct = product;
-                    break;
-                }
-            }
-
-            if (selectedProduct != null) {
-                int currentStock = productStock.getOrDefault(productName, 0);
-                System.out.println("Current Stock: " + currentStock);
-
-                int soldQuantity = Validations.validateSoldQuantity(productName, currentStock);
-                productStock.put(productName, currentStock - soldQuantity);
-
-                System.out.println("Sold Quantity: " + soldQuantity);
-                System.out.println("Updated Stock: " + productStock.get(productName));
-
-                if (currentStock == 0) {
-                    System.out.println("Warning: Product '" + productName + "' is out of stock.");
-                }
-
-                System.out.println("-------------------------");
-            } else {
-                System.out.println("Product not found with the name: " + productName);
-            }
-        }
-
-        System.out.println("Press 'B' to go back to the previous menu.");
-        String userInput = scanner.nextLine();
-
-        if (userInput.equalsIgnoreCase("B")) {
-            System.out.println("Returning to the previous menu");
-        } else {
-            System.out.println("Invalid option, returning to the previous menu");
-        }
+        Stock stock = new Stock();
+        stock.generateStockReport();
+        System.out.println("Generatirng report...");
     }
 
     private void updateProduct(){

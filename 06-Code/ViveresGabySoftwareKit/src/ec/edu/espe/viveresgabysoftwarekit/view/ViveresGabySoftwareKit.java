@@ -11,7 +11,6 @@ import javax.mail.MessagingException;
  */
 
 public class ViveresGabySoftwareKit {
-
     private static Scanner scanner = new Scanner(System.in);
 
     private static Market market;
@@ -27,11 +26,7 @@ public class ViveresGabySoftwareKit {
     public static void main(String[] args) throws MessagingException {
         LogInSystem logInSystem = new LogInSystem();
         //logInSystem.showLogin();
-
-        FinancerReport financerReport = new FinancerReport();
-   financerReport.generateFinancerReport();
         showMenu();
-
     }
 
     public static int showMenu() throws MessagingException {

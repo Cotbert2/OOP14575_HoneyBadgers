@@ -14,6 +14,7 @@ public class Constans {
     public static final String DISCOUNTS_FILE_NAME = "./db/discounts.json";
     public static final String TRANSACTION_FILE = "./db/transactions.json";
     public static final String TAXES_FILE_NAME = "./db/taxes.json";
+    public static final String STOCK_FILE_NAME = "./db/stock.json";
 
 
     public static void clearScreen() {

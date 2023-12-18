@@ -52,6 +52,4 @@ public class FinancerReport {
         fileHandler.saveTXTFile(report, Constans.OUTPUT_ROOT_FILE + "/FinancerReport" +date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt");
     }
 
-    public void UIPrint() {
-    }
 }

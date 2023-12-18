@@ -1,3 +1,14 @@
-{
-
-}
+[
+  {
+    "product" :   {
+      "id": 0,
+      "name": "chocolates",
+      "cost": 1.6,
+      "pvp": 2.0,
+      "description": "ok",
+      "provider": "ok"
+    },
+    "OnGroceryUnits" : 1,
+    "OnStorageUnits" : 23
+  }
+]

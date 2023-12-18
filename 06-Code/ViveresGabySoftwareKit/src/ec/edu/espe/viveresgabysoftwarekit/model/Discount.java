@@ -1,6 +1,10 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 public class Discount {
     private int id;
@@ -8,6 +12,9 @@ public class Discount {
     private float percentage;
     private Date startDate;
     private Date endDate;
+
+
+    List<Discount> discounts = new ArrayList<>();
 
     public Discount(int id, String name, float percentage, Date startDate, Date endDate) {
         this.id = id;
@@ -66,5 +73,17 @@ public class Discount {
         System.out.println("End Date: " + endDate);
     }
 
+    public void saveDiscount() {
+        FileHandler<Discount> fileHandler = new FileHandler<>();
+        discounts = fileHandler.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
+        discounts.add(this);
+        fileHandler.saveJSONFile(discounts, Constans.DISCOUNTS_FILE_NAME);
+    }
 
+    public List<Discount> getAllDiscounts() {
+        FileHandler<Discount> fileHandler = new FileHandler<>();
+        discounts = fileHandler.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
+        return discounts;
+    }
 }
+

@@ -4,7 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
-import org.apache.
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -18,14 +22,24 @@ import java.util.List;
 
 public class FileHandler<T> {
 
-
-
-    //retorna una lista con todoa la base de datos
     public List<T> readJSONList(String path) {
         List<T> objectList = new ArrayList<>();
 
         try (Reader reader = new FileReader(path)) {
             Type listType = new TypeToken<ArrayList<User>>() {}.getType();
+            objectList = new Gson().fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return objectList;
+    }
+
+    public List<T> readJSONListStock(String path) {
+        List<T> objectList = new ArrayList<>();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<ArrayList<SubStock>>() {}.getType();
             objectList = new Gson().fromJson(reader, listType);
         } catch (IOException e) {
             e.printStackTrace();
@@ -135,8 +149,6 @@ public class FileHandler<T> {
             System.err.println("[-] Something went wrong: " + e.getMessage());
         }
     }
-
-
 
     public void saveTXTFile(String data, String path){
         try {
