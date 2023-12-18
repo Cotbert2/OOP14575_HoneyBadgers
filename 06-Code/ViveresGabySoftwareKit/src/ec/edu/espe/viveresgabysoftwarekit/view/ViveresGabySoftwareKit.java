@@ -20,8 +20,9 @@ public class ViveresGabySoftwareKit {
     private static MainMenu mainMenu = new MainMenu();
 
     public static void main(String[] args) throws MessagingException {
-        Opener opener = new Opener();
-        //logInSystem.showLogin();
+        System.out.println(Constans.WELCOME_HEADER);
+        LogInSystem logInSystem = new LogInSystem();
+        logInSystem.showLogin();
         mainMenu.showMenu();
     }
 

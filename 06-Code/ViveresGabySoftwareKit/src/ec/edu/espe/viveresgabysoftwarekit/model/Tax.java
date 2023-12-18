@@ -53,6 +53,10 @@ public class Tax {
         return porcent;
     }
 
+    public float getPorcentFloat() {
+        return (float)porcent/100;
+    }
+
     public void setPorcent(int porcent) {
         this.porcent = porcent;
     }

@@ -6,10 +6,12 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 public class Constans {
     public static final String OUTPUT_ROOT_FILE = "./output";
-    public static final String USERS_FILE_NAME= "./db/users.json";
-    public static final String PRODUCTS_FILE_NAME= "./db/products.json";
-    public static final String CUSTOMERS_FILE_NAME= "./db/customers.json";
-    public static final String WELCOME_HEADER = "********** WELCOME TO VIVERES GABY SOFTWARE KIT **********";
+    public static final String USERS_FILE_NAME = "./db/users.json";
+    public static final String PRODUCTS_FILE_NAME = "./db/products.json";
+    public static final String CUSTOMERS_FILE_NAME = "./db/customers.json";
+    public static final String WELCOME_HEADER = "**************************************************\n" +
+            "|  WELCOME TO VIVERES GABY SOFTWARE KIT           |\n" +
+            "**************************************************";
     public static final String HEADER = "**************Viveres Gaby Software Kit**************";
     public static final String BILLS_FILE_NAME = "./db/bills.json";
     public static final String CATEGORIES_FILE_NAME = "./db/categories.json";

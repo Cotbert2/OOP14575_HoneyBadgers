@@ -1,5 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
+import java.io.File;
 import java.util.*;
 
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
@@ -14,6 +15,7 @@ public class Market {
     static Search finder = new Search();
 
     static ArrayList<ProductItem> kart = new ArrayList<>();
+
 
     static EmailHandler emailHandler;
 
@@ -219,6 +221,11 @@ public class Market {
             System.out.println("2) Transaction");
             System.out.print("option: ");
             transactionOpt = validator.getIntOption();
+            int fullAmount = 0;
+            for(ProductItem item: kart){
+                fullAmount += item.getProduct().getPvp() * item.getUnits();
+            }
+            fullAmount += (fullAmount * 0.12);
             switch (transactionOpt) {
                 case 1:
                     System.out.println("You selected Cash");
@@ -226,12 +233,12 @@ public class Market {
                     transaction = new Transaction(true, ammount, customer);
                     //transaction.saveTransaction();
                     //TODO: change price
-                    System.out.println("YOUR CHANGE: " + transaction.computerChange(100));
+                    System.out.println("YOUR CHANGE: " + transaction.computerChange(fullAmount));
                     break;
                 case 2:
                     System.out.println("You selected Transaction");
                     //TODO: change the price
-                    transaction = new Transaction(false, 100, customer);
+                    transaction = new Transaction(false, fullAmount, customer);
                     transaction.saveTransaction();
 
                     break;
@@ -269,8 +276,14 @@ public class Market {
             dataToGeneratebill += discount.getName() + ": " + discount.getPercentage() + "%\n";
             subfinalPrice -= (subfinalPrice * (discount.getPercentage() / 100));
         }
-        dataToGeneratebill += "\n[Taxes] IVA 12%: " + (subfinalPrice * 0.12) + "\n";
-        dataToGeneratebill += "Final Price: " + (subfinalPrice * 1.12) + "\n";
+
+
+        FileHandler<Tax> fileHandlerTaxes= new FileHandler<>();
+        float porcentualFactor = fileHandlerTaxes.readJSONListTax(Constans.TAXES_FILE_NAME).getLast().getPorcentFloat();
+
+
+        dataToGeneratebill += "\n[Taxes] IVA 12%: " + (subfinalPrice * porcentualFactor) + "\n";
+        dataToGeneratebill += "Final Price: " + (subfinalPrice * (porcentualFactor + 1)) + "\n";
         Date date = new Date();
         Bill bill = new Bill(customer, kart, date, discountsToAplly);
 

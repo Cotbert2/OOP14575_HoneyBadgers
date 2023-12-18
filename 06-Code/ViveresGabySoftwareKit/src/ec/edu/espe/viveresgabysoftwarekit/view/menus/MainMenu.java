@@ -29,7 +29,7 @@ public class MainMenu {
             System.out.println("4. Discounts");
             System.out.println("5. About us");
             System.out.println("6. Leave the program");
-            System.out.print("Choose an option (1-5): ");
+            System.out.print("Choose an option (1-6): ");
 
             option = getOption();
 
@@ -62,7 +62,7 @@ public class MainMenu {
 
                     break;
                 case 5:
-                    System.out.printf("Opening the landing page...");
+                    System.out.println("Opening the landing page...");
                     Opener opener = new Opener();
                     opener.openWebpage(Constans.VIVERES_GABY_LANDING_PAGE);
                     break;
@@ -84,7 +84,7 @@ public class MainMenu {
         while (true) {
             try {
                 int input = Integer.parseInt(scanner.nextLine());
-                if (input >= 1 && input <= 5) {
+                if (input >= 1 && input <= 6) {
                     return input;
                 } else {
                     System.out.print("Invalid option, try again: ");
