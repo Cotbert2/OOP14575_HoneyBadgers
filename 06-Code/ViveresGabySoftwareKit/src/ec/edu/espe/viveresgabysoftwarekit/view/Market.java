@@ -32,6 +32,8 @@ public class Market {
 
     static Customer customer;
 
+    static List<Discount> discountsToAplly = new ArrayList<>();
+
     public Market() throws MessagingException {
     }
 
@@ -190,11 +192,13 @@ public class Market {
                     } while (opt != 2);
                     customer = items.get(opt - 1);
                     transactionDefinition();
+                    discountsInterface();
                     printSummary();
                     break;
                 case 2:
                     System.out.println("You selected Final Customer");
                     transactionDefinition();
+                    discountsInterface();
                     printSummary();
                     break;
                 case 3:
@@ -209,7 +213,7 @@ public class Market {
 
     public static void transactionDefinition() throws MessagingException {
         int transactionOpt = 0;
-        do{
+        do {
             System.out.println("----- Transaction Definition -----");
             System.out.println("1) Cash");
             System.out.println("2) Transaction");
@@ -247,7 +251,7 @@ public class Market {
         else
             dataToGeneratebill += "Final Customer\n";
 
-        dataToGeneratebill +=  transaction.seeTransactionDetails();
+        dataToGeneratebill += transaction.seeTransactionDetails();
         dataToGeneratebill += "[Product Information]: \n";
         dataToGeneratebill += "Product\t\t\tQuantity\t\t\tPrice\n";
         int index = 1;
@@ -260,10 +264,15 @@ public class Market {
         }
         dataToGeneratebill += "\n-------------------------------------------------------\n";
         dataToGeneratebill += "Subtotal: " + subfinalPrice;
+        dataToGeneratebill += "\n[Discounts]: \n";
+        for (Discount discount : discountsToAplly) {
+            dataToGeneratebill += discount.getName() + ": " + discount.getPercentage() + "%\n";
+            subfinalPrice -= (subfinalPrice * (discount.getPercentage() / 100));
+        }
         dataToGeneratebill += "\n[Taxes] IVA 12%: " + (subfinalPrice * 0.12) + "\n";
         dataToGeneratebill += "Final Price: " + (subfinalPrice * 1.12) + "\n";
         Date date = new Date();
-        Bill bill = new Bill(customer, kart, date);
+        Bill bill = new Bill(customer, kart, date, discountsToAplly);
 
         FileHandler<Bill> fileHandler = new FileHandler<>();
         List<Bill> bills = fileHandler.readJSONListBills(Constans.BILLS_FILE_NAME);
@@ -296,6 +305,32 @@ public class Market {
             System.out.println("Try again, invalid option");
         else
             kart.remove(option - 1);
+    }
+
+    public static void discountsInterface() {
+        Discount discount = new Discount(0, null, 0, null, null);
+        List<Discount> discounts = discount.getAllDiscounts();
+
+        System.out.print("Do you want to apply a discount? (y/n)");
+        if (validator.getYNOption()) {
+            int option = -1;
+            int index ;
+            do {
+                index = 0;
+                System.out.println("0) Back");
+                for (Discount discountItem : discounts) {
+                    System.out.println((index + 1) + ")");
+                    discountItem.UIPrint();
+                    index++;
+                }
+                System.out.print("Select an option: ");
+                option = validator.getIntOption();
+                if (option < 1 || option > discounts.size())
+                    System.out.println("Try again, invalid option");
+                else
+                    discountsToAplly.add(discounts.get(option - 1));
+            } while (option != 0);
+        }
     }
 
 }

@@ -276,4 +276,27 @@ public class Validations {
             }
         }
     }
+
+
+    public static String noValidation(String cad){
+        System.out.print(cad);
+        String input = scanner.nextLine();
+        return input;
+    }
+
+    public static String validateDate(String prompt){
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = scanner.nextLine();
+                if (input.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                    return input;
+                } else {
+                    System.out.println("Invalid input, please enter a valid date (dd/mm/yyyy).");
+                }
+            } catch (Exception e) {
+                System.out.print("Invalid entry, try again: ");
+            }
+        }
+    }
 }

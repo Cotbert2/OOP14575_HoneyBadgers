@@ -17,6 +17,7 @@ public class Bill {
     private Customer customer;
     private List<ProductItem> products;
     private Date purchaseDay;
+    private List<Discount> discounts;
 
     private float totalPrice;
     private float totalEarnings;
@@ -24,17 +25,14 @@ public class Bill {
 
 
 
-    public Bill(Customer customer, List<ProductItem> products, Date purchaseDay) {
+    public Bill(Customer customer, List<ProductItem> products, Date purchaseDay, List<Discount> discounts) {
         FileHandler<Bill> fileHandler = new FileHandler<>();
         this.id = fileHandler.readJSONListBills(Constans.BILLS_FILE_NAME).getLast().id + 1;
         this.customer = customer;
         this.products = products;
         this.purchaseDay = purchaseDay;
+        this.discounts = discounts;
         totalPrice = 0;
-    }
-
-    public void generateBill(){
-
     }
 
 
@@ -107,6 +105,7 @@ public class Bill {
             earnings = (float) ((productItem.getProduct().getPvp()*productItem.getUnits()) - (productItem.getProduct().getCost()*productItem.getUnits()));
             totalEarnings += earnings;
             totalTaxes += (earnings * 0.12);
+            
             earnings = 0;
         }
 

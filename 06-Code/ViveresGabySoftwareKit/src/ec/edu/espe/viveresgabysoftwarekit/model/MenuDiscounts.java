@@ -93,19 +93,17 @@ public class MenuDiscounts {
     }
 
     private void createDiscount() {
-        String discountName = Validations.validateStringInput("Enter the name of the discount: ");
-        float discountValue = Validations.validateDiscountInput("Enter the value of the discount: ");
-
-        System.out.println("Enter the start date of the discount (dd/MM/yyyy): ");
-        String startDate = scanner.nextLine();
-        System.out.println("Enter the end date of the discount (dd/MM/yyyy): ");
-        String endDate = scanner.nextLine();
+        String discountName = Validations.noValidation("Enter the name of the discount: ");
+        float discountValue = Validations.validateDiscountInput("Enter the porcentage of the discount: ");
+        String startDate = Validations.validateDate("Enter the start date of the discount (dd/MM/yyyy): ");
+        String endDate = Validations.validateDate("Enter the end date of the discount (dd/MM/yyyy): ");
         Date startDateFormated = new Date(startDate);
         Date endDateFormated = new Date(endDate);
         int discountId = getLastIdDiscount() + 1;
         Discount newDiscount = new Discount(discountId,discountName, discountValue, startDateFormated, endDateFormated);
         System.out.println("New discount created successfully: ");
         newDiscount.UIPrint();
+        newDiscount.saveDiscount();
     }
 
     private void generateAutomaticDiscounts() {

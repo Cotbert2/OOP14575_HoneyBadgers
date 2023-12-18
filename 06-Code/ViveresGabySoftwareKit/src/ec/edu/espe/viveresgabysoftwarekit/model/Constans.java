@@ -15,6 +15,7 @@ public class Constans {
     public static final String TRANSACTION_FILE = "./db/transactions.json";
     public static final String TAXES_FILE_NAME = "./db/taxes.json";
     public static final String STOCK_FILE_NAME = "./db/stock.json";
+    public static final String IVA_URL = "https://www.sri.gob.ec/impuesto-al-valor-agregado-iva";
 
 
     public static void clearScreen() {

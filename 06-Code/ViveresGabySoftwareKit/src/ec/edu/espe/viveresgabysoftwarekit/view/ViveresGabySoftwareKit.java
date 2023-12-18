@@ -1,5 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Scrapper;
 
 
 import java.util.Scanner;
@@ -26,6 +27,8 @@ public class ViveresGabySoftwareKit {
     public static void main(String[] args) throws MessagingException {
         LogInSystem logInSystem = new LogInSystem();
         //logInSystem.showLogin();
+        Scrapper scrapper = new Scrapper();
+        scrapper.updateIva();
         showMenu();
     }
 

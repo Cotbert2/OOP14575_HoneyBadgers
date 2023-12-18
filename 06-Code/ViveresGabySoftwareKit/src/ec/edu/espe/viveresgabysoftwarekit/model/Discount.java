@@ -13,9 +13,6 @@ public class Discount {
     private Date startDate;
     private Date endDate;
 
-
-    List<Discount> discounts = new ArrayList<>();
-
     public Discount(int id, String name, float percentage, Date startDate, Date endDate) {
         this.id = id;
         this.name = name;
@@ -74,13 +71,15 @@ public class Discount {
     }
 
     public void saveDiscount() {
+        List<Discount> discounts;
         FileHandler<Discount> fileHandler = new FileHandler<>();
-        discounts = fileHandler.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
+        discounts = getAllDiscounts();
         discounts.add(this);
         fileHandler.saveJSONFile(discounts, Constans.DISCOUNTS_FILE_NAME);
     }
 
     public List<Discount> getAllDiscounts() {
+        List<Discount> discounts;
         FileHandler<Discount> fileHandler = new FileHandler<>();
         discounts = fileHandler.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
         return discounts;

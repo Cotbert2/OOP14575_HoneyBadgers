@@ -90,8 +90,8 @@ public class Transaction {
         else
             transactionSummary += "\nType: Transfer";
 
-        transactionSummary += "\nAmmount: " + ammount +
-                "\nCustomer: " + customer.getFullname() + "\n";
+        transactionSummary += "\nAmmount: " + ammount ;
+        transactionSummary += (customer == null? "\nCustomer: FinalCustomer" : "\nCustomer: " + customer.getFullname()) + "\n";
 
         return transactionSummary;
     }
