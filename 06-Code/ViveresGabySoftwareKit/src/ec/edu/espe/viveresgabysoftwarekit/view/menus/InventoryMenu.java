@@ -235,9 +235,8 @@ public class InventoryMenu {
             System.out.println("3. Add category");
             System.out.println("4. Delete category");
             System.out.println("5. Add product to category");
-            System.out.println("6. Delete product from category");
-            System.out.println("7. Back");
-            System.out.print("Choose an option (1-7): ");
+            System.out.println("6. Back");
+            System.out.print("Choose an option (1-6): ");
 
             optionCategory = Validations.obtainOptionInventory();
 
@@ -258,15 +257,12 @@ public class InventoryMenu {
                     addProductToCategory();
                     break;
                 case 6:
-                    deleteProductToCategory();
-                    break;
-                case 7:
                     System.out.println("Returning to the previous menu");
                     break;
                 default:
                     System.out.println("Invalid option, try again.");
             }
-        } while (optionCategory != 7);
+        } while (optionCategory != 6);
 }
 
 

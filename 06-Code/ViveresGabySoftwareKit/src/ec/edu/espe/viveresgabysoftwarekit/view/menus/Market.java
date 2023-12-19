@@ -40,7 +40,6 @@ public class Market {
 
     public static int marketMainMenu() throws MessagingException {
         int option = 0;
-        int sellOption = 0;
         System.out.println("----- Market Menu -----");
         System.out.println("1) New Sell");
         System.out.println("2) Back");
@@ -50,7 +49,7 @@ public class Market {
             switch (option) {
                 case 1:
                     System.out.println("You selected Sell");
-                    sellOption = newSellMenu();
+                    newSellMenu();
                     break;
                 case 2:
                     System.out.println("Leaving to the principal menu...");
@@ -162,7 +161,7 @@ public class Market {
             switch (option) {
                 case 1:
                     System.out.println("You selected Data");
-                    int opt = 0;
+                    int opt;
                     List<Customer> items;
                     do {
                         System.out.print("id(Cédula/ruc): ");

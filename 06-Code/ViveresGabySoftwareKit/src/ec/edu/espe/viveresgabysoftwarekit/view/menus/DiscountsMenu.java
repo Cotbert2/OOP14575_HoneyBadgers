@@ -113,18 +113,7 @@ public class DiscountsMenu {
         newDiscount.saveDiscount();
     }
 
-    private void generateAutomaticDiscounts() {
-        String[] dates = {"Father's Day", "Mother's Day", "Christmas", "New Year", "Carnival"};
-        Random random = new Random();
 
-        for (String date : dates) {
-            double randomDiscount = 2.00 + (random.nextDouble() * (8.00 - 2.00)); // Generar descuento aleatorio entre 2% y 8%
-            SeasonalDiscount newDiscount = new SeasonalDiscount(date, randomDiscount);
-            discounts.add(newDiscount);
-
-            System.out.println("Creating discount for " + date + ": " + String.format("%.2f", randomDiscount) + "%");
-        }
-    }
 
     private void deleteDiscount() {
         if (discounts.isEmpty()) {
@@ -144,11 +133,6 @@ public class DiscountsMenu {
             }
         }
     }
-
-
-
-
-
 
     public void updateSeasonalDiscounts(){
         SDiascounts = fileHandlerDiscounts.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
