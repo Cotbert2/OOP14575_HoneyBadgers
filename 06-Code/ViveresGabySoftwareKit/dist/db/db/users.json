@@ -1,0 +1,21 @@
+[{
+  "id": 1,
+  "userName": "gaby_diaz",
+  "cypherPasswd": "BCDE"
+},{
+  "id": 2,
+  "userName": "eduardo",
+  "cypherPasswd": "BCDE"
+},{
+  "id": 3,
+  "userName": "alex",
+  "cypherPasswd": "BCDE"
+},{
+  "id": 4,
+  "userName": "stefy",
+  "cypherPasswd": "BCDE"
+},{
+  "id": 5,
+  "userName": "mateo",
+  "cypherPasswd": "BCDE"
+}]

@@ -226,24 +226,6 @@ public class InventoryMenu {
         fileHandler.saveJSONFile(productList, Constans.PRODUCTS_FILE_NAME);
         System.out.println("[+] Product edited successfully.");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     private void displayCategoryMenu() {
@@ -282,6 +264,7 @@ public class InventoryMenu {
     }
 
     private void displaySeeAllCategoriesMenu() {
+        updateCategory();
         System.out.println("----- See All Categories -----");
 
         categoryList = fileHandlerCategory.readJSONListCategorys(Constans.CATEGORIES_FILE_NAME);
