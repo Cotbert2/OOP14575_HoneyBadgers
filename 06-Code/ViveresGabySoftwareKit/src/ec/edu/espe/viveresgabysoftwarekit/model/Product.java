@@ -1,9 +1,9 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 

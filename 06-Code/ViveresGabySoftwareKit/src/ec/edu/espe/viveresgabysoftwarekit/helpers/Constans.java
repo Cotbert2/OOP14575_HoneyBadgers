@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.model;
+package ec.edu.espe.viveresgabysoftwarekit.helpers;
 
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575

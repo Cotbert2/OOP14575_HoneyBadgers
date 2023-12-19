@@ -1,8 +1,9 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
 /**

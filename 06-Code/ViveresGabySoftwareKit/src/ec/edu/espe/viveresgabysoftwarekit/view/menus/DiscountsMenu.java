@@ -1,6 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
-import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.model.Discount;
 import ec.edu.espe.viveresgabysoftwarekit.model.SeasonalDiscount;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;

@@ -1,9 +1,9 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.login;
 
+import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.*;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;

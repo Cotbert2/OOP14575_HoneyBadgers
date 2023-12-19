@@ -1,6 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.utils;
 
-import ec.edu.espe.viveresgabysoftwarekit.model.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
