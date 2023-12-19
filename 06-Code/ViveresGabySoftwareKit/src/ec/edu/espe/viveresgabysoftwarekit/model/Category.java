@@ -31,7 +31,7 @@ public class Category {
                         "\t\t" + name + "\n" +
                         "*********************************" + "\n" +
                         "Description: " + description + "\n";
-        info += (products.isEmpty()) ? "No products in this category" : "Products in this category: " + products.size() + "\n";
+        info += (products == null) ? "No products in this category" : "Products in this category: " + products.size() + "\n";
         return info;
     }
 

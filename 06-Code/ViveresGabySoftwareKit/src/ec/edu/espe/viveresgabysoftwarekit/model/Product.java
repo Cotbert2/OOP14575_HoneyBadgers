@@ -1,10 +1,14 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+
+import java.io.File;
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Mateo García-HONEYBUDGERS-DCCO-14575
  */
 
 public class Product implements Serializable {
@@ -16,6 +20,7 @@ public class Product implements Serializable {
     private String provider;
 
     public Product(String name, double cost, double pvp, String description, String provider) {
+        this.id =  getProducts().getLast().getId() + 1;
         this.name = name;
         this.cost = cost;
         this.pvp = pvp;
@@ -107,8 +112,14 @@ public class Product implements Serializable {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Product> getProducts(){
+        FileHandler<Product> fileHandler = new FileHandler<>();
+        return fileHandler.readJSONListProduct(Constans.PRODUCTS_FILE_NAME);
     }
 }
    

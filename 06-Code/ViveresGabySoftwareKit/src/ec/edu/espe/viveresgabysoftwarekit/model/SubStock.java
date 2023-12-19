@@ -15,7 +15,6 @@ public class SubStock {
         this.OnStorageUnits = OnStorageUnits;
     }
 
-
     public Product getProduct() {
         return product;
     }
@@ -38,5 +37,10 @@ public class SubStock {
 
     public void setOnStorageUnits(int onStorageUnits) {
         OnStorageUnits = onStorageUnits;
+    }
+
+
+    public String UIPrint(){
+        return (product.getId() + "\t" + product.getName() + "\t" + OnGroceryUnits + "\t" + OnStorageUnits + "\t" + (OnGroceryUnits + OnStorageUnits) + "\n");
     }
 }

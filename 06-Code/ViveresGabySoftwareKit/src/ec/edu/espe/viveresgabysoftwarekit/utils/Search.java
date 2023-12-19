@@ -27,7 +27,7 @@ public class Search {
 
         items = fileHandler.readJSONListProduct(filepath);
         for (Product item : items) {
-            if(item.getName().contains(name))
+            if(item.getName().toLowerCase().contains(name))
                 compatibleItem.add(item);
         }
 

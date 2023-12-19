@@ -1,6 +1,6 @@
 [
   {
-    "product" :   {
+    "product": {
       "id": 0,
       "name": "chocolates",
       "cost": 1.6,
@@ -8,7 +8,31 @@
       "description": "ok",
       "provider": "ok"
     },
-    "OnGroceryUnits" : 1,
-    "OnStorageUnits" : 23
+    "OnGroceryUnits": 1,
+    "OnStorageUnits": 23
+  },
+  {
+    "product": {
+      "id": 0,
+      "name": "ok",
+      "cost": 9.0,
+      "pvp": 10.0,
+      "description": "ok",
+      "provider": "ok"
+    },
+    "OnGroceryUnits": 0,
+    "OnStorageUnits": 0
+  },
+  {
+    "product": {
+      "id": 1,
+      "name": "ok",
+      "cost": 9.0,
+      "pvp": 10.0,
+      "description": "ok",
+      "provider": "ok"
+    },
+    "OnGroceryUnits": 0,
+    "OnStorageUnits": 2
   }
 ]

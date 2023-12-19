@@ -100,7 +100,7 @@ public class DiscountsMenu {
     }
 
     private void createDiscount() {
-        String discountName = Validations.noValidation("Enter the name of the discount: ");
+        String discountName = Validations.noValidationStr("Enter the name of the discount: ");
         float discountValue = Validations.validateDiscountInput("Enter the porcentage of the discount: ");
         String startDate = Validations.validateDate("Enter the start date of the discount (dd/MM/yyyy): ");
         String endDate = Validations.validateDate("Enter the end date of the discount (dd/MM/yyyy): ");

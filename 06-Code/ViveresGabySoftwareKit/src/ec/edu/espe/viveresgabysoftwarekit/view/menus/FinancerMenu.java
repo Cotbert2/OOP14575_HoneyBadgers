@@ -181,9 +181,9 @@ public class FinancerMenu {
             if (!verifyUnicCustomerId(id))
                 System.out.println("Customer ID already exists, try again");
         } while (!verifyUnicCustomerId(id));
-        String name = validations.noValidation("Enter customer name: ");
+        String name = validations.noValidationStr("Enter customer name: ");
         String email = validations.validateEmail("Enter customer email: ");
-        String address = validations.noValidation("Enter customer address: ");
+        String address = validations.noValidationStr("Enter customer address: ");
         String phone = validations.validatePhone("Enter customer phone: ");
 
         Customer newCustomer = new Customer(id, name, email, address, phone);
@@ -242,7 +242,7 @@ public class FinancerMenu {
         }
 
         System.out.println("0. Go Back");
-
+        System.out.println("option: ");
         int subOption = getOption();
 
         if (subOption == 0) {

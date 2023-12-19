@@ -72,7 +72,8 @@ public class Validations {
                 System.out.print(prompt);
                 String inputStr = scanner.nextLine();
                 input = Float.parseFloat(inputStr);
-                validInput = true;
+                if(input > 0)
+                    validInput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
@@ -283,7 +284,7 @@ public class Validations {
     }
 
 
-    public static String noValidation(String cad){
+    public static String noValidationStr(String cad){
         System.out.print(cad);
         String input = scanner.nextLine();
         return input;

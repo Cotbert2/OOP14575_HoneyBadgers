@@ -1,0 +1,5 @@
+-------------------------------
+|        Stock Report           |
+-------------------------------
+Id	Name	Grocery Units	Storage Units	Full storage
+0 		chocolates  		1 		23 		24

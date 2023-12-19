@@ -23,15 +23,16 @@ public class Stock {
                 subStock.setOnGroceryUnits(subStock.getOnGroceryUnits() + units);
             }
         }
+        saveStockFullList(fullStorages);
     }
 
-    public void addStockToWarehouse(int id) {
+    public void addStockToWarehouse(int id, int units) {
         for (SubStock subStock : fullStorages) {
             if (subStock.getProduct().getId() == id) {
-                subStock.setOnStorageUnits(subStock.getOnStorageUnits() + subStock.getOnGroceryUnits());
-                subStock.setOnGroceryUnits(0);
+                subStock.setOnStorageUnits(subStock.getOnStorageUnits() + units);
             }
         }
+        saveStockFullList(fullStorages);
     }
 
     public void generateStockReport() {
@@ -46,5 +47,19 @@ public class Stock {
         }
         Date date = new Date();
         fileHandler.saveTXTFile(report, Constans.OUTPUT_ROOT_FILE + "/StockReport_"+date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt" );
+    }
+
+    public List<SubStock> getStocks(){
+        return fileHandler.readJSONListStock(Constans.STOCK_FILE_NAME);
+    }
+
+    public void saveStocks(SubStock newStockItem){
+        List<SubStock> fullStock = fileHandler.readJSONListStock(Constans.STOCK_FILE_NAME);
+        fullStock.add(newStockItem);
+        fileHandler.saveJSONFile(fullStock, Constans.STOCK_FILE_NAME);
+    }
+
+    private void saveStockFullList(List<SubStock> stockStore){
+        fileHandler.saveJSONFile(stockStore, Constans.STOCK_FILE_NAME);
     }
 }
