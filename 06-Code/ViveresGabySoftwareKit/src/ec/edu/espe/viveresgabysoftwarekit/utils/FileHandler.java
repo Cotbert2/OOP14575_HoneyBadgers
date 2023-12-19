@@ -1,6 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
@@ -153,7 +154,7 @@ public class FileHandler<T> {
 
 
     public void saveJSONFile(List<T> templateList, String path) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(path)) {
             writer.write(gson.toJson(templateList));
             System.out.println("[+]Data Saved Succesfully.");

@@ -1,38 +1,50 @@
 [
   {
     "id": 1,
-    "description": "1 lb of potatoes",
     "name": "Potatoes",
-    "cost": 0.6,
-    "unitaryPrice": 0.7,
-    "category": "Vegetables",
+    "cost": 0.40,
+    "pvp": 0.60,
+    "description": "1 lb of potatoes",
     "provider": "Vegetables Inc."
   },
   {
     "id": 2,
-    "description": "1 lb of tomatoes",
     "name": "Tomatoes",
-    "cost": 0.8,
-    "unitaryPrice": 1,
-    "category": "Vegetables",
+    "cost": 0.45,
+    "pvp": 0.55,
+    "description": "1 lb of tomatoes",
     "provider": "Vegetables Inc."
   },
   {
     "id": 3,
-    "description": "500g chocolate bar",
     "name": "Chocolate",
-    "cost": 1.5,
-    "unitaryPrice": 2,
-    "category": "Sweets",
+    "cost": 0.5,
+    "pvp": 0.75,
+    "description": "500g chocolate bar",
     "provider": "Sweets Inc."
   },
   {
     "id": 4,
-    "description": "1 lb of chicken",
     "name": "Chicken",
-    "cost": 2,
-    "unitaryPrice": 2.5,
-    "category": "Meat",
+    "cost": 1.0,
+    "pvp": 1.2,
+    "description": "1 lb of chicken",
     "provider": "Meat Inc."
+  },
+  {
+    "id": 5,
+    "name": "Tampico",
+    "cost": 2.5,
+    "pvp": 3.0,
+    "description": "Drink",
+    "provider": "Sweets Inc."
+  },
+  {
+    "id": 6,
+    "name": "Salticas",
+    "cost": 0.45,
+    "pvp": 0.50,
+    "description": "Cookies",
+    "provider": "Sweets Inc."
   }
 ]
