@@ -487,5 +487,40 @@
     "discounts": [],
     "totalPrice": 0.0,
     "totalEarnings": 0.0
+  },
+  {
+    "id": 22,
+    "customer": {
+      "id": 1728912070,
+      "fullname": "Mateo García",
+      "email": "mateojgarciag@gmail.com",
+      "address": "Quito",
+      "phone": "0987654321"
+    },
+    "products": [
+      {
+        "product": {
+          "id": 3,
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc."
+        },
+        "units": 20
+      }
+    ],
+    "purchaseDay": "Dec 19, 2023, 3:08:25 AM",
+    "discounts": [
+      {
+        "id": 1,
+        "name": "Mothers Day Discount",
+        "percentage": 50.0,
+        "startDate": "Jan 1, 2017, 12:00:00 AM",
+        "endDate": "Jan 31, 2017, 12:00:00 AM"
+      }
+    ],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
   }
 ]

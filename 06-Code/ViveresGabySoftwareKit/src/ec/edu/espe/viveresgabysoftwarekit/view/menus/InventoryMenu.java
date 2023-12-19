@@ -12,15 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import ec.edu.espe.viveresgabysoftwarekit.utils.Validator;
-
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 
 public class InventoryMenu {
 
-    Validator validator = new Validator();
     Validations validations = new Validations();
 
     private static Scanner scanner = new Scanner(System.in);
@@ -187,7 +184,7 @@ public class InventoryMenu {
 
 
             System.out.print("Do you want to add more products? (y/n): ");
-            response = validator.getYNOption();
+            response = validations.getYNOption();
             if (response)
                 System.out.println("Adding new product...");
         } while (response);
@@ -208,7 +205,7 @@ public class InventoryMenu {
         }
         do {
             System.out.print("option: ");
-            opt = validator.getIntOption();
+            opt = validations.getIntOption();
             if (opt < 1 || opt > items.size())
                 System.out.println("Try again, invalid option");
 
@@ -359,7 +356,7 @@ public class InventoryMenu {
                 index++;
             }
         }
-        categoryList.remove(validator.getIntOption() - 1);
+        categoryList.remove(validations.getIntOption() - 1);
 
     }
     
@@ -509,7 +506,7 @@ public class InventoryMenu {
             System.out.println("1. Add stock to grocery");
             System.out.println("2. Add stock to storage");
             System.out.print("option: ");
-            opt = validator.getIntOption();
+            opt = validations.getIntOption();
             if (opt == 1 || opt == 2) {
                 System.out.println("Enter the id of the product: ");
                 id = Validations.obtainOptionInventory();

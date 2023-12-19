@@ -1,6 +1,7 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.utils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -337,5 +338,53 @@ public class Validations {
                 System.out.print("Invalid entry, try again: ");
             }
         }
+    }
+
+    public boolean getYNOption() {
+        String option = "";
+        while (true) {
+            option = scanner.nextLine();
+            if (option.equalsIgnoreCase("y")) {
+                return true;
+            } else if (option.equalsIgnoreCase("n")) {
+                return false;
+            } else {
+                System.out.print("Invalid option, try again: ");
+            }
+        }
+    }
+
+    public int getIntPositiveOption() {
+        boolean validNum = false;
+        int option = 0;
+        while (!validNum) {
+            try {
+                option = scanner.nextInt();
+                if (option < 0) {
+                    System.out.print("Invalid option, try again: ");
+                } else {
+                    validNum = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid option, try again: ");
+                scanner.nextLine();
+            }
+        }
+        return option;
+    }
+
+    public int getIntOption() {
+        boolean validNum = false;
+        int option = 0;
+        while (!validNum) {
+            try {
+                option = scanner.nextInt();
+                validNum = true;
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid option, try again: ");
+                scanner.nextLine();
+            }
+        }
+        return option;
     }
 }
