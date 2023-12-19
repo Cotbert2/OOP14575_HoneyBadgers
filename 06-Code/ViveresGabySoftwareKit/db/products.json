@@ -2,17 +2,9 @@
   {
     "id": 1,
     "name": "Potatoes",
-    "cost": 0.40,
-    "pvp": 0.60,
+    "cost": 0.4,
+    "pvp": 0.6,
     "description": "1 lb of potatoes",
-    "provider": "Vegetables Inc."
-  },
-  {
-    "id": 2,
-    "name": "Tomatoes",
-    "cost": 0.45,
-    "pvp": 0.55,
-    "description": "1 lb of tomatoes",
     "provider": "Vegetables Inc."
   },
   {
@@ -43,8 +35,16 @@
     "id": 6,
     "name": "Salticas",
     "cost": 0.45,
-    "pvp": 0.50,
+    "pvp": 0.5,
     "description": "Cookies",
     "provider": "Sweets Inc."
+  },
+  {
+    "id": 2,
+    "name": "Tomatoes",
+    "cost": 0.45,
+    "pvp": 0.55,
+    "description": "1 lb of tomatoes",
+    "provider": "Vegetable Inc."
   }
 ]

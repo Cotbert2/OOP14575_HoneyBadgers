@@ -31,7 +31,7 @@ public class Category {
                         "\t\t" + name + "\n" +
                         "*********************************" + "\n" +
                         "Description: " + description + "\n";
-        info += (products.isEmpty()) ? "No products in this category" : "Products in this category: " + products.size() + "\n";
+        info += (products == null) ? "No products in this category" : "Products in this category: " + products.size() + "\n";
         return info;
     }
 
@@ -70,17 +70,25 @@ public class Category {
 
 
     public void addProductToCategory(Product product) {
+        if(this.products == null){
+            this.products = new ArrayList<>();
+        }
+        this.products.add(product);
     }
 
-    public void deleteProductToCategory(Product product) {
-    }
+//    public void deleteProductToCategory(Product product) {
+//        if(this.products != null){
+//            this.products.remove(product);
+//        }
+//    }
 
 
     public void getCategoryProducts() {
     }
 
 
-    public void deleteCategory() {
+    public void deleteProductToCategory(Product product) {
+        products.remove(product);
     }
 
     ;

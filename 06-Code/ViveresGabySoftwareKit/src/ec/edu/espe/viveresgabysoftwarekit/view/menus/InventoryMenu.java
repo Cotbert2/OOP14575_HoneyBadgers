@@ -236,8 +236,10 @@ public class InventoryMenu {
             System.out.println("2. Find category");
             System.out.println("3. Add category");
             System.out.println("4. Delete category");
-            System.out.println("5. Back");
-            System.out.print("Choose an option (1-5): ");
+            System.out.println("5. Add product to category");
+            System.out.println("6. Delete product from category");
+            System.out.println("7. Back");
+            System.out.print("Choose an option (1-7): ");
 
             optionCategory = Validations.obtainOptionInventory();
 
@@ -255,13 +257,20 @@ public class InventoryMenu {
                     displayDeleteCategoryMenu();
                     break;
                 case 5:
+                    addProductToCategory();
+                    break;
+                case 6:
+                    deleteProductToCategory();
+                    break;
+                case 7:
                     System.out.println("Returning to the previous menu");
                     break;
                 default:
                     System.out.println("Invalid option, try again.");
             }
-        } while (optionCategory != 5);
-    }
+        } while (optionCategory != 7);
+}
+
 
     private void displaySeeAllCategoriesMenu() {
         updateCategory();
@@ -352,6 +361,69 @@ public class InventoryMenu {
         categoryList.remove(validator.getIntOption() - 1);
 
     }
+    
+    private void addProductToCategory() {
+        System.out.println("----- Add Product to Category -----");
+        displaySeeAllCategoriesMenu();
+
+        int categoryIndex = Validations.obtainOptionInventory() - 1;
+
+        if (categoryIndex < 0 || categoryIndex >= categoryList.size()) {
+            System.out.println("Invalid category index. Please choose a valid category.");
+            return;
+    }
+
+        Category selectedCategory = categoryList.get(categoryIndex);
+        displaySeeAllProductsMenu();
+
+        int productIndex = Validations.obtainOptionInventory() - 1;
+
+        if (productIndex < 0 || productIndex >= productList.size()) {
+            System.out.println("Invalid product index. Returning to the previous menu.");
+            return;
+    }
+
+        Product selectedProduct = productList.get(productIndex);
+
+        selectedCategory.addProductToCategory(selectedProduct);
+
+        fileHandlerCategory.saveJSONFile(categoryList, Constans.CATEGORIES_FILE_NAME);
+
+        System.out.println("Product '" + selectedProduct.getName() + "' added to category '" + selectedCategory.getName() + "' successfully.");
+        System.out.println("Returning to the previous menu");
+}
+
+    private void deleteProductToCategory() {
+        System.out.println("----- Delete Product from Category -----");
+        displaySeeAllCategoriesMenu();
+
+        int categoryIndex = Validations.obtainOptionInventory() - 1;
+
+        if (categoryIndex < 0 || categoryIndex >= categoryList.size()) {
+            System.out.println("Invalid category index. Insert again.");
+            return;
+        }
+
+        Category selectedCategory = categoryList.get(categoryIndex);
+        displaySeeAllProductsMenu();
+
+        int productIndex = Validations.obtainOptionInventory() - 1;
+
+        if (productIndex < 0 || productIndex >= productList.size()) {
+            System.out.println("Invalid product index. Returning to the previous menu.");
+            return;
+        }
+
+        Product selectedProduct = productList.get(productIndex);
+
+        selectedCategory.deleteProductToCategory(selectedProduct);
+
+        fileHandlerCategory.saveJSONFile(categoryList, Constans.CATEGORIES_FILE_NAME);
+
+        System.out.println("Product '" + selectedProduct.getName() + "' removed from category '" + selectedCategory.getName() + "' successfully.");
+        System.out.println("Returning to the previous menu");
+    }
+
 
     private void displayStockMenu() {
         int optionStock;
@@ -411,7 +483,8 @@ public class InventoryMenu {
         stock.generateStockReport();
         System.out.println("Generatirng report...");
     }
-
+    
+    
     private void updateProduct(){
         productList =  fileHandler.readJSONListProducts(Constans.PRODUCTS_FILE_NAME);
     }
