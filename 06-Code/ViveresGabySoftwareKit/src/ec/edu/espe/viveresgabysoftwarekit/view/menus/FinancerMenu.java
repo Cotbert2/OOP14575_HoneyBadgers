@@ -218,11 +218,11 @@ public class FinancerMenu {
         FinancerReport financerReport = new FinancerReport();
         financerReport.generateFinancerReport();
         System.out.println("[+] Financer Report Saved at ./output");
-        System.out.println("0. Go Back");
+        System.out.println("1. Go Back");
 
         int subOption = getOption();
 
-        if (subOption == 0) {
+        if (subOption == 1) {
             System.out.println("Going back to Financer Menu...");
         } else {
             System.out.println("Invalid option, try again");

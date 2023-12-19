@@ -70,17 +70,25 @@ public class Category {
 
 
     public void addProductToCategory(Product product) {
+        if(this.products == null){
+            this.products = new ArrayList<>();
+        }
+        this.products.add(product);
     }
 
-    public void deleteProductToCategory(Product product) {
-    }
+//    public void deleteProductToCategory(Product product) {
+//        if(this.products != null){
+//            this.products.remove(product);
+//        }
+//    }
 
 
     public void getCategoryProducts() {
     }
 
 
-    public void deleteCategory() {
+    public void deleteProductToCategory(Product product) {
+        products.remove(product);
     }
 
     ;

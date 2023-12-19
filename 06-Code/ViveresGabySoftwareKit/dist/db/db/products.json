@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "description": "1 lb of potatoes",
+    "name": "Potatoes",
+    "cost": 0.6,
+    "unitaryPrice": 0.7,
+    "category": "Vegetables",
+    "provider": "Vegetables Inc."
+  },
+  {
+    "id": 2,
+    "description": "1 lb of tomatoes",
+    "name": "Tomatoes",
+    "cost": 0.8,
+    "unitaryPrice": 1,
+    "category": "Vegetables",
+    "provider": "Vegetables Inc."
+  },
+  {
+    "id": 3,
+    "description": "500g chocolate bar",
+    "name": "Chocolate",
+    "cost": 1.5,
+    "unitaryPrice": 2,
+    "category": "Sweets",
+    "provider": "Sweets Inc."
+  },
+  {
+    "id": 4,
+    "description": "1 lb of chicken",
+    "name": "Chicken",
+    "cost": 2,
+    "unitaryPrice": 2.5,
+    "category": "Meat",
+    "provider": "Meat Inc."
+  }
+]

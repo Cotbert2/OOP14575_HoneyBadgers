@@ -16,7 +16,7 @@ public class Validations {
         while (true) {
             try {
                 int input = Integer.parseInt(scanner.nextLine());
-                if (input >= 1 && input <= 5) {
+                if (input >= 1 && input <= 7) {
                     return input;
                 } else {
                     System.out.print("Invalid option, try again: ");
