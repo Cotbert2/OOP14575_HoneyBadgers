@@ -76,12 +76,6 @@ public class Category {
         this.products.add(product);
     }
 
-//    public void deleteProductToCategory(Product product) {
-//        if(this.products != null){
-//            this.products.remove(product);
-//        }
-//    }
-
 
     public void getCategoryProducts() {
     }
