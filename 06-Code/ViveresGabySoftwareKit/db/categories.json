@@ -18,7 +18,16 @@
     "id": 2,
     "name": "verduras",
     "description": "verduras frescas",
-    "products": []
+    "products": [
+      {
+        "id": 2,
+        "name": "chocolate",
+        "cost": 2.200000047683716,
+        "pvp": 3.200000047683716,
+        "description": "ok",
+        "provider": "ok"
+      }
+    ]
   },
   {
     "id": 3,

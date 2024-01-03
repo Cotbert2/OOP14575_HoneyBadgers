@@ -24,22 +24,6 @@ import java.util.List;
 
 public class FileHandler<T> {
 
-
-
-    public List<T> readJSONListTax(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Tax>>() {
-            }.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return objectList;
-    }
-
     public List<T> readJSONListGeneric(String path, Class<T> classTarget) {
         List<T> objectList = new ArrayList<>();
 
@@ -81,6 +65,10 @@ public class FileHandler<T> {
         }
     }
 
+
+    public String getDesktopPath() {
+        return System.getProperty("user.home") + "/Desktop";
+    }
 
     private static class ListParameterizedType implements ParameterizedType {
         private final Type type;

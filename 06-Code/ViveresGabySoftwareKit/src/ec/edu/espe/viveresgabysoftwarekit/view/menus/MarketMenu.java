@@ -62,12 +62,12 @@ public class MarketMenu {
 
     }
 
-    public static int newSellMenu() throws MessagingException {
+    public static void newSellMenu() throws MessagingException {
         int option;
         do {
             System.out.println("----- New Sell Menu -----");
             System.out.println("1) Add Product to the kart");
-            System.out.println("2) Delete Product");
+            System.out.println("2) Delete Product from the kart");
             System.out.println("3) Next");
             System.out.println("4) Back");
             option = validations.getIntOption("option: ");
@@ -108,7 +108,6 @@ public class MarketMenu {
                     System.out.println("Try again, invalid option");
             }
         } while (option != 4);
-        return option;
     }
 
     public static void newSellProductAdd() {
@@ -150,15 +149,15 @@ public class MarketMenu {
         if (totalUnits == 0) {
             System.out.println("Sorry, there is no stock of that product");
             return;
-        }else {
+        } else {
             System.out.println("There are " + totalUnits + " units in stock");
-            do{
-                quantity =  Validations.getIntPositiveOption("quantity: ");
-                if(quantity > totalUnits)
+            do {
+                quantity = Validations.getIntPositiveOption("quantity: ");
+                if (quantity > totalUnits)
                     System.out.println("The quantity is greater than the stock, try again");
-            }while(quantity > totalUnits);
+            } while (quantity > totalUnits);
 
-            if(quantity > groceryUnits)
+            if (quantity > groceryUnits)
                 System.out.print("The quantity is greater than the grocery stock, the product will be taken from the storage");
 
             stock.stockHandlerBySell(items.get(opt - 1).getId(), quantity);
@@ -167,13 +166,13 @@ public class MarketMenu {
         kart.add(new ProductItem(items.get(opt - 1), quantity));
     }
 
-    public static int newSellCustomer() throws MessagingException {
+    public static void newSellCustomer() throws MessagingException {
         System.out.println("----- New Sell-Customer -----");
         System.out.println("1) Data");
         System.out.println("2) Final Customer");
         System.out.println("3) Back");
 
-        int option = 0;
+        int option;
         do {
             option = validations.getIntOption("option: ");
             switch (option) {
@@ -190,6 +189,8 @@ public class MarketMenu {
                             System.out.println("1) Search Again");
                             System.out.println("2) Back");
                             opt = validations.getIntOption("option: ");
+                            if(opt  == 2)
+                                return;
                         } else {
                             int index = 0;
                             for (Customer item : items) {
@@ -206,19 +207,15 @@ public class MarketMenu {
                         }
                     } while (opt != 2);
                     customer = items.get(opt - 1);
-                     transaction = Market.transactionDefinition(kart, transaction, customer);
-                    //transactionDefinition();
+                    transaction = Market.transactionDefinition(kart, transaction, customer);
                     discountsInterface();
                     Market.printSummary(customer, transaction, kart, discountsToAplly);
-                    //printSummary();
                     break;
                 case 2:
                     System.out.println("You selected Final Customer");
                     transaction = Market.transactionDefinition(kart, transaction, customer);
-                    //transactionDefinition();
                     discountsInterface();
                     Market.printSummary(customer, transaction, kart, discountsToAplly);
-                    //printSummary();
                     break;
                 case 3:
                     System.out.println("You selected Back");
@@ -227,7 +224,6 @@ public class MarketMenu {
                     System.out.println("Try again, invalid option");
             }
         } while (option < 1 || option > 4);
-        return option;
     }
 
     public static void deleteKartItem() {

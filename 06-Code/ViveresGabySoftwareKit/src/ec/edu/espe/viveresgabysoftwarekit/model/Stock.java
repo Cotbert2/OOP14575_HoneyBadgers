@@ -41,12 +41,14 @@ public class Stock {
         report += "-------------------------------\n";
         report += "Id" + "\tName" + "\tGrocery Units"  + "\tStorage Units" + "\tFull storage\n";
         for (SubStock subStock : fullStorages) {
-            System.out.println(subStock.getOnGroceryUnits());
-            System.out.println(subStock.getOnGroceryUnits());
             report += subStock.getProduct().getId() + " \t\t"  +subStock.getProduct().getName() + " " + " \t\t" + subStock.getOnGroceryUnits() + " \t\t" + subStock.getOnStorageUnits() + " \t\t" + (subStock.getOnStorageUnits() + subStock.getOnGroceryUnits()) +"\n";
         }
         Date date = new Date();
-        fileHandler.saveTXTFile(report, Constans.OUTPUT_ROOT_FILE + "/StockReport_"+date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt" );
+        fileHandler.saveTXTFile(report, fileHandler.getDesktopPath() + "/StockReport_"+date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt" );
+
+        System.out.println("-----------------------------------------");
+        System.out.println("|   [+] Stock Report Saved On Desktop   |");
+        System.out.println("-----------------------------------------");
     }
 
     public List<SubStock> getStocks(){

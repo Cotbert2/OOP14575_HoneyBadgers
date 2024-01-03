@@ -47,8 +47,9 @@ public class EmailHandler {
 
 
         } catch (AddressException e) {
-            e.getCause();
+            System.out.println("[-]Cannot send email: Invalid email address");
         } catch (MessagingException e) {
+            System.out.println("[-]Cannot send email: Internal messaging error");
             e.printStackTrace();
         }
 
@@ -69,7 +70,7 @@ public class EmailHandler {
             Transport.send(email);
             System.out.println("The email was successfully send!");
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            System.out.println("[-]Cannot send email: Internal messaging error");
         }
     }
 }

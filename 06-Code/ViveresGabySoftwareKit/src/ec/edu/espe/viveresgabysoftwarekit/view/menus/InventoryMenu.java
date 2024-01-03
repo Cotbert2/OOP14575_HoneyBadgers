@@ -114,14 +114,7 @@ public class InventoryMenu {
             }
         }
 
-        System.out.println("Press 'B' to go back to the previous menu.");
-        String userInput = scanner.nextLine();
-
-        if (userInput.equalsIgnoreCase("B")) {
-            System.out.println("Returning to the previous menu");
-        } else {
-            System.out.println("Invalid option, returning to the previous menu");
-        }
+        validations.waitForEnter();
     }
 
     private void displayFindProductMenu() {
@@ -150,14 +143,7 @@ public class InventoryMenu {
             System.out.println("No products found with the keyword: " + searchKeyword);
         }
 
-        System.out.println("Press 'B' to go back to the previous menu.");
-        String userInput = scanner.nextLine();
-
-        if (userInput.equalsIgnoreCase("B")) {
-            System.out.println("Returning to the previous menu");
-        } else {
-            System.out.println("Invalid option, returning to the previous menu");
-        }
+        validations.waitForEnter();
     }
 
     private void displayAddProductMenu() {
@@ -198,10 +184,14 @@ public class InventoryMenu {
         System.out.println("----- Edit Product -----");
         int opt;
         List<Product> items;
-        System.out.print("name: ");
-        String productNameToFind = scanner.nextLine();
+        String productNameToFind = Validations.getNoValidationLongStr("name: ");
+
         items = finder.findItem(Constans.PRODUCTS_FILE_NAME, productNameToFind.toLowerCase());
 
+        if(items.isEmpty()) {
+            System.out.println("Sorry, there is no product with that name");
+            return;
+        }
         int index = 0;
         for (Product item : items) {
             System.out.println((index + 1) + ") \n" + item.UIPrint());
@@ -293,14 +283,7 @@ public class InventoryMenu {
             }
         }
 
-        System.out.println("Press 'B' to go back to the previous menu.");
-        String userInput = scanner.nextLine();
-
-        if (userInput.equalsIgnoreCase("B")) {
-            System.out.println("Returning to the previous menu");
-        } else {
-            System.out.println("Invalid option, returning to the previous menu");
-        }
+        validations.waitForEnter();
     }
 
     private void displayFindCategoryMenu() {
@@ -325,14 +308,7 @@ public class InventoryMenu {
             System.out.println("No categories found with the keyword: " + searchKeyword);
         }
 
-        System.out.println("Press 'B' to go back to the previous menu.");
-        String userInput = scanner.nextLine();
-
-        if (userInput.equalsIgnoreCase("B")) {
-            System.out.println("Returning to the previous menu");
-        } else {
-            System.out.println("Invalid option, returning to the previous menu");
-        }
+        validations.waitForEnter();
     }
 
     private void displayAddCategoryMenu() {
@@ -493,20 +469,13 @@ public class InventoryMenu {
             }
         }
 
-        System.out.println("Press 'B' to go back to the previous menu.");
-        String userInput = scanner.nextLine();
-
-        if (userInput.equalsIgnoreCase("B")) {
-            System.out.println("Returning to the previous menu");
-        } else {
-            System.out.println("Invalid option, returning to the previous menu");
-        }
+        validations.waitForEnter();
     }
 
     private void generateReport() {
         Stock stock = new Stock();
-        stock.generateStockReport();
         System.out.println("Generatirng report...");
+        stock.generateStockReport();
     }
 
     public void addStockToProduct() {

@@ -53,7 +53,7 @@ public class FinancerReport {
 
         FileHandler<FinancerReport> fileHandler = new FileHandler<>();
         Date date = new Date();
-        fileHandler.saveTXTFile(report, Constans.OUTPUT_ROOT_FILE + "/FinancerReport" +date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt");
+        fileHandler.saveTXTFile(report, fileHandler.getDesktopPath() + "/FinancerReport" +date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt");
     }
 
 }

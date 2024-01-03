@@ -218,16 +218,11 @@ public class FinancerMenu {
         System.out.println("---Financer  Menu---");
         FinancerReport financerReport = new FinancerReport();
         financerReport.generateFinancerReport();
-        System.out.println("[+] Financer Report Saved at ./output");
-        System.out.println("1. Go Back");
+        System.out.println("-----------------------------------------");
+        System.out.println("| [+] Financer Report Saved On Desktop  |");
+        System.out.println("-----------------------------------------");
 
-        int subOption = getOption();
-
-        if (subOption == 1) {
-            System.out.println("Going back to Financer Menu...");
-        } else {
-            System.out.println("Invalid option, try again");
-        }
+        Validations.waitForEnter();
     }
 
 
@@ -235,22 +230,13 @@ public class FinancerMenu {
         System.out.println("---Financer - Update Iva Menu---");
         Scrapper scrapper = new Scrapper();
         float ivaUpdate = scrapper.updateIva();
-        List<Tax> taxes =  fileHandlerTaxes.readJSONListTax(Constans.TAXES_FILE_NAME);
+        List<Tax> taxes =  fileHandlerTaxes.readJSONListGeneric(Constans.TAXES_FILE_NAME, Tax.class);
 
         for(Tax tax: taxes){
             if(tax.getId() == 1)
                 tax.setPorcent((int) ivaUpdate);
         }
-
-        System.out.println("0. Go Back");
-        System.out.println("option: ");
-        int subOption = getOption();
-
-        if (subOption == 0) {
-            System.out.println("Going back to Financer Menu...");
-        } else {
-            System.out.println("Invalid option, try again");
-        }
+        Validations.waitForEnter();
     }
 
     public boolean verifyUnicCustomerId(int idToVerify) {

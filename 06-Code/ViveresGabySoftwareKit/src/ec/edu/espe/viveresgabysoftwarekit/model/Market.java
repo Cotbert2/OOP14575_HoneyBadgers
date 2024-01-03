@@ -1,9 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
-import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
-import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
 import javax.mail.MessagingException;
@@ -96,10 +93,7 @@ public class Market {
         Tax taxes = new Tax(0, null, 0);
         float porcentualFactor = taxes.getAllTaxes().getLast().getPorcentFloat();
 
-        /*
-        FileHandler<Tax> fileHandlerTaxes = new FileHandler<>();
-        float porcentualFactor = fileHandlerTaxes.readJSONListTax(Constans.TAXES_FILE_NAME).getLast().getPorcentFloat();
-         */
+
 
         dataToGeneratebill += "\n[Taxes] IVA 12%: " + (subfinalPrice * porcentualFactor) + "\n";
         dataToGeneratebill += "Final Price: " + (subfinalPrice * (porcentualFactor + 1)) + "\n";
@@ -108,15 +102,7 @@ public class Market {
 
         bill.saveCurrentBill();
 
-        /*
 
-        FileHandler<Bill> fileHandler = new FileHandler<>();
-        List<Bill> bills = fileHandler.readJSONListBills(Constans.BILLS_FILE_NAME);
-        bills.add(bill);
-        fileHandler.saveJSONFile(bills, Constans.BILLS_FILE_NAME);
-
-
-    */
 
 
         dataToGeneratebill += "\n-------------------------------------------------------";

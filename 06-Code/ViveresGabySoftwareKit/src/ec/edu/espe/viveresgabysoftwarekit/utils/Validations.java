@@ -229,7 +229,7 @@ public class Validations {
         while (!validNum) {
             try {
                 option = scanner.nextInt();
-                if (option < 0) {
+                if (option <= 0) {
                     System.out.print("Invalid option, try again: ");
                 } else {
                     validNum = true;
@@ -258,4 +258,8 @@ public class Validations {
         return option;
     }
 
+    public static void waitForEnter() {
+        System.out.println("Press enter to continue...");
+        scanner.nextLine();
+    }
 }

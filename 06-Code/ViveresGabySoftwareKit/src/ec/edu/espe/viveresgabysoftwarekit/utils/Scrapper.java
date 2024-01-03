@@ -4,6 +4,7 @@ import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
 import java.io.IOException;
 
 /**
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class Scrapper {
     float IVA = 12f;
+
     public float updateIva() {
         String url = Constans.IVA_URL;
 
@@ -21,10 +23,10 @@ public class Scrapper {
             String ivaComponent = container.text().substring(34, 36);
             IVA = Float.parseFloat(ivaComponent);
             System.out.println("Iva: " + IVA);
-            System.out.println("Scrapped from: " + url + "Successfully");
+            System.out.println("Scrapped from: " + url + " Successfully");
         } catch (
                 IOException e) {
-            e.printStackTrace();
+            System.out.println("[-] Something went wrong while scrapping the IVA from: " + url );
         }
         return IVA;
     }
