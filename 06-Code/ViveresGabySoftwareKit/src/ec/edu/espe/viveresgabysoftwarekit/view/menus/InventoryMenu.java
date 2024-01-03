@@ -164,8 +164,7 @@ public class InventoryMenu {
             String provider = Validations.getNoValidationStr("Enter the provider of the product: ");
             Product newProduct = new Product(productName, cost, pvp, description, provider);
 
-            //productList.add(newProduct);
-            //fileHandler.saveJSONFile(productList, Constans.PRODUCTS_FILE_NAME);
+
 
             newProduct.saveProduct(newProduct);
 
@@ -204,8 +203,6 @@ public class InventoryMenu {
 
         } while (opt < 1 || opt > items.size());
 
-        //productList.remove(finder.findItemPosition(Constans.PRODUCTS_FILE_NAME, items.get(opt - 1).getId()));
-
         String productName = Validations.getNoValidationStr("Enter the name of the product (" + items.get(opt - 1).getName() + "): ");
         float cost = Validations.validateFloatInput("Enter the cost of the product (" + items.get(opt - 1).getCost() + "): ");
         float pvp = Validations.validateFloatInput("Enter the PVP of the product (" + items.get(opt - 1).getPvp() + "): ");
@@ -217,11 +214,7 @@ public class InventoryMenu {
         editedProduct.editProduct(items.get(opt - 1).getId(), editedProduct);
 
 
-        //productList.add(editedProduct);
-        //fileHandler.saveJSONFile(productList, Constans.PRODUCTS_FILE_NAME);
-        //System.out.println("[+] Product edited successfully.");
 
-        //TODO: Edit Stock information
 
 
     }

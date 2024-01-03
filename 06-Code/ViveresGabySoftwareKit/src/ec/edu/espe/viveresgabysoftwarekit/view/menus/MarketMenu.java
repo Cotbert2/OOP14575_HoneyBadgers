@@ -34,7 +34,6 @@ public class MarketMenu {
 
     static List<Discount> discountsToAplly = new ArrayList<>();
 
-    //TODO: Delete constructor
     public MarketMenu() throws MessagingException {
     }
 
@@ -140,7 +139,6 @@ public class MarketMenu {
             }
         } while (opt != 2);
 
-        //TODO: Validate quantity
         Stock stock = new Stock();
         int totalUnits = stock.getStockUnits(items.get(opt - 1).getId());
         int groceryUnits = stock.getGroceryUnits(items.get(opt - 1).getId());
@@ -210,12 +208,14 @@ public class MarketMenu {
                     transaction = Market.transactionDefinition(kart, transaction, customer);
                     discountsInterface();
                     Market.printSummary(customer, transaction, kart, discountsToAplly);
+                    kart.clear();
                     break;
                 case 2:
                     System.out.println("You selected Final Customer");
                     transaction = Market.transactionDefinition(kart, transaction, customer);
                     discountsInterface();
                     Market.printSummary(customer, transaction, kart, discountsToAplly);
+                    kart.clear();
                     break;
                 case 3:
                     System.out.println("You selected Back");
