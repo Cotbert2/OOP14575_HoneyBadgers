@@ -100,12 +100,19 @@ public class DiscountsMenu {
     }
 
     private void createDiscount() {
-        String discountName = Validations.getNoValidationStr("Enter the name of the discount: ");
+        String discountName = Validations.getNoValidationLongStr("Enter the name of the discount: ");
         float discountValue = Validations.validateDiscountInput("Enter the porcentage of the discount: ");
-        String startDate = Validations.validateDate("Enter the start date of the discount (dd/MM/yyyy): ");
-        String endDate = Validations.validateDate("Enter the end date of the discount (dd/MM/yyyy): ");
-        Date startDateFormated = new Date(startDate);
-        Date endDateFormated = new Date(endDate);
+        Date startDateFormated;
+        Date endDateFormated;
+        Date today = new Date();
+        do {
+            String startDate = Validations.validateDate("Enter the start date of the discount (dd/MM/yyyy): ");
+            String endDate = Validations.validateDate("Enter the end date of the discount (dd/MM/yyyy): ");
+            startDateFormated = new Date(startDate);
+            endDateFormated = new Date(endDate);
+            if(startDateFormated.after(endDateFormated) || !startDateFormated.after(today) || !endDateFormated.after(today))
+                System.out.println("Invalid dates, try again.");
+        }while (startDateFormated.after(endDateFormated) || !startDateFormated.after(today) || !endDateFormated.after(today));
         int discountId = getLastIdDiscount() + 1;
         Discount newDiscount = new Discount(discountId,discountName, discountValue, startDateFormated, endDateFormated);
         System.out.println("New discount created successfully: ");
