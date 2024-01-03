@@ -19,9 +19,8 @@ public class Transaction {
     private float ammount;
     private Customer customer;
 
-    List<Transaction> transaction = new ArrayList<>();
     public Transaction( boolean isCashPayment, float ammount, Customer customer) {
-        updateTransaction();
+        List<Transaction> transaction =  updateTransaction();
         if(transaction.isEmpty())
             this.id = 1;
         else
@@ -99,14 +98,13 @@ public class Transaction {
 
     public void saveTransaction(){
         FileHandler<Transaction> fileHandler = new FileHandler();
-        List<Transaction> transacation= new ArrayList<>();
-        updateTransaction();
-        transacation.add(this);
-        fileHandler.saveJSONFile(transacation, Constans.TRANSACTION_FILE);
+        List<Transaction> transactions= updateTransaction();
+        transactions.add(this);
+        fileHandler.saveJSONFile(transactions, Constans.TRANSACTION_FILE);
     }
 
-    public void updateTransaction(){
+    public  List<Transaction> updateTransaction(){
         FileHandler<Transaction> fileHandler = new FileHandler();
-        transaction = fileHandler.readJSONListTransaction(Constans.TRANSACTION_FILE);
+        return fileHandler.readJSONListGeneric(Constans.TRANSACTION_FILE, Transaction.class);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Validations {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static int obtainOptionInventory() {
         while (true) {
@@ -73,7 +73,7 @@ public class Validations {
                 System.out.print(prompt);
                 String inputStr = scanner.nextLine();
                 input = Float.parseFloat(inputStr);
-                if(input > 0)
+                if (input > 0)
                     validInput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
@@ -140,158 +140,24 @@ public class Validations {
         return input;
     }
 
-    public static int validateSoldQuantity(String productName, int currentStock) {
-        int input = 0;
-        boolean validInput = false;
-
-        do {
-            try {
-                System.out.print("Enter the quantity sold for product " + productName + " (1-" + currentStock + "): ");
-                String inputStr = scanner.nextLine();
-                input = Integer.parseInt(inputStr);
-
-                if (input >= 1 && input <= currentStock) {
-                    validInput = true;
-                } else {
-                    System.out.println("Invalid input. Please enter a valid quantity (1-" + currentStock + ").");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
-            }
-        } while (!validInput);
-
-        return input;
-    }
-
-    public static String validateProductName(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String input = scanner.nextLine();
-
-                if (!input.isEmpty() && input.matches("[a-zA-Z\\s]{3,}")) {
-                    return input;
-                } else {
-                    System.out.println("Invalid input, please enter a non-empty string with more than 3 letters.");
-                }
-            } catch (Exception e) {
-                System.out.print("Invalid entry, try again: ");
-            }
-        }
-    }
-
-    public static String validateDescription(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String input = scanner.nextLine();
-
-                if (!input.isEmpty() && input.matches("[a-zA-Z\\s]{3,}")) {
-                    return input;
-                } else {
-                    System.out.println("Invalid input, please enter a non-empty string with more than 3 letters.");
-                }
-            } catch (Exception e) {
-                System.out.print("Invalid entry, try again: ");
-            }
-        }
-    }
-
-    public static String validateProvider(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String input = scanner.nextLine();
-
-                if (!input.isEmpty() && input.matches("[a-zA-Z\\s]{3,}")) {
-                    return input;
-                } else {
-                    System.out.println("Invalid input, please enter a non-empty string with more than 3 letters.");
-                }
-            } catch (Exception e) {
-                System.out.print("Invalid entry, try again: ");
-            }
-        }
-    }
-
-    public static String validateCategory(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String input = scanner.nextLine();
-
-                if (!input.isEmpty() && input.matches("[a-zA-Z\\s]{3,}")) {
-                    return input;
-                } else {
-                    System.out.println("Invalid input, please enter a non-empty string with more than 3 letters.");
-                }
-            } catch (Exception e) {
-                System.out.print("Invalid entry, try again: ");
-            }
-        }
-    }
-
-    public static double validateDoubleDiscountInput(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String inputStr = scanner.nextLine();
-                double input = Double.parseDouble(inputStr);
-
-                if (input >= 2.00 && input <= 8.00) {
-                    return input;
-                } else {
-                    System.out.print("Invalid discount value, try again (between 2.00 and 8.00): ");
-                }
-            } catch (NumberFormatException e) {
-                System.out.print("Invalid entry, try again: ");
-            }
-        }
-    }
-
-    public static int validateQuantityInput(String prompt, int maxQuantity) {
-        int input = 0;
-        boolean validInput = false;
-
-        do {
-            try {
-                System.out.print(prompt);
-                String inputStr = scanner.nextLine();
-                input = Integer.parseInt(inputStr);
-
-                if (input >= 1 && input <= maxQuantity) {
-                    validInput = true;
-                } else {
-                    System.out.println("Invalid input. Please enter a valid quantity (1-" + maxQuantity + ").");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
-            }
-        } while (!validInput);
-
-        return input;
-    }
-
-    public static int validateProductQuantity() {
-        while (true) {
-            try {
-                System.out.print("Enter the quantity: ");
-                int input = Integer.parseInt(scanner.nextLine());
-                return input;
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
-            }
-        }
-    }
-
-
-    public static String noValidationStr(String cad){
+    public static String getNoValidationStr(String cad) {
         System.out.print(cad);
-        String input = scanner.nextLine();
-        return input;
+        scanner.nextLine();
+        return scanner.nextLine();
     }
 
-    public static String validateDate(String prompt){
+    public static String getNoValidationLongStr(String cad) {
+        String input;
+        do {
+            System.out.print(cad);
+            input = scanner.nextLine();
+            if (input.isEmpty())
+                System.out.println("Invalid input, please try again.");
+        }while(input.isEmpty());
+        return  input;
+    }
+
+    public static String validateDate(String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
@@ -323,6 +189,7 @@ public class Validations {
             }
         }
     }
+
     public String validatePhone(String prompt) {
         while (true) {
             try {
@@ -340,7 +207,8 @@ public class Validations {
         }
     }
 
-    public boolean getYNOption() {
+    public boolean getYNOption(String prompt) {
+        System.out.print(prompt);
         String option = "";
         while (true) {
             option = scanner.nextLine();
@@ -354,7 +222,8 @@ public class Validations {
         }
     }
 
-    public int getIntPositiveOption() {
+    public static int getIntPositiveOption(String prompt) {
+        System.out.print(prompt);
         boolean validNum = false;
         int option = 0;
         while (!validNum) {
@@ -373,7 +242,8 @@ public class Validations {
         return option;
     }
 
-    public int getIntOption() {
+    public int getIntOption(String prompt) {
+        System.out.print(prompt);
         boolean validNum = false;
         int option = 0;
         while (!validNum) {
@@ -387,4 +257,5 @@ public class Validations {
         }
         return option;
     }
+
 }

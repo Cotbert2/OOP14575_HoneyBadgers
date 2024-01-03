@@ -43,4 +43,7 @@ public class SubStock {
     public String UIPrint(){
         return (product.getId() + "\t" + product.getName() + "\t" + OnGroceryUnits + "\t" + OnStorageUnits + "\t" + (OnGroceryUnits + OnStorageUnits) + "\n");
     }
+
+
+
 }

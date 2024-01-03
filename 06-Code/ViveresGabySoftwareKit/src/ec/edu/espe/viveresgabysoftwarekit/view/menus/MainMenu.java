@@ -10,11 +10,11 @@ public class MainMenu {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private static Market market;
+    private static MarketMenu marketMenu;
 
     static {
         try {
-            market = new Market();
+            marketMenu = new MarketMenu();
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
@@ -36,8 +36,8 @@ public class MainMenu {
             switch (option) {
                 case 1:
                     System.out.println("-------------------");
-                    System.out.println("You Selected Market");
-                    int opt = market.marketMainMenu();
+                    System.out.println("You Selected MarketMenu");
+                    int opt = marketMenu.marketMainMenu();
 
                     break;
                 case 2:

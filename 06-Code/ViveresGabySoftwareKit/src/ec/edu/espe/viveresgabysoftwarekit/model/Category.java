@@ -1,7 +1,11 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
@@ -69,11 +73,24 @@ public class Category {
     }
 
 
-    public void addProductToCategory(Product product) {
-        if(this.products == null){
-            this.products = new ArrayList<>();
-        }
-        this.products.add(product);
+    public void addProductToCategory(int id, Product product) {
+        List<Category> categories = getCategories();
+        categories.forEach(category -> {
+            if (category.getId() == id) {
+                category.getProducts().forEach(
+                        product1 -> {
+                            if (product1.getId() == product.getId()) {
+                                System.out.println("[-] Product already in category");
+                                return;
+                            }
+                        }
+                );
+                category.getProducts().add(product);
+                System.out.println("[+] Product added to category");
+            }
+        });
+        saveFullCategoriesList(categories);
+
     }
 
 
@@ -85,5 +102,23 @@ public class Category {
         products.remove(product);
     }
 
-    ;
+
+    public void saveFullCategoriesList(List<Category> categories) {
+        FileHandler<Category> fileHandler = new FileHandler<>();
+        fileHandler.saveJSONFile(categories, Constans.CATEGORIES_FILE_NAME);
+    }
+
+    public List<Category> getCategories() {
+        FileHandler<Category> fileHandler = new FileHandler<>();
+        return fileHandler.readJSONListGeneric(Constans.CATEGORIES_FILE_NAME, Category.class);
+    }
+
+    public void saveCategory(Category category) {
+        FileHandler<Category> fileHandler = new FileHandler<>();
+        List<Category> categories = getCategories();
+        categories.add(category);
+        fileHandler.saveJSONFile(categories, Constans.CATEGORIES_FILE_NAME);
+    }
+
 }
+

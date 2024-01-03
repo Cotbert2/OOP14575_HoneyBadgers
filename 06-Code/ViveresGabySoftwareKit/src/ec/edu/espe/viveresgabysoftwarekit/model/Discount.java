@@ -85,7 +85,7 @@ public class Discount {
     public List<Discount> getAllDiscounts() {
         List<Discount> discounts;
         FileHandler<Discount> fileHandler = new FileHandler<>();
-        discounts = fileHandler.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
+        discounts = fileHandler.readJSONListGeneric(Constans.DISCOUNTS_FILE_NAME, Discount.class);
         return discounts;
     }
 }

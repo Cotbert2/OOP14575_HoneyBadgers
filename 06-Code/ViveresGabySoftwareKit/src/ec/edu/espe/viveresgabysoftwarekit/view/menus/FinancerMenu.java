@@ -182,9 +182,9 @@ public class FinancerMenu {
             if (!verifyUnicCustomerId(id))
                 System.out.println("Customer ID already exists, try again");
         } while (!verifyUnicCustomerId(id));
-        String name = validations.noValidationStr("Enter customer name: ");
+        String name = validations.getNoValidationStr("Enter customer name: ");
         String email = validations.validateEmail("Enter customer email: ");
-        String address = validations.noValidationStr("Enter customer address: ");
+        String address = validations.getNoValidationStr("Enter customer address: ");
         String phone = validations.validatePhone("Enter customer phone: ");
 
         Customer newCustomer = new Customer(id, name, email, address, phone);
@@ -264,10 +264,10 @@ public class FinancerMenu {
     }
 
     public void updateBillsInfo() {
-        allBills = fileHandlerBills.readJSONListBills(Constans.BILLS_FILE_NAME);
+        allBills = fileHandlerBills.readJSONListGeneric(Constans.BILLS_FILE_NAME, Bill.class);
     }
 
     public void updateCustomersInfor() {
-        customers = fileHandlerCustomers.readJSONListCustomers(Constans.CUSTOMERS_FILE_NAME);
+        customers = fileHandlerCustomers.readJSONListGeneric(Constans.CUSTOMERS_FILE_NAME, Customer.class);
     }
 }

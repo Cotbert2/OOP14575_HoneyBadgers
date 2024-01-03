@@ -11,8 +11,7 @@ public class ConfirmDialog {
         System.out.println("-----------------------\n"
                 + message + "\n"
                 + "-----------------------\n");
-        System.out.print("y/n");
-        return validations.getYNOption();
+        return validations.getYNOption("y/n");
 
 
     }

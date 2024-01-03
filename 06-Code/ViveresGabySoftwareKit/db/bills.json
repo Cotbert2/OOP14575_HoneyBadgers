@@ -522,5 +522,139 @@
     ],
     "totalPrice": 0.0,
     "totalEarnings": 0.0
+  },
+  {
+    "id": 23,
+    "customer": {
+      "id": 1728912070,
+      "fullname": "Mateo García",
+      "email": "mateojgarciag@gmail.com",
+      "address": "Quito",
+      "phone": "0987654321"
+    },
+    "products": [
+      {
+        "product": {
+          "id": 3,
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc."
+        },
+        "units": 2
+      }
+    ],
+    "purchaseDay": "Dec 30, 2023, 12:12:27 PM",
+    "discounts": [],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
+  },
+  {
+    "id": 24,
+    "products": [
+      {
+        "product": {
+          "id": 3,
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc."
+        },
+        "units": 2
+      }
+    ],
+    "purchaseDay": "Dec 30, 2023, 1:55:06 PM",
+    "discounts": [],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
+  },
+  {
+    "id": 25,
+    "customer": {
+      "id": 1728912070,
+      "fullname": "Mateo García",
+      "email": "mateojgarciag@gmail.com",
+      "address": "Quito",
+      "phone": "0987654321"
+    },
+    "products": [
+      {
+        "product": {
+          "id": 3,
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc."
+        },
+        "units": 2
+      }
+    ],
+    "purchaseDay": "Dec 30, 2023, 2:04:46 PM",
+    "discounts": [],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
+  },
+  {
+    "id": 26,
+    "products": [
+      {
+        "product": {
+          "id": 3,
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc."
+        },
+        "units": 2
+      }
+    ],
+    "purchaseDay": "Dec 30, 2023, 8:49:49 PM",
+    "discounts": [],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
+  },
+  {
+    "id": 27,
+    "products": [
+      {
+        "product": {
+          "id": 3,
+          "name": "chocolate",
+          "cost": 1.5,
+          "pvp": 2.0,
+          "description": "500g chocolate bar",
+          "provider": "Sweets Inc."
+        },
+        "units": 2
+      }
+    ],
+    "purchaseDay": "Dec 30, 2023, 9:03:04 PM",
+    "discounts": [],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
+  },
+  {
+    "id": 28,
+    "products": [
+      {
+        "product": {
+          "id": 2,
+          "name": "chocolate",
+          "cost": 2.0,
+          "pvp": 3.0,
+          "description": "500oz of chocolte bar",
+          "provider": "chocolate Inc"
+        },
+        "units": 11
+      }
+    ],
+    "purchaseDay": "Dec 31, 2023, 3:17:15 AM",
+    "discounts": [],
+    "totalPrice": 0.0,
+    "totalEarnings": 0.0
   }
 ]

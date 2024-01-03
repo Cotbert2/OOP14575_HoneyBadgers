@@ -17,15 +17,16 @@ import java.io.Console;
 
 public class LogInSystem {
     Console console = System.console();
-
     Scanner in = new Scanner(System.in);
     Cypher cypher = new Cypher(17);
     FileHandler<User> fileHandler = new FileHandler<>();
 
     public boolean authenticate(String user, String password) {
         boolean authStatus = false;
-        List<User> users = fileHandler.readJSONList(Constans.USERS_FILE_NAME);
 
+        List<User> users = fileHandler.readJSONListGeneric(Constans.USERS_FILE_NAME, User.class);
+        if(users.isEmpty())
+            System.out.println("No users registered");
         for (User userItem : users) {
             if (userItem.getUserName().equals(user) && userItem.getCypherPasswd().equals(password)) {
                 authStatus = true;
@@ -34,6 +35,11 @@ public class LogInSystem {
         }
         return authStatus;
 
+    }
+
+
+    public void registerNewUser(){
+        
     }
 
     public void showLogin() {

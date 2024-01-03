@@ -10,11 +10,11 @@ import java.util.List;
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
  */
 public class Stock {
-    List<SubStock> fullStorages;
+    private List<SubStock> fullStorages;
     FileHandler<SubStock> fileHandler = new FileHandler<>();
 
     public Stock() {
-        fullStorages = fileHandler.readJSONListStock(Constans.STOCK_FILE_NAME);
+        fullStorages = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
     }
 
     public void addStockToGrocery(int id, int units) {
@@ -50,16 +50,74 @@ public class Stock {
     }
 
     public List<SubStock> getStocks(){
-        return fileHandler.readJSONListStock(Constans.STOCK_FILE_NAME);
+        return fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
     }
 
     public void saveStocks(SubStock newStockItem){
-        List<SubStock> fullStock = fileHandler.readJSONListStock(Constans.STOCK_FILE_NAME);
+        List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
         fullStock.add(newStockItem);
         fileHandler.saveJSONFile(fullStock, Constans.STOCK_FILE_NAME);
     }
 
-    private void saveStockFullList(List<SubStock> stockStore){
+    public void saveStockFullList(List<SubStock> stockStore){
         fileHandler.saveJSONFile(stockStore, Constans.STOCK_FILE_NAME);
     }
+
+    public int getStockUnits(int id){
+        List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
+        for (SubStock subStock : fullStock) {
+            if (subStock.getProduct().getId() == id) {
+                return subStock.getOnGroceryUnits() + subStock.getOnStorageUnits();
+            }
+        }
+        return 0;
+    }
+
+
+    public int getGroceryUnits (int id){
+        List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
+        for (SubStock subStock : fullStock) {
+            if (subStock.getProduct().getId() == id) {
+                return subStock.getOnGroceryUnits();
+            }
+        }
+        return 0;
+    }
+
+    public void updateStockItem(int id, int units, int storageUnits){
+        List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
+        for (SubStock subStock : fullStock) {
+            if (subStock.getProduct().getId() == id) {
+                subStock.setOnGroceryUnits(units);
+                subStock.setOnStorageUnits(storageUnits);
+            }
+        }
+        saveStockFullList(fullStock);
+    }
+
+
+    public void stockHandlerBySell(int id, int quantity){
+        List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
+        for (SubStock subStock : fullStock) {
+            if (subStock.getProduct().getId() == id) {
+                subStock.setOnGroceryUnits(subStock.getOnGroceryUnits() - quantity);
+                if (quantity > subStock.getOnGroceryUnits()){
+                    subStock.setOnStorageUnits(subStock.getOnStorageUnits() - (quantity - subStock.getOnGroceryUnits()));
+                    subStock.setOnGroceryUnits(0);
+                }
+            }
+        }
+        saveStockFullList(fullStock);
+    }
+
+    public void getProductStockSummary(int id){
+            List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
+        for (SubStock subStock : fullStock) {
+            if (subStock.getProduct().getId() == id) {
+                System.out.println("Product: " + subStock.getProduct().getName());
+                System.out.println("Grocery Units: " + subStock.getOnGroceryUnits());
+                System.out.println("Storage Units: " + subStock.getOnStorageUnits());
+                System.out.println("Total Units: " + (subStock.getOnGroceryUnits() + subStock.getOnStorageUnits()));
+            }
+        } }
 }

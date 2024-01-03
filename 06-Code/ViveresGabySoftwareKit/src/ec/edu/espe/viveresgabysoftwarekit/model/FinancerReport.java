@@ -16,7 +16,7 @@ public class FinancerReport {
 
     public FinancerReport() {
         FileHandler<Bill> fileHandler = new FileHandler<>();
-        this.bills = fileHandler.readJSONListBills(Constans.BILLS_FILE_NAME);
+        this.bills = fileHandler.readJSONListGeneric(Constans.BILLS_FILE_NAME, Bill.class);
 
     }
 

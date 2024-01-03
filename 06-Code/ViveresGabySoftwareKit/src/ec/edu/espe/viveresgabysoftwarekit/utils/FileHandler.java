@@ -3,6 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.viveresgabysoftwarekit.helpers.TypeGenerator;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
 import java.io.BufferedReader;
@@ -12,6 +13,7 @@ import java.io.FileReader;
 
 
 import java.io.*;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,50 +24,14 @@ import java.util.List;
 
 public class FileHandler<T> {
 
-    public List<T> readJSONList(String path) {
-        List<T> objectList = new ArrayList<>();
 
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<User>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return objectList;
-    }
-
-    public List<T> readJSONListStock(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<SubStock>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return objectList;
-    }
-
-    public List<T> readJSONListTransaction(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Transaction>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return objectList;
-    }
 
     public List<T> readJSONListTax(String path) {
         List<T> objectList = new ArrayList<>();
 
         try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Tax>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Tax>>() {
+            }.getType();
             objectList = new Gson().fromJson(reader, listType);
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,83 +40,23 @@ public class FileHandler<T> {
         return objectList;
     }
 
-    public List<T> readJSONListProduct(String path) {
+    public List<T> readJSONListGeneric(String path, Class<T> classTarget) {
         List<T> objectList = new ArrayList<>();
 
         try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Product>>() {}.getType();
+            Type listType = new ListParameterizedType(classTarget);
             objectList = new Gson().fromJson(reader, listType);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return objectList;
-    }
-
-    public List<T> readJSONListProducts(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Product>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return objectList;
-    }
-
-
-    public List<T> readJSONListCustomers(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Customer>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return objectList;
-    }
-
-    public List<T> readJSONListCategorys(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Category>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (objectList == null) {
+            objectList = new ArrayList<>();
+            this.saveJSONFile(objectList, path);
+            this.readJSONListGeneric(path, classTarget);
         }
         return objectList;
     }
-    public List<T> readJSONListBills(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Bill>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return objectList;
-    }
-
-
-    public List<T> readJSONListDiscounts(String path) {
-        List<T> objectList = new ArrayList<>();
-
-        try (Reader reader = new FileReader(path)) {
-            Type listType = new TypeToken<ArrayList<Discount>>() {}.getType();
-            objectList = new Gson().fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return objectList;
-    }
-
-
 
 
     public void saveJSONFile(List<T> templateList, String path) {
@@ -163,7 +69,7 @@ public class FileHandler<T> {
         }
     }
 
-    public void saveTXTFile(String data, String path){
+    public void saveTXTFile(String data, String path) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -175,7 +81,28 @@ public class FileHandler<T> {
         }
     }
 
+
+    private static class ListParameterizedType implements ParameterizedType {
+        private final Type type;
+
+        private ListParameterizedType(Class<?> type) {
+            this.type = type;
+        }
+
+        @Override
+        public Type[] getActualTypeArguments() {
+            return new Type[]{type};
+        }
+
+        @Override
+        public Type getRawType() {
+            return ArrayList.class;
+        }
+
+        @Override
+        public Type getOwnerType() {
+            return null;
+        }
+    }
+
 }
-
-
-

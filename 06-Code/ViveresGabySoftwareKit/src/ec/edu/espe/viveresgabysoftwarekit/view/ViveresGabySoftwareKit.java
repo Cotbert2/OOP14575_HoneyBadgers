@@ -11,14 +11,11 @@ import javax.mail.MessagingException;
  */
 
 public class ViveresGabySoftwareKit {
-
-    private static MainMenu mainMenu = new MainMenu();
-
     public static void main(String[] args) throws MessagingException {
         System.out.println(Constans.WELCOME_HEADER);
         LogInSystem logInSystem = new LogInSystem();
-        logInSystem.showLogin();
-        mainMenu.showMenu();
+        //logInSystem.showLogin();
+        MainMenu.showMenu();
     }
 
 }

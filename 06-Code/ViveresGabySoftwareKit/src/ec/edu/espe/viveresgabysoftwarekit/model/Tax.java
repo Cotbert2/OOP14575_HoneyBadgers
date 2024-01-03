@@ -15,7 +15,7 @@ public class Tax {
     private String name;
     private int porcent;
 
-    FileHandler<Tax> fileHandlerTax= new FileHandler();
+
     List<Tax> taxes = new ArrayList<>();
     private void updateTax(int id) {
         updateTaxesInfo();
@@ -69,15 +69,13 @@ public class Tax {
     }
 
     public void updateTaxesInfo(){
-        taxes = fileHandlerTax.readJSONList(Constans.TAXES_FILE_NAME);
+        FileHandler<Tax> fileHandler= new FileHandler();
+        taxes = fileHandler.readJSONListGeneric(Constans.TAXES_FILE_NAME, Tax.class);
     }
 
-    public void getAllTaxes(){
+    public List<Tax> getAllTaxes(){
         updateTaxesInfo();
-        for (Tax tax: taxes){
-            System.out.println(tax);
-        }
-
+        return taxes;
     }
 
 }

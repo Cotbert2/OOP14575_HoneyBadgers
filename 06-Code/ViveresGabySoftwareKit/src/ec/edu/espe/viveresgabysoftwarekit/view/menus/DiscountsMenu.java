@@ -100,7 +100,7 @@ public class DiscountsMenu {
     }
 
     private void createDiscount() {
-        String discountName = Validations.noValidationStr("Enter the name of the discount: ");
+        String discountName = Validations.getNoValidationStr("Enter the name of the discount: ");
         float discountValue = Validations.validateDiscountInput("Enter the porcentage of the discount: ");
         String startDate = Validations.validateDate("Enter the start date of the discount (dd/MM/yyyy): ");
         String endDate = Validations.validateDate("Enter the end date of the discount (dd/MM/yyyy): ");
@@ -135,11 +135,11 @@ public class DiscountsMenu {
     }
 
     public void updateSeasonalDiscounts(){
-        SDiascounts = fileHandlerDiscounts.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME);
+        SDiascounts = fileHandlerDiscounts.readJSONListGeneric(Constans.DISCOUNTS_FILE_NAME, Discount.class);
     }
 
     public int getLastIdDiscount(){
-        return fileHandlerDiscounts.readJSONListDiscounts(Constans.DISCOUNTS_FILE_NAME).getLast().getId();
+        return fileHandlerDiscounts.readJSONListGeneric(Constans.DISCOUNTS_FILE_NAME, Discount.class).getLast().getId();
     }
 }
 

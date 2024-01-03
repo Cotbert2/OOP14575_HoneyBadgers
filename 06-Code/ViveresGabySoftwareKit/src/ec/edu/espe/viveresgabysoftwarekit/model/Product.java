@@ -3,9 +3,11 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 
 import java.io.Serializable;
 import java.util.List;
+
 
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Mateo García-HONEYBUDGERS-DCCO-14575
@@ -20,7 +22,7 @@ public class Product implements Serializable {
     private String provider;
 
     public Product(String name, double cost, double pvp, String description, String provider) {
-        this.id =  getProducts().getLast().getId() + 1;
+        this.id = getProducts().getLast().getId() + 1;
         this.name = name;
         this.cost = cost;
         this.pvp = pvp;
@@ -28,8 +30,7 @@ public class Product implements Serializable {
         this.provider = provider;
     }
 
-    
-    
+
     /**
      * @return the name
      */
@@ -102,11 +103,11 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" + "name=" + name + ", cost=" + cost + ", pvp=" + pvp + ", description=" + description + ", provider=" + provider  + '}';
+        return "Product{" + "name=" + name + ", cost=" + cost + ", pvp=" + pvp + ", description=" + description + ", provider=" + provider + '}';
     }
 
-    public String UIPrint(){
-        return "-----------------------------------\n" + "Name: " + name + "\n-----------------------------------\n"+ "Cost: " + cost + "\n" + "PVP: " + pvp + "\n" + "Description: " + description + "\n" + "Provider: " + provider  + "\n" + "-----------------------------------\n";
+    public String UIPrint() {
+        return "-----------------------------------\n" + "Name: " + name + "\n-----------------------------------\n" + "Cost: " + cost + "\n" + "PVP: " + pvp + "\n" + "Description: " + description + "\n" + "Provider: " + provider + "\n" + "-----------------------------------\n";
     }
 
     public int getId() {
@@ -117,9 +118,36 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
         FileHandler<Product> fileHandler = new FileHandler<>();
-        return fileHandler.readJSONListProduct(Constans.PRODUCTS_FILE_NAME);
+        return fileHandler.readJSONListGeneric(Constans.PRODUCTS_FILE_NAME, Product.class);
+    }
+
+    public void editProduct(int id, Product product) {
+        List<Product> productList = getProducts();
+        Search finder = new Search();
+        productList.remove(finder.findItemPosition(Constans.PRODUCTS_FILE_NAME, id));
+        product.setId(id);
+        productList.add(product);
+        FileHandler<Product> fileHandler = new FileHandler<>();
+        fileHandler.saveJSONFile(productList, Constans.PRODUCTS_FILE_NAME);
+        Stock stock = new Stock();
+        List<SubStock> currentStock = stock.getStocks();
+        currentStock.forEach((subStock) -> {
+            if (subStock.getProduct().getId() == id) {
+                subStock.setProduct(product);
+            }
+        });
+        stock.saveStockFullList(currentStock);
+
+        System.out.println("[+] Product edited successfully.");
+    }
+
+    public void saveProduct(Product product) {
+        FileHandler<Product> fileHandler = new FileHandler<>();
+        List<Product> products = getProducts();
+        products.add(product);
+        fileHandler.saveJSONFile(products, Constans.PRODUCTS_FILE_NAME);
     }
 }
    
