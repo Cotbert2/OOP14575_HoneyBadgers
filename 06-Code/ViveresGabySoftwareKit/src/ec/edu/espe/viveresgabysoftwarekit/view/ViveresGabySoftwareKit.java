@@ -16,8 +16,7 @@ public class ViveresGabySoftwareKit {
     public static void main(String[] args) throws MessagingException {
         System.out.println(Constans.WELCOME_HEADER);
         LogInSystem logInSystem = new LogInSystem();
-        //logInSystem.showLogin();
-
+        logInSystem.showLogin();
         MainMenu.showMenu();
     }
 

@@ -2,6 +2,8 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.PdfConverter;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +55,10 @@ public class FinancerReport {
 
         FileHandler<FinancerReport> fileHandler = new FileHandler<>();
         Date date = new Date();
-        fileHandler.saveTXTFile(report, fileHandler.getDesktopPath() + "/FinancerReport" +date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt");
+        String fileName = fileHandler.getDesktopPath()+ "/FinancerReport" +date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt";
+        fileHandler.saveTXTFile(report, fileName);
+        PdfConverter pdfConverter = new PdfConverter();
+        pdfConverter.convert(fileName);
     }
 
 }

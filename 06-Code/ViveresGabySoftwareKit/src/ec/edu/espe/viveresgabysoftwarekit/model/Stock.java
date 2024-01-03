@@ -2,6 +2,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.PdfConverter;
 
 import java.util.Date;
 import java.util.List;
@@ -44,7 +45,11 @@ public class Stock {
             report += subStock.getProduct().getId() + " \t\t"  +subStock.getProduct().getName() + " " + " \t\t" + subStock.getOnGroceryUnits() + " \t\t" + subStock.getOnStorageUnits() + " \t\t" + (subStock.getOnStorageUnits() + subStock.getOnGroceryUnits()) +"\n";
         }
         Date date = new Date();
-        fileHandler.saveTXTFile(report, fileHandler.getDesktopPath() + "/StockReport_"+date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt" );
+        String filePath = fileHandler.getDesktopPath() + "/StockReport_"+date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt";
+        fileHandler.saveTXTFile(report, filePath);
+
+        PdfConverter pdfConverter = new PdfConverter();
+        pdfConverter.convert(filePath);
 
         System.out.println("-----------------------------------------");
         System.out.println("|   [+] Stock Report Saved On Desktop   |");
