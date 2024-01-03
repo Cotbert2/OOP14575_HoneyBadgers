@@ -32,27 +32,11 @@
     "provider": "Meat Inc."
   },
   {
-    "id": 0,
-    "name": "ok",
-    "cost": 9.0,
-    "pvp": 10.0,
-    "description": "ok",
-    "provider": "ok"
-  },
-  {
-    "id": 1,
-    "name": "ok",
-    "cost": 9.0,
-    "pvp": 10.0,
-    "description": "ok",
-    "provider": "ok"
-  },
-  {
-    "id": 2,
-    "name": "chocolate",
-    "cost": 2.200000047683716,
-    "pvp": 3.200000047683716,
-    "description": "ok",
-    "provider": "ok"
+    "id": 5,
+    "name": "bread",
+    "cost": 1,
+    "pvp": 2.3,
+    "description": "A piece of bread",
+    "provider": "Bakery Inc."
   }
 ]
