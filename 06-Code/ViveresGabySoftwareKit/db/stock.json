@@ -1,6 +1,6 @@
 [
   {
-    "product":   {
+    "product": {
       "id": 1,
       "name": "potatoes",
       "cost": 0.6,
@@ -12,7 +12,7 @@
     "OnStorageUnits": 56
   },
   {
-    "product":   {
+    "product": {
       "id": 2,
       "name": "tomatoes",
       "cost": 0.8,
@@ -32,7 +32,7 @@
       "description": "500g chocolate bar",
       "provider": "Sweets Inc."
     },
-    "OnGroceryUnits": 100,
+    "OnGroceryUnits": 80,
     "OnStorageUnits": 100
   },
   {
@@ -40,7 +40,7 @@
       "id": 4,
       "name": "chicken",
       "cost": 2.0,
-      "pvp": 0.0,
+      "pvp": 3.0,
       "description": "1 lb of chicken",
       "provider": "Meat Inc."
     },
@@ -51,7 +51,7 @@
     "product": {
       "id": 5,
       "name": "bread",
-      "cost": 1,
+      "cost": 1.0,
       "pvp": 2.3,
       "description": "A piece of bread",
       "provider": "Bakery Inc."

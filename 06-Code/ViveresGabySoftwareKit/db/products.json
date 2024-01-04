@@ -27,7 +27,7 @@
     "id": 4,
     "name": "chicken",
     "cost": 2.0,
-    "pvp": 0.0,
+    "pvp": 3.0,
     "description": "1 lb of chicken",
     "provider": "Meat Inc."
   },
