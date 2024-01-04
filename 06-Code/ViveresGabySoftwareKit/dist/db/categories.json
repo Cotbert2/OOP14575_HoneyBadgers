@@ -3,13 +3,31 @@
     "id": 1,
     "name": "frutas",
     "description": "frutas frescas",
-    "products": []
+    "products": [
+      {
+        "id": 1,
+        "name": "Potatoes",
+        "cost": 0.4,
+        "pvp": 0.6,
+        "description": "1 lb of potatoes",
+        "provider": "Vegetables Inc."
+      }
+    ]
   },
   {
     "id": 2,
     "name": "verduras",
     "description": "verduras frescas",
-    "products": []
+    "products": [
+      {
+        "id": 2,
+        "name": "chocolate",
+        "cost": 2.200000047683716,
+        "pvp": 3.200000047683716,
+        "description": "ok",
+        "provider": "ok"
+      }
+    ]
   },
   {
     "id": 3,
@@ -24,18 +42,18 @@
     "products": []
   },
   {
-    "id": 5,
-    "name": "ok",
-    "description": "ok"
-  },
-  {
     "id": 0,
-    "name": "ok",
-    "description": "ok"
-  },
-  {
-    "id": 0,
-    "name": "ok",
-    "description": "ok"
+    "name": "verduras",
+    "description": "verduras",
+    "products": [
+      {
+        "id": 1,
+        "name": "Potatoes",
+        "cost": 0.4,
+        "pvp": 0.6,
+        "description": "1 lb of potatoes",
+        "provider": "Vegetables Inc."
+      }
+    ]
   }
 ]
