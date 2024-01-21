@@ -1,5 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
+import ec.edu.espe.viveresgabysoftwarekit.controller.Db;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
@@ -9,9 +10,9 @@ import java.util.*;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
 /**
- * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego
+ * García-HONEYBUDGERS-DCCO-14575
  */
-
 public class InventoryMenu {
 
     Validations validations = new Validations();
@@ -26,10 +27,8 @@ public class InventoryMenu {
     private List<Category> categoryList = new ArrayList<>();
     int optionInventory;
 
-
     FileHandler<Category> fileHandlerCategory = new FileHandler<>();
     Search finder = new Search();
-
 
     public void displayMenu() {
         do {
@@ -70,7 +69,8 @@ public class InventoryMenu {
             System.out.println("2. Find product");
             System.out.println("3. Add product");
             System.out.println("4. Edit product");
-            System.out.println("5. Back");
+            System.out.println("5. Delete Product");
+            System.out.println("6. Back");
             System.out.print("Choose an option (1-5): ");
 
             optionProduct = Validations.obtainOptionInventory();
@@ -88,13 +88,16 @@ public class InventoryMenu {
                 case 4:
                     displayEditProductMenu();
                     break;
-                case 5:
+                case 5 :
+                    displayDeleteProductMenu();
+                    break;
+                case 6:
                     System.out.println("Returning to the previous menu");
                     break;
                 default:
                     System.out.println("Invalid option, try again.");
             }
-        } while (optionProduct != 5);
+        } while (optionProduct != 6);
     }
 
     private void displaySeeAllProductsMenu() {
@@ -151,15 +154,14 @@ public class InventoryMenu {
             float pvp;
             do {
                 pvp = Validations.validateFloatInput("Enter the PVP of the product: ");
-                if (pvp < cost)
+                if (pvp < cost) {
                     System.out.println("The PVP must be greater than the cost.");
+                }
             } while (pvp < cost);
 
             String description = Validations.getNoValidationStr("Enter the description of the product: ");
             String provider = Validations.getNoValidationStr("Enter the provider of the product: ");
             Product newProduct = new Product(productName, cost, pvp, description, provider);
-
-
 
             newProduct.saveProduct(newProduct);
 
@@ -167,10 +169,10 @@ public class InventoryMenu {
             Stock stock = new Stock();
             stock.saveStocks(newStockItem);
 
-
             response = validations.getYNOption("Do you want to add more products? (y/n): ");
-            if (response)
+            if (response) {
                 System.out.println("Adding new product...");
+            }
         } while (response);
     }
 
@@ -182,7 +184,7 @@ public class InventoryMenu {
 
         items = finder.findItem(Constans.PRODUCTS_FILE_NAME, productNameToFind.toLowerCase());
 
-        if(items.isEmpty()) {
+        if (items.isEmpty()) {
             System.out.println("Sorry, there is no product with that name");
             return;
         }
@@ -193,24 +195,52 @@ public class InventoryMenu {
         }
         do {
             opt = validations.getIntOption("option: ");
-            if (opt < 1 || opt > items.size())
+            if (opt < 1 || opt > items.size()) {
                 System.out.println("Try again, invalid option");
+            }
 
         } while (opt < 1 || opt > items.size());
 
-        String productName = Validations.getNoValidationStr("Enter the name of the product (" + items.get(opt - 1).getName() + "): ");
+        String productName = Validations.getNoValidationLongStr("Enter the name of the product (" + items.get(opt - 1).getName() + "): ");
+
         float cost = Validations.validateFloatInput("Enter the cost of the product (" + items.get(opt - 1).getCost() + "): ");
         float pvp = Validations.validateFloatInput("Enter the PVP of the product (" + items.get(opt - 1).getPvp() + "): ");
-        String description = Validations.getNoValidationLongStr("Enter the description of the product (" + items.get(opt - 1).getDescription() + "): ");
-        String provider = Validations.getNoValidationLongStr("Enter the provider of the product (" + items.get(opt - 1).getProvider() + "): ");
+        String description = Validations.getNoValidationStr("Enter the description of the product (" + items.get(opt - 1).getDescription() + "): ");
+        String provider = Validations.getNoValidationStr("Enter the provider of the product (" + items.get(opt - 1).getProvider() + "): ");
 
         Product editedProduct = new Product(productName, cost, pvp, description, provider);
+        editedProduct.setId(items.get(opt - 1).getId());
 
-        editedProduct.editProduct(items.get(opt - 1).getId(), editedProduct);
+        Db.editProduct(editedProduct);
 
+    }
 
+    private void displayDeleteProductMenu() {
+        System.out.println("----- Edit Product -----");
+        int opt;
+        List<Product> items;
+        String productNameToFind = Validations.getNoValidationLongStr("name: ");
 
+        items = finder.findItem(Constans.PRODUCTS_FILE_NAME, productNameToFind.toLowerCase());
 
+        if (items.isEmpty()) {
+            System.out.println("Sorry, there is no product with that name");
+            return;
+        }
+        int index = 0;
+        for (Product item : items) {
+            System.out.println((index + 1) + ") \n" + item.UIPrint());
+            index++;
+        }
+        do {
+            opt = validations.getIntOption("option: ");
+            if (opt < 1 || opt > items.size()) {
+                System.out.println("Try again, invalid option");
+            }
+
+        } while (opt < 1 || opt > items.size());
+
+        Db.deleteProduct(items.get(opt - 1).getId());
 
     }
 
@@ -252,7 +282,6 @@ public class InventoryMenu {
             }
         } while (optionCategory != 6);
     }
-
 
     private void displaySeeAllCategoriesMenu() {
         updateCategory();
@@ -306,7 +335,6 @@ public class InventoryMenu {
         String description = Validations.validateStringInput("Enter the description of the category: ");
         Category newCategory = new Category(categoryName, description);
 
-
         newCategory.saveCategory(newCategory);
 
         System.out.println("[+] Category '" + categoryName + "' added successfully.");
@@ -344,8 +372,9 @@ public class InventoryMenu {
         }
         do {
             categoryOpt = validations.getIntOption("option: ");
-            if (categoryOpt < 1 || categoryOpt > categoryItems.size())
+            if (categoryOpt < 1 || categoryOpt > categoryItems.size()) {
                 System.out.println("Try again, invalid option");
+            }
 
         } while (categoryOpt < 1 || categoryOpt > categoryItems.size());
 
@@ -361,8 +390,9 @@ public class InventoryMenu {
         }
         do {
             opt = validations.getIntOption("option: ");
-            if (opt < 1 || opt > items.size())
+            if (opt < 1 || opt > items.size()) {
                 System.out.println("Try again, invalid option");
+            }
 
         } while (opt < 1 || opt > items.size());
 
@@ -399,7 +429,6 @@ public class InventoryMenu {
         System.out.println("Product '" + selectedProduct.getName() + "' removed from category '" + selectedCategory.getName() + "' successfully.");
         System.out.println("Returning to the previous menu");
     }
-
 
     private void displayStockMenu() {
         int optionStock;
@@ -496,18 +525,18 @@ public class InventoryMenu {
                 default:
                     System.out.println("Try again, invalid option");
             }
-            if (stockOpt < 1 || stockOpt > 2)
+            if (stockOpt < 1 || stockOpt > 2) {
                 System.out.println("Try again, invalid option");
+            }
         } while (stockOpt < 1 || stockOpt > 2);
         System.out.println("Stock added successfully");
     }
 
     private void updateProduct() {
-        productList = product.getProducts();
+        productList = Db.listProducts();
     }
 
     public void updateCategory() {
         categoryList = category.getCategories();
     }
 }
-

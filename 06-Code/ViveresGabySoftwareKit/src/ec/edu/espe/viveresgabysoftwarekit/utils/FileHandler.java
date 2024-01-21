@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Mateo García-HONEYBUDGERS-DCCO-14575
  */
 
 public class FileHandler<T> {

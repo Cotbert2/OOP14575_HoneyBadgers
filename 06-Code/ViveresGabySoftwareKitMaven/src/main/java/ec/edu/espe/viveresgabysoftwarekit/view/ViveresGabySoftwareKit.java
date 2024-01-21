@@ -6,6 +6,7 @@ import ec.edu.espe.viveresgabysoftwarekit.view.menus.MainMenu;
 
 import javax.mail.MessagingException;
 
+import ec.edu.espe.viveresgabysoftwarekit.controller.Db;
 
 
 
@@ -15,6 +16,7 @@ import javax.mail.MessagingException;
 
 public class ViveresGabySoftwareKit {
     public static void main(String[] args) throws MessagingException {
+        Db.conectToDb();
         System.out.println(Constans.WELCOME_HEADER);
         LogInSystem logInSystem = new LogInSystem();
         logInSystem.showLogin();

@@ -142,7 +142,6 @@ public class Validations {
 
     public static String getNoValidationStr(String cad) {
         System.out.print(cad);
-        scanner.nextLine();
         return scanner.nextLine();
     }
 

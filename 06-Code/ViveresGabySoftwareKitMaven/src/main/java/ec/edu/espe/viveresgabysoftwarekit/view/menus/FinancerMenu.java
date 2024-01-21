@@ -9,11 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
+import ec.edu.espe.viveresgabysoftwarekit.controller.Db;
 
 /**
- * @author Stefany Díaz,Eduardo Garcia, Mateo García, Alex Cuzco, honeyBADGERS, DCCO-ESPE
+ * @author Stefany Díaz,Eduardo Garcia, Mateo García, Alex Cuzco, honeyBADGERS,
+ * DCCO-ESPE
  */
 public class FinancerMenu {
+
     private static Scanner scanner = new Scanner(System.in);
     private int option;
     private ArrayList<Bill> bills = new ArrayList<>();
@@ -22,7 +25,6 @@ public class FinancerMenu {
     FileHandler<Bill> fileHandlerBills = new FileHandler<>();
     FileHandler<Customer> fileHandlerCustomers = new FileHandler<>();
     FileHandler<Tax> fileHandlerTaxes = new FileHandler<>();
-
 
     Validations validations = new Validations();
     List<Bill> allBills;
@@ -112,7 +114,6 @@ public class FinancerMenu {
         } while (subOption != 2);
     }
 
-
     private void showBills() {
         updateBillsInfo();
         String singularBillInformation = "";
@@ -132,16 +133,14 @@ public class FinancerMenu {
                     singularBillInformation += bill.getCustomer().getId() + "\t" + bill.getCustomer().getFullname() + "\t";
                 }
 
-                singularBillInformation +=
-
-                        bill.getProducts().size() + "\t" +
-                                "" + "\t" +
-                                bill.getPurchaseDay();
+                singularBillInformation
+                        += bill.getProducts().size() + "\t"
+                        + "" + "\t"
+                        + bill.getPurchaseDay();
                 System.out.println(singularBillInformation);
             }
         }
     }
-
 
     private void doCustomerAction() {
         int subOption;
@@ -173,14 +172,14 @@ public class FinancerMenu {
 
     }
 
-
     private void createCustomer() {
         updateCustomersInfor();
         int id = 0;
         do {
             id = validations.validateIntInput("Enter customer ID: ");
-            if (!verifyUnicCustomerId(id))
+            if (!verifyUnicCustomerId(id)) {
                 System.out.println("Customer ID already exists, try again");
+            }
         } while (!verifyUnicCustomerId(id));
         String name = validations.getNoValidationStr("Enter customer name: ");
         String email = validations.validateEmail("Enter customer email: ");
@@ -196,6 +195,7 @@ public class FinancerMenu {
     }
 
     private void showCustomers() {
+
         updateCustomersInfor();
 
         System.out.println("---- All Customers ----");
@@ -204,15 +204,14 @@ public class FinancerMenu {
 
         for (Customer customer : customers) {
             System.out.println(
-                    customer.getId() + "\t" +
-                            customer.getFullname() + "\t" +
-                            customer.getEmail() + "\t" +
-                            customer.getAddress() + "\t" +
-                            customer.getPhone()
+                    customer.getId() + "\t"
+                    + customer.getFullname() + "\t"
+                    + customer.getEmail() + "\t"
+                    + customer.getAddress() + "\t"
+                    + customer.getPhone()
             );
         }
     }
-
 
     private void doFinancerStatusAction() {
         System.out.println("---Financer  Menu---");
@@ -225,16 +224,16 @@ public class FinancerMenu {
         Validations.waitForEnter();
     }
 
-
     private void doUpdateTaxesAction() {
         System.out.println("---Financer - Update Iva Menu---");
         Scrapper scrapper = new Scrapper();
         float ivaUpdate = scrapper.updateIva();
-        List<Tax> taxes =  fileHandlerTaxes.readJSONListGeneric(Constans.TAXES_FILE_NAME, Tax.class);
+        List<Tax> taxes = fileHandlerTaxes.readJSONListGeneric(Constans.TAXES_FILE_NAME, Tax.class);
 
-        for(Tax tax: taxes){
-            if(tax.getId() == 1)
+        for (Tax tax : taxes) {
+            if (tax.getId() == 1) {
                 tax.setPorcent((int) ivaUpdate);
+            }
         }
         Validations.waitForEnter();
     }
@@ -254,6 +253,7 @@ public class FinancerMenu {
     }
 
     public void updateCustomersInfor() {
-        customers = fileHandlerCustomers.readJSONListGeneric(Constans.CUSTOMERS_FILE_NAME, Customer.class);
+        customers = Db.listCustomers();
+
     }
 }

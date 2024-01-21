@@ -58,5 +58,29 @@
     },
     "OnGroceryUnits": 7,
     "OnStorageUnits": 2
+  },
+  {
+    "product": {
+      "id": 6,
+      "name": "",
+      "cost": 2.0,
+      "pvp": 2.5,
+      "description": "",
+      "provider": ""
+    },
+    "OnGroceryUnits": 0,
+    "OnStorageUnits": 0
+  },
+  {
+    "product": {
+      "id": 6,
+      "name": "milk",
+      "cost": 2.0,
+      "pvp": 2.5,
+      "description": "cow milk",
+      "provider": "milk Ink"
+    },
+    "OnGroceryUnits": 0,
+    "OnStorageUnits": 0
   }
 ]

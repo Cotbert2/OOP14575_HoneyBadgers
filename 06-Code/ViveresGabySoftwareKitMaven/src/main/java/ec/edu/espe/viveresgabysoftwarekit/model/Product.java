@@ -1,6 +1,7 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
+import ec.edu.espe.viveresgabysoftwarekit.controller.Db;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
@@ -144,10 +145,7 @@ public class Product implements Serializable {
     }
 
     public void saveProduct(Product product) {
-        FileHandler<Product> fileHandler = new FileHandler<>();
-        List<Product> products = getProducts();
-        products.add(product);
-        fileHandler.saveJSONFile(products, Constans.PRODUCTS_FILE_NAME);
+        Db.insertProduct(product);
     }
 }
    
