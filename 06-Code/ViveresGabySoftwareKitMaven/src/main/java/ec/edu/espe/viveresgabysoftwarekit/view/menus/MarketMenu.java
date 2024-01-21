@@ -8,6 +8,8 @@ import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
+
 
 public class MarketMenu {
 

@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.model.model;
+package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;

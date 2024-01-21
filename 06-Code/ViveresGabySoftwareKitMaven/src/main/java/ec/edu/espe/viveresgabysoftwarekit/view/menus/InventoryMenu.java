@@ -6,6 +6,7 @@ import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
 import java.util.*;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575

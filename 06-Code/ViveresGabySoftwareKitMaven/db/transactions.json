@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "isCashPayment": false,
+    "date": "Dec 30, 2023, 9:03:02 PM",
+    "ammount": 4.48
+  },
+  {
+    "id": 2,
+    "isCashPayment": false,
+    "date": "Dec 31, 2023, 3:17:13 AM",
+    "ammount": 36.96
+  },
+  {
+    "id": 3,
+    "isCashPayment": false,
+    "date": "Jan 3, 2024, 12:55:33 AM",
+    "ammount": 3.584,
+    "customer": {
+      "id": 1722582317,
+      "fullname": "Stefany Diaz",
+      "email": "stefany152005@gmail.com",
+      "address": "Quito",
+      "phone": "0962140626"
+    }
+  }
+]

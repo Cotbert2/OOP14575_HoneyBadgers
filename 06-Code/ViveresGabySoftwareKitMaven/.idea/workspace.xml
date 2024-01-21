@@ -5,32 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6466f92-f4ff-40b2-8177-777d306265c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/helpers/Constans.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/helpers/TypeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Cypher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/EmailHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/FileHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Opener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/PdfConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Scrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Search.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Validations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/ViveresGabySoftwareKit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/login/LogInSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/ConfirmDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/DiscountsMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/FinancerMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/InventoryMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/MarketMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViveresGabySoftwareKit/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViveresGabySoftwareKit/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViveresGabySoftwareKit/src/ec/edu/espe/viveresgabysoftwarekit/view/ViveresGabySoftwareKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ViveresGabySoftwareKit/src/ec/edu/espe/viveresgabysoftwarekit/view/ViveresGabySoftwareKit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/itextpdf_5_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jsoup_1_17_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Financer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Financer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/FinancerReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/FinancerReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Market.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/ProductItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/ProductItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/SeasonalDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/SeasonalDiscount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/SubStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/SubStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Tax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Tax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/login/LogInSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/login/LogInSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/FinancerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/FinancerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/InventoryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/InventoryMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/MarketMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/MarketMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,17 +52,56 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/cotbert/Desktop/OOP14575_HoneyBadgers/06-Code/ViveresGabySoftwareKitMaven/src/main/java/ec/edu/espe/viveresgabysoftwarekit"
+    "last_opened_file_path": "/Users/cotbert/Desktop/OOP14575_HoneyBadgers/06-Code/ViveresGabySoftwareKitMaven",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit" />
       <recent name="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/helpers" />
       <recent name="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.ViveresGabySoftwareKitMaven">
+    <configuration name="ViveresGabySoftwareKit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ec.edu.espe.viveresgabysoftwarekit.view.ViveresGabySoftwareKit" />
+      <module name="ViveresGabySoftwareKitMaven" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ec.edu.espe.viveresgabysoftwarekit.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ViveresGabySoftwareKitMaven" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ec.edu.espe.viveresgabysoftwarekit.ViveresGabySoftwareKitMaven" />
+      <module name="ViveresGabySoftwareKitMaven" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ec.edu.espe.viveresgabysoftwarekit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ViveresGabySoftwareKitMaven" />
+        <item itemvalue="Application.ViveresGabySoftwareKit" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

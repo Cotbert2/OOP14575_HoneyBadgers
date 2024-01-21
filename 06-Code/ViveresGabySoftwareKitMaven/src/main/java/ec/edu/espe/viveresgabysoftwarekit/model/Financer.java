@@ -1,4 +1,4 @@
-package ec.edu.espe.viveresgabysoftwarekit.model.model;
+package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import java.util.ArrayList;
 import java.util.List;

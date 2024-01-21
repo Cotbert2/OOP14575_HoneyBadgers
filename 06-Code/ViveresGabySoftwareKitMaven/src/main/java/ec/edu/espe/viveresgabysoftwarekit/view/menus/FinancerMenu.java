@@ -8,6 +8,7 @@ import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
 
 /**
  * @author Stefany Díaz,Eduardo Garcia, Mateo García, Alex Cuzco, honeyBADGERS, DCCO-ESPE

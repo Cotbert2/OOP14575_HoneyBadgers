@@ -1,6 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.login;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.model.*;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Cypher;
 import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 
