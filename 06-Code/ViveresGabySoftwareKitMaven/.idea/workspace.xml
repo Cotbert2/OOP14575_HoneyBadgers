@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f6466f92-f4ff-40b2-8177-777d306265c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/helpers/Constans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/helpers/TypeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Cypher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/EmailHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/FileHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Opener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/PdfConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Scrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Search.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/utils/Validations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/ViveresGabySoftwareKit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/login/LogInSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/ConfirmDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/DiscountsMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/FinancerMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/InventoryMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/view/menus/MarketMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ViveresGabySoftwareKit/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViveresGabySoftwareKit/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ViveresGabySoftwareKit/src/ec/edu/espe/viveresgabysoftwarekit/view/ViveresGabySoftwareKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ViveresGabySoftwareKit/src/ec/edu/espe/viveresgabysoftwarekit/view/ViveresGabySoftwareKit.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2bGwevRugeQmSw4mY3hHj6NcbpR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/cotbert/Desktop/OOP14575_HoneyBadgers/06-Code/ViveresGabySoftwareKitMaven/src/main/java/ec/edu/espe/viveresgabysoftwarekit"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit" />
+      <recent name="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/helpers" />
+      <recent name="$PROJECT_DIR$/src/main/java/ec/edu/espe/viveresgabysoftwarekit/model" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6466f92-f4ff-40b2-8177-777d306265c9" name="Changes" comment="" />
+      <created>1705854821941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705854821941</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,10 +1,8 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
+
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.model.Tax;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
 import ec.edu.espe.viveresgabysoftwarekit.view.login.LogInSystem;
 import ec.edu.espe.viveresgabysoftwarekit.view.menus.MainMenu;
-
 
 import javax.mail.MessagingException;
 
