@@ -1,7 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
@@ -27,7 +27,7 @@ public class InventoryMenu {
     int optionInventory;
 
 
-    FileHandler<Category> fileHandlerCategory = new FileHandler<>();
+    DbManager<Category> fileHandlerCategory = new DbManager<>();
     Search finder = new Search();
 
 
@@ -394,7 +394,7 @@ public class InventoryMenu {
 
         selectedCategory.deleteProductToCategory(selectedProduct);
 
-        fileHandlerCategory.saveJSONFile(categoryList, Constans.CATEGORIES_FILE_NAME);
+        fileHandlerCategory.saveCollection(categoryList, Constans.CATEGORIES_FILE_NAME);
 
         System.out.println("Product '" + selectedProduct.getName() + "' removed from category '" + selectedCategory.getName() + "' successfully.");
         System.out.println("Returning to the previous menu");

@@ -3,7 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view.login;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.model.*;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Cypher;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 
 import java.io.Console;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class LogInSystem {
     Console console = System.console();
     Scanner in = new Scanner(System.in);
     Cypher cypher = new Cypher(17);
-    FileHandler<User> fileHandler = new FileHandler<>();
+    DbManager<User> fileHandler = new DbManager<>();
 
     public boolean authenticate(String user, String password) {
         boolean authStatus = false;

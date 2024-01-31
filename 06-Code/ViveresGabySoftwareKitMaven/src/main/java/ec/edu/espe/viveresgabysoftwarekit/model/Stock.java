@@ -1,7 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.PdfConverter;
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Stock {
     private List<SubStock> fullStorages;
-    FileHandler<SubStock> fileHandler = new FileHandler<>();
+    DbManager<SubStock> fileHandler = new DbManager<>();
 
     public Stock() {
         fullStorages = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
@@ -63,11 +63,11 @@ public class Stock {
     public void saveStocks(SubStock newStockItem){
         List<SubStock> fullStock = fileHandler.readJSONListGeneric(Constans.STOCK_FILE_NAME, SubStock.class);
         fullStock.add(newStockItem);
-        fileHandler.saveJSONFile(fullStock, Constans.STOCK_FILE_NAME);
+        fileHandler.saveCollection(fullStock, Constans.STOCK_FILE_NAME);
     }
 
     public void saveStockFullList(List<SubStock> stockStore){
-        fileHandler.saveJSONFile(stockStore, Constans.STOCK_FILE_NAME);
+        fileHandler.saveCollection(stockStore, Constans.STOCK_FILE_NAME);
     }
 
     public int getStockUnits(int id){

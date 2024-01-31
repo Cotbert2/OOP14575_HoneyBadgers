@@ -1,7 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +69,7 @@ public class Tax {
     }
 
     public void updateTaxesInfo(){
-        FileHandler<Tax> fileHandler= new FileHandler();
+        DbManager<Tax> fileHandler= new DbManager();
         taxes = fileHandler.readJSONListGeneric(Constans.TAXES_FILE_NAME, Tax.class);
     }
 

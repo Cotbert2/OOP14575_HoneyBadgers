@@ -1,7 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Scrapper;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
@@ -19,9 +19,9 @@ public class FinancerMenu {
     private ArrayList<Bill> bills = new ArrayList<>();
     private Financer financer;
     private List<Bill> existingBills;
-    FileHandler<Bill> fileHandlerBills = new FileHandler<>();
-    FileHandler<Customer> fileHandlerCustomers = new FileHandler<>();
-    FileHandler<Tax> fileHandlerTaxes = new FileHandler<>();
+    DbManager<Bill> fileHandlerBills = new DbManager<>();
+    DbManager<Customer> fileHandlerCustomers = new DbManager<>();
+    DbManager<Tax> fileHandlerTaxes = new DbManager<>();
 
 
     Validations validations = new Validations();
@@ -190,7 +190,7 @@ public class FinancerMenu {
         Customer newCustomer = new Customer(id, name, email, address, phone);
 
         customers.add(newCustomer);
-        fileHandlerCustomers.saveJSONFile(customers, Constans.CUSTOMERS_FILE_NAME);
+        fileHandlerCustomers.saveCollection(customers, Constans.CUSTOMERS_FILE_NAME);
 
         System.out.println("Customer created successfully!");
     }

@@ -2,7 +2,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
 
 import java.io.Serializable;
@@ -119,7 +119,7 @@ public class Product implements Serializable {
     }
 
     public List<Product> getProducts() {
-        FileHandler<Product> fileHandler = new FileHandler<>();
+        DbManager<Product> fileHandler = new DbManager<>();
         return fileHandler.readJSONListGeneric(Constans.PRODUCTS_FILE_NAME, Product.class);
     }
 
@@ -129,8 +129,8 @@ public class Product implements Serializable {
         productList.remove(finder.findItemPosition(Constans.PRODUCTS_FILE_NAME, id));
         product.setId(id);
         productList.add(product);
-        FileHandler<Product> fileHandler = new FileHandler<>();
-        fileHandler.saveJSONFile(productList, Constans.PRODUCTS_FILE_NAME);
+        DbManager<Product> fileHandler = new DbManager<>();
+        fileHandler.saveCollection(productList, Constans.PRODUCTS_FILE_NAME);
         Stock stock = new Stock();
         List<SubStock> currentStock = stock.getStocks();
         currentStock.forEach((subStock) -> {
@@ -144,10 +144,10 @@ public class Product implements Serializable {
     }
 
     public void saveProduct(Product product) {
-        FileHandler<Product> fileHandler = new FileHandler<>();
+        DbManager<Product> fileHandler = new DbManager<>();
         List<Product> products = getProducts();
         products.add(product);
-        fileHandler.saveJSONFile(products, Constans.PRODUCTS_FILE_NAME);
+        fileHandler.saveCollection(products, Constans.PRODUCTS_FILE_NAME);
     }
 }
    

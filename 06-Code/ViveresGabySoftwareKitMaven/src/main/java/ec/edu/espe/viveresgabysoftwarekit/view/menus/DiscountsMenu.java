@@ -3,7 +3,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view.menus;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.model.Discount;
 import ec.edu.espe.viveresgabysoftwarekit.model.SeasonalDiscount;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class DiscountsMenu {
 
 
 
-    FileHandler<Discount> fileHandlerDiscounts = new FileHandler<>();
+    DbManager<Discount> fileHandlerDiscounts = new DbManager<>();
 
     public DiscountsMenu() {
         this.discounts = new ArrayList<>();

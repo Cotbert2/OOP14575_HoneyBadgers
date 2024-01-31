@@ -1,7 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 
 import java.util.Date;
 import java.util.List;
@@ -76,15 +76,15 @@ public class Discount {
 
     public void saveDiscount() {
         List<Discount> discounts;
-        FileHandler<Discount> fileHandler = new FileHandler<>();
+        DbManager<Discount> fileHandler = new DbManager<>();
         discounts = getAllDiscounts();
         discounts.add(this);
-        fileHandler.saveJSONFile(discounts, Constans.DISCOUNTS_FILE_NAME);
+        fileHandler.saveCollection(discounts, Constans.DISCOUNTS_FILE_NAME);
     }
 
     public List<Discount> getAllDiscounts() {
         List<Discount> discounts;
-        FileHandler<Discount> fileHandler = new FileHandler<>();
+        DbManager<Discount> fileHandler = new DbManager<>();
         discounts = fileHandler.readJSONListGeneric(Constans.DISCOUNTS_FILE_NAME, Discount.class);
         return discounts;
     }
