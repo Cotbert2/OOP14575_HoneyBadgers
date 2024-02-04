@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego García-HONEYBUDGERS-DCCO-14575
@@ -22,6 +23,7 @@ public class Scrapper {
             Element container = doc.selectFirst("div#page-information").getElementById("¿cuál-es").selectFirst("div.contenido-seccion div");
             String ivaComponent = container.text().substring(34, 36);
             IVA = Float.parseFloat(ivaComponent);
+            JOptionPane.showMessageDialog(null, "Iva: " + IVA + "\n Minado de" + url + " Existosamente");
             System.out.println("Iva: " + IVA);
             System.out.println("Scrapped from: " + url + " Successfully");
         } catch (

@@ -8,6 +8,10 @@ import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Opener;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.model.FinancerReport;
+import ec.edu.espe.viveresgabysoftwarekit.model.Tax;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
+import ec.edu.espe.viveresgabysoftwarekit.utils.Scrapper;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -39,6 +43,9 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -56,6 +63,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         mnOptFinancerReport = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -73,6 +82,12 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         jMenuItem13.setText("jMenuItem13");
+
+        jMenu2.setText("File");
+        jMenuBar2.add(jMenu2);
+
+        jMenu8.setText("Edit");
+        jMenuBar2.add(jMenu8);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,13 +194,25 @@ public class FrmMainMenu extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem7);
 
-        jMenuItem8.setText("Clientes");
+        jMenu1.setText("Clientes");
+
+        jMenuItem9.setText("Ver Todos los Clientes");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem9);
+
+        jMenuItem8.setText("Agregar nuevo Cliente");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem8);
+        jMenu1.add(jMenuItem8);
+
+        jMenu5.add(jMenu1);
 
         mnOptFinancerReport.setText("Reporte Financiero");
         mnOptFinancerReport.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +223,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu5.add(mnOptFinancerReport);
 
         jMenuItem10.setText("Actualizar Iva");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem10);
 
         jMenuBar1.add(jMenu5);
@@ -270,8 +302,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         int answer = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
-        
-        if(answer == JOptionPane.YES_OPTION){
+
+        if (answer == JOptionPane.YES_OPTION) {
             new FrmLogin().setVisible(true);
             this.setVisible(false);
         }
@@ -279,12 +311,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     private void mnOptNewSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOptNewSellActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_mnOptNewSellActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_mnOptNewSellActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
@@ -294,7 +322,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         FinancerReport financerReport = new FinancerReport();
         financerReport.generateFinancerReport();
-        JOptionPane.showMessageDialog(null, "Reporte financiero guardado en el Escritorio" );
+        JOptionPane.showMessageDialog(null, "Reporte financiero guardado en el Escritorio");
     }//GEN-LAST:event_mnOptFinancerReportActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -303,8 +331,35 @@ public class FrmMainMenu extends javax.swing.JFrame {
         FrmBills frmBills = new FrmBills();
         frmBills.aforeTable();
         frmBills.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        FrmCustomers frmCustomer = new FrmCustomers();
+        frmCustomer.aforeTable();
+        frmCustomer.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        DbManager<Tax> DbHandler = new DbManager<>();
+
+        Scrapper scrapper = new Scrapper();
+        float ivaUpdate = scrapper.updateIva();
+        List<Tax> taxes = DbHandler.readJSONListGeneric(Constans.TAXES_FILE_NAME, Tax.class);
+
+        for (Tax tax : taxes) {
+            if (tax.getId() == 1) {
+                tax.setPorcent((int) ivaUpdate);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,8 +391,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         UIManager.put("OptionPane.yesButtonText", "Sí");
         UIManager.put("OptionPane.noButtonText", "No");
-        
-        
+
         FlatNordIJTheme.setup();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -352,13 +406,17 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
@@ -372,6 +430,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
