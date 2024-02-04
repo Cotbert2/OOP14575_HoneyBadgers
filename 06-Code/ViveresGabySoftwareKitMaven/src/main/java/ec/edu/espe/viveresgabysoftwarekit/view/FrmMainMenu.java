@@ -7,6 +7,7 @@ package ec.edu.espe.viveresgabysoftwarekit.view;
 import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Opener;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
+import ec.edu.espe.viveresgabysoftwarekit.model.FinancerReport;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -56,7 +57,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        mnOptFinancerReport = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -171,6 +172,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu5.setText("Financiero");
 
         jMenuItem7.setText("Facturas");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem7);
 
         jMenuItem8.setText("Clientes");
@@ -181,8 +187,13 @@ public class FrmMainMenu extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem8);
 
-        jMenuItem9.setText("Reporte Financiero");
-        jMenu5.add(jMenuItem9);
+        mnOptFinancerReport.setText("Reporte Financiero");
+        mnOptFinancerReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnOptFinancerReportActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mnOptFinancerReport);
 
         jMenuItem10.setText("Actualizar Iva");
         jMenu5.add(jMenuItem10);
@@ -279,6 +290,22 @@ public class FrmMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void mnOptFinancerReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOptFinancerReportActionPerformed
+        // TODO add your handling code here:
+        FinancerReport financerReport = new FinancerReport();
+        financerReport.generateFinancerReport();
+        JOptionPane.showMessageDialog(null, "Reporte financiero guardado en el Escritorio" );
+    }//GEN-LAST:event_mnOptFinancerReportActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmBills frmBills = new FrmBills();
+        frmBills.aforeTable();
+        frmBills.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,12 +372,12 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenuItem mnOptFinancerReport;
     private javax.swing.JMenuItem mnOptNewSell;
     private javax.swing.JMenu moptAboutUs;
     // End of variables declaration//GEN-END:variables

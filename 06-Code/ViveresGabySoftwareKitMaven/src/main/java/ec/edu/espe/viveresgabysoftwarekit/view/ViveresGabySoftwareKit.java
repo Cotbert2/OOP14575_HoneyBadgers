@@ -1,5 +1,6 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 
+import ec.edu.espe.viveresgabysoftwarekit.controller.BillHandler;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.view.menus.MainMenu;
 
@@ -12,9 +13,11 @@ import javax.mail.MessagingException;
 public class ViveresGabySoftwareKit {
 
     public static void main(String[] args) throws MessagingException {
+        BillHandler billHandler = new BillHandler();
+        System.out.println(billHandler.getAllBills());
         FrmSplashScreen frmSplashScreen = new FrmSplashScreen();
         frmSplashScreen.init();
-        
+
         /*
         LogInSystem logInSystem = new LogInSystem();
         logInSystem.showLogin();
