@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author mateo
  */
-public class Login {
+public class LoginHandler {
     Cypher cypher = new Cypher(17);
     DbManager<User> DataBaseHandler = new DbManager<>();
     

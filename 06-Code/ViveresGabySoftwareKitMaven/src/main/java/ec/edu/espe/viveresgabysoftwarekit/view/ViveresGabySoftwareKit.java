@@ -2,7 +2,6 @@ package ec.edu.espe.viveresgabysoftwarekit.view;
 
 import ec.edu.espe.viveresgabysoftwarekit.controller.BillHandler;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.view.menus.MainMenu;
 
 import javax.mail.MessagingException;
 

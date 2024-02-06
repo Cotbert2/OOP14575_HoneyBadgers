@@ -5,7 +5,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 
 import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
-import ec.edu.espe.viveresgabysoftwarekit.controller.Login;
+import ec.edu.espe.viveresgabysoftwarekit.controller.LoginHandler;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
@@ -182,7 +182,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void sendLoginRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendLoginRequestActionPerformed
         // TODO add your handling code here:
-        Login login = new Login();
+        LoginHandler login = new LoginHandler();
         System.out.println(txtUser.getText());
         System.out.println(txtpasswd.getText());
         if(login.hasLogin(txtUser.getText(), txtpasswd.getText())){
