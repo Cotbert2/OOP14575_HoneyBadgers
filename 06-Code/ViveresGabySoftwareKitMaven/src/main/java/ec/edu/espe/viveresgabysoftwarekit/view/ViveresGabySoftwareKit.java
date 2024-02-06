@@ -12,7 +12,10 @@ import javax.mail.MessagingException;
  */
 public class ViveresGabySoftwareKit {
 
+    public static FrmNewSell frmNewSell = new FrmNewSell();
+
     public static void main(String[] args) throws MessagingException {
+
         BillHandler billHandler = new BillHandler();
         System.out.println(billHandler.getAllBills());
         FrmSplashScreen frmSplashScreen = new FrmSplashScreen();

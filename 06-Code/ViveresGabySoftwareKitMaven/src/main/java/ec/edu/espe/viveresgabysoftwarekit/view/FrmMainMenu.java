@@ -326,6 +326,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     private void mnOptNewSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOptNewSellActionPerformed
         // TODO add your handling code here:
+        ViveresGabySoftwareKit.frmNewSell.setVisible(true);
 
     }//GEN-LAST:event_mnOptNewSellActionPerformed
 
@@ -395,7 +396,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
         
-        FrmCategories frmCategories = new FrmCategories();
+        FrmCategorie frmCategories = new FrmCategorie();
         frmCategories.aforeTable();
         frmCategories.setVisible(true);
         this.setVisible(false);
