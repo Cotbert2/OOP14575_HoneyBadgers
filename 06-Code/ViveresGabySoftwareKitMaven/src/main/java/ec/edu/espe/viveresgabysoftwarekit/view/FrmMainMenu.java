@@ -58,7 +58,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         mnOptNewSell = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -168,15 +169,24 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
         jMenu4.setText("Inventario");
 
-        jMenuItem11.setText("Productos");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenu10.setText("Productos");
+
+        jMenuItem15.setText("Ver Productos");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuItem15ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem11);
+        jMenu10.add(jMenuItem15);
+
+        jMenu4.add(jMenu10);
 
         jMenuItem12.setText("Cateogorías");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem12);
 
         jMenuItem14.setText("Stock");
@@ -235,6 +245,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu7.setText("Descuentos");
 
         jMenuItem4.setText("Historial");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem4);
 
         jMenuItem5.setText("Crear Descuento");
@@ -314,10 +329,6 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnOptNewSellActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
-
     private void mnOptFinancerReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOptFinancerReportActionPerformed
         // TODO add your handling code here:
         FinancerReport financerReport = new FinancerReport();
@@ -344,6 +355,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new FrmNewCustomer().setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -360,6 +373,33 @@ public class FrmMainMenu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.dispose();
+        FrmDiscounts frmDiscounts = new FrmDiscounts();
+        frmDiscounts.aforeTable();
+        frmDiscounts.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmViewProducts frmViewProducts = new FrmViewProducts();
+        frmViewProducts.aforeTable();
+        frmViewProducts.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        
+        FrmCategories frmCategories = new FrmCategories();
+        frmCategories.aforeTable();
+        frmCategories.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,6 +447,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -419,10 +460,10 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

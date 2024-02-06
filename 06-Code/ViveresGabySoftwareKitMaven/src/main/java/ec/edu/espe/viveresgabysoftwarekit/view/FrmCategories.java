@@ -1,23 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package ec.edu.espe.viveresgabysoftwarekit.view;
 
 import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
-import ec.edu.espe.viveresgabysoftwarekit.controller.BillHandler;
-import ec.edu.espe.viveresgabysoftwarekit.controller.DiscountsHandler;
-import ec.edu.espe.viveresgabysoftwarekit.model.Bill;
-import ec.edu.espe.viveresgabysoftwarekit.model.Discount;
 import javax.swing.table.DefaultTableModel;
-
+import ec.edu.espe.viveresgabysoftwarekit.controller.CategoryHandler;
+import ec.edu.espe.viveresgabysoftwarekit.model.Category;
+import ec.edu.espe.viveresgabysoftwarekit.model.Product;
+import java.util.ArrayList;
 
 /**
  *
  * @author mateo
  */
-public class FrmDiscounts extends javax.swing.JFrame {
+public class FrmCategories extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmBills
      */
-    public FrmDiscounts() {
+    public FrmCategories() {
         initComponents();
     }
 
@@ -41,7 +44,7 @@ public class FrmDiscounts extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setText("Descuentos");
+        jLabel1.setText("Cateogorías");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,14 +167,16 @@ public class FrmDiscounts extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmDiscounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCategories.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmDiscounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCategories.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmDiscounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCategories.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmDiscounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCategories.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -180,22 +185,27 @@ public class FrmDiscounts extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmDiscounts().setVisible(true);
+                new FrmCategories().setVisible(true);
             }
         });
     }
 
     public void aforeTable() {
-        DiscountsHandler discountController = new DiscountsHandler();
+
+        CategoryHandler categoryController = new CategoryHandler();
         DefaultTableModel model = new DefaultTableModel();
         tblBills.setModel(model);
-        model.addColumn("Nombre");
-        model.addColumn("Porcentaje");
-        model.addColumn("Fecha de Inicio");
-        model.addColumn("Fecha Final");
-        
-        for(Discount discount :  discountController.getSDiascounts()){
-            Object[] row = {discount.getName(), discount.getPercentage(), discount.getStartDate(), discount.getEndDate()};
+        model.addColumn("Name");
+        model.addColumn("Description");
+        model.addColumn("N Productos");
+        model.addColumn("Productos");
+
+        for (Category category : categoryController.getCategoryList()) {
+            ArrayList<String> products = new ArrayList<>();
+            for (Product product : category.getProducts()) {
+                products.add(product.getName());
+            }
+            Object[] row = {category.getName(), category.getDescription(), category.getProducts().size(), products};
             model.addRow(row);
         }
     }

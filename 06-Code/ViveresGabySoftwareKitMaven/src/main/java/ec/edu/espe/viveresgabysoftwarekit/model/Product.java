@@ -1,7 +1,6 @@
 
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
-import ec.edu.espe.viveresgabysoftwarekit.controller.Db;
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Search;
