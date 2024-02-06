@@ -2,7 +2,7 @@ package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
 import ec.edu.espe.viveresgabysoftwarekit.utils.EmailHandler;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.Validations;
 
 import javax.mail.MessagingException;
@@ -27,7 +27,7 @@ public class Bill {
 
 
     public Bill(Customer customer, List<ProductItem> products, List<Discount> discounts) {
-        FileHandler<Bill> fileHandler = new FileHandler<>();
+        DbManager<Bill> fileHandler = new DbManager<>();
         this.id = fileHandler.readJSONListGeneric(Constans.BILLS_FILE_NAME, Bill.class).getLast().id + 1;
         this.customer = customer;
         this.products = products;
@@ -97,10 +97,10 @@ public class Bill {
     }
 
     public void saveCurrentBill() {
-        FileHandler<Bill> fileHandler = new FileHandler<>();
+        DbManager<Bill> fileHandler = new DbManager<>();
         List<Bill> bills = fileHandler.readJSONListGeneric(Constans.BILLS_FILE_NAME, Bill.class);
         bills.add(this);
-        fileHandler.saveJSONFile(bills, Constans.BILLS_FILE_NAME);
+        fileHandler.saveCollection(bills, Constans.BILLS_FILE_NAME);
     }
 
     public void doBill(Transaction transaction, List<ProductItem> kart, List<Discount> discountsToAplly, Customer customer, Validations validations) throws MessagingException {

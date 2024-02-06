@@ -15,10 +15,10 @@ import java.util.List;
 
 public class Search {
 
-    FileHandler<Product> fileHandler = new FileHandler<>();
-    FileHandler<Customer> fileHandlerCustomer = new FileHandler<>();
+    DbManager<Product> fileHandler = new DbManager<>();
+    DbManager<Customer> fileHandlerCustomer = new DbManager<>();
 
-    FileHandler<Category> fileHandlerCategory = new FileHandler<>();
+    DbManager<Category> fileHandlerCategory = new DbManager<>();
 
     Validations validations = new Validations();
 

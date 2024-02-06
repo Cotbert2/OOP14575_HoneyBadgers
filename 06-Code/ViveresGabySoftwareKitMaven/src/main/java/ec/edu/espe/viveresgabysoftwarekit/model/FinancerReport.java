@@ -1,7 +1,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 import ec.edu.espe.viveresgabysoftwarekit.utils.PdfConverter;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class FinancerReport {
     private ArrayList<Tax> taxes;
 
     public FinancerReport() {
-        FileHandler<Bill> fileHandler = new FileHandler<>();
+        DbManager<Bill> fileHandler = new DbManager<>();
         this.bills = fileHandler.readJSONListGeneric(Constans.BILLS_FILE_NAME, Bill.class);
 
     }
@@ -53,7 +53,7 @@ public class FinancerReport {
                 "Total Sell: " + totalSell + "\n" +
                 "---------------------------------------------\n";
 
-        FileHandler<FinancerReport> fileHandler = new FileHandler<>();
+        DbManager<FinancerReport> fileHandler = new DbManager<>();
         Date date = new Date();
         String fileName = fileHandler.getDesktopPath()+ "/FinancerReport" +date.getDay()+ "_" +date.getMonth()+ "_" +date.getYear()+ "_" + date.getMinutes() + "_"+ date.getSeconds()+ ".txt";
         fileHandler.saveTXTFile(report, fileName);

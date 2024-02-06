@@ -2,7 +2,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,20 +104,20 @@ public class Category {
 
 
     public void saveFullCategoriesList(List<Category> categories) {
-        FileHandler<Category> fileHandler = new FileHandler<>();
-        fileHandler.saveJSONFile(categories, Constans.CATEGORIES_FILE_NAME);
+        DbManager<Category> fileHandler = new DbManager<>();
+        fileHandler.saveCollection(categories, Constans.CATEGORIES_FILE_NAME);
     }
 
     public List<Category> getCategories() {
-        FileHandler<Category> fileHandler = new FileHandler<>();
+        DbManager<Category> fileHandler = new DbManager<>();
         return fileHandler.readJSONListGeneric(Constans.CATEGORIES_FILE_NAME, Category.class);
     }
 
     public void saveCategory(Category category) {
-        FileHandler<Category> fileHandler = new FileHandler<>();
+        DbManager<Category> fileHandler = new DbManager<>();
         List<Category> categories = getCategories();
         categories.add(category);
-        fileHandler.saveJSONFile(categories, Constans.CATEGORIES_FILE_NAME);
+        fileHandler.saveCollection(categories, Constans.CATEGORIES_FILE_NAME);
     }
 
 }

@@ -2,7 +2,7 @@
 package ec.edu.espe.viveresgabysoftwarekit.model;
 
 import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-import ec.edu.espe.viveresgabysoftwarekit.utils.FileHandler;
+import ec.edu.espe.viveresgabysoftwarekit.utils.DbManager;
 
 import java.util.Date;
 import java.util.List;
@@ -96,14 +96,14 @@ public class Transaction {
     }
 
     public void saveTransaction(){
-        FileHandler<Transaction> fileHandler = new FileHandler();
+        DbManager<Transaction> fileHandler = new DbManager();
         List<Transaction> transactions= updateTransaction();
         transactions.add(this);
-        fileHandler.saveJSONFile(transactions, Constans.TRANSACTION_FILE);
+        fileHandler.saveCollection(transactions, Constans.TRANSACTION_FILE);
     }
 
     public  List<Transaction> updateTransaction(){
-        FileHandler<Transaction> fileHandler = new FileHandler();
+        DbManager<Transaction> fileHandler = new DbManager();
         return fileHandler.readJSONListGeneric(Constans.TRANSACTION_FILE, Transaction.class);
     }
 }
