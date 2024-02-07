@@ -8,6 +8,7 @@ import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
 import ec.edu.espe.viveresgabysoftwarekit.controller.Login;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 /**
@@ -193,7 +194,8 @@ public class FrmLogin extends javax.swing.JFrame {
             LineBorder error = new LineBorder(Color.RED,2);
             txtUser.setBorder(error);
             txtpasswd.setBorder(error);
-        }
+            JOptionPane.showInternalMessageDialog(null, "Usuario o Contraseña incorrectos");
+            }
         
     }//GEN-LAST:event_sendLoginRequestActionPerformed
 

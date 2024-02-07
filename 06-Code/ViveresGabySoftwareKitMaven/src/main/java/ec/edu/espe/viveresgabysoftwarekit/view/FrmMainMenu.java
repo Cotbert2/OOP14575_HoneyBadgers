@@ -58,7 +58,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         mnOptNewSell = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        mnuItemProducts = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -168,13 +168,13 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
         jMenu4.setText("Inventario");
 
-        jMenuItem11.setText("Productos");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        mnuItemProducts.setText("Productos");
+        mnuItemProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                mnuItemProductsActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem11);
+        jMenu4.add(mnuItemProducts);
 
         jMenuItem12.setText("Cateogorías");
         jMenu4.add(jMenuItem12);
@@ -314,9 +314,10 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnOptNewSellActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void mnuItemProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemProductsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+        
+    }//GEN-LAST:event_mnuItemProductsActionPerformed
 
     private void mnOptFinancerReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnOptFinancerReportActionPerformed
         // TODO add your handling code here:
@@ -419,7 +420,6 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
@@ -438,6 +438,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenuItem mnOptFinancerReport;
     private javax.swing.JMenuItem mnOptNewSell;
+    private javax.swing.JMenuItem mnuItemProducts;
     private javax.swing.JMenu moptAboutUs;
     // End of variables declaration//GEN-END:variables
 }
