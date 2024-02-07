@@ -7,7 +7,7 @@ import ec.edu.espe.viveresgabysoftwarekit.view.menus.MainMenu;
 import javax.mail.MessagingException;
 
 /**
- * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Mateo
  * García-HONEYBUDGERS-DCCO-14575
  */
 public class ViveresGabySoftwareKit {

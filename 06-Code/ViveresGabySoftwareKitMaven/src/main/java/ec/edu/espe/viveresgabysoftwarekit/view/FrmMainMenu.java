@@ -65,7 +65,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        mnuItemAgregarCliente = new javax.swing.JMenuItem();
         mnOptFinancerReport = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -204,13 +204,13 @@ public class FrmMainMenu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem9);
 
-        jMenuItem8.setText("Agregar nuevo Cliente");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        mnuItemAgregarCliente.setText("Agregar nuevo Cliente");
+        mnuItemAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                mnuItemAgregarClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        jMenu1.add(mnuItemAgregarCliente);
 
         jMenu5.add(jMenu1);
 
@@ -343,9 +343,12 @@ public class FrmMainMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void mnuItemAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemAgregarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+        FrmClient frmclient = new FrmClient();
+        frmclient.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuItemAgregarClienteActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
@@ -429,7 +432,6 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -438,6 +440,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenuItem mnOptFinancerReport;
     private javax.swing.JMenuItem mnOptNewSell;
+    private javax.swing.JMenuItem mnuItemAgregarCliente;
     private javax.swing.JMenuItem mnuItemProducts;
     private javax.swing.JMenu moptAboutUs;
     // End of variables declaration//GEN-END:variables
