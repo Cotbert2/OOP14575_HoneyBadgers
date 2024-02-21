@@ -1,12 +1,10 @@
 package ec.edu.espe.viveresgabysoftwarekit.view;
 
 import ec.edu.espe.viveresgabysoftwarekit.controller.BillHandler;
-import ec.edu.espe.viveresgabysoftwarekit.helpers.Constans;
-
 import javax.mail.MessagingException;
 
 /**
- * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Matego
+ * @autor Alex Cuzco, Stefany Díaz, Eduardo García, Mateo
  * García-HONEYBUDGERS-DCCO-14575
  */
 public class ViveresGabySoftwareKit {
@@ -19,12 +17,6 @@ public class ViveresGabySoftwareKit {
         System.out.println(billHandler.getAllBills());
         FrmSplashScreen frmSplashScreen = new FrmSplashScreen();
         frmSplashScreen.init();
-
-        /*
-        LogInSystem logInSystem = new LogInSystem();
-        logInSystem.showLogin();
-        MainMenu.showMenu();
-         */
     }
 
 }
